@@ -5,11 +5,13 @@ import electronAlert from '../../utils/electronAlert';
 import useLocalState from '../useLocalState';
 import useLatestGameVersion from '../firebase/useLatestGameVersion';
 import useServerEngineVersion from './useServerEngineVersion';
+import { isVersionOlder } from '../../utils/versionToValue';
 
 const useRunServerInstall = () => {
   const { t } = useTranslation();
 
-  const { versionValue: latestGameVersion } = useLatestGameVersion();
+  const { version: latestVersion, versionValue: latestGameVersion } =
+    useLatestGameVersion();
 
   const [serverEngineVersion, setServerEngineVersion] =
     useServerEngineVersion();
@@ -18,8 +20,8 @@ const useRunServerInstall = () => {
   const [installMessage, setInstallMessage] = useState('');
 
   useEffect(() => {
-    if (latestGameVersion) {
-      if (serverEngineVersion < latestGameVersion) {
+    if (latestVersion) {
+      if (isVersionOlder(serverEngineVersion, latestVersion)) {
         if (!serverEngineHasInstall) {
           // 執行伺服器安裝
           window.electron.ipcRenderer.sendMessage(Channels.runServerInstall);
@@ -27,7 +29,7 @@ const useRunServerInstall = () => {
             Channels.runServerInstallReply.DONE,
             () => {
               setServerEngineHasInstall(true);
-              setServerEngineVersion(latestGameVersion);
+              setServerEngineVersion(latestVersion || latestGameVersion);
               // electronAlert(t('EngineInstallFinish'));
             },
           );
@@ -55,7 +57,7 @@ const useRunServerInstall = () => {
         setServerEngineHasInstall(true);
       }
     }
-  }, [serverEngineHasInstall, latestGameVersion]);
+  }, [serverEngineHasInstall, latestVersion, latestGameVersion, serverEngineVersion, setServerEngineVersion, t]);
 
   return [serverEngineHasInstall, installMessage];
 };

@@ -23,6 +23,7 @@ import useServerInfo from '../../../hooks/server/info/useServerInfo';
 import Channels from '../../../../main/ipcs/channels';
 import PalguardSettings from './PalguardSettings/PalguardSettings';
 import useIsRunningServers from '../../../redux/isRunningServers/useIsRunningServers';
+import useLatestGameVersion from '../../../hooks/firebase/useLatestGameVersion';
 
 export default function ServerSettings() {
   const { t } = useTranslation();
@@ -34,6 +35,7 @@ export default function ServerSettings() {
   const { serverInfo, setServerInfo } = useServerInfo(selectedServerInstance);
 
   const { includeRunningServers } = useIsRunningServers();
+  const { version: latestPalworldVersion } = useLatestGameVersion();
 
   const isServerRunning = includeRunningServers(selectedServerInstance);
 
@@ -82,6 +84,12 @@ export default function ServerSettings() {
             Channels.updateServerInstanceReply.DONE,
             () => {
               setIsServerUpdating(false);
+              if (latestPalworldVersion) {
+                setServerInfo({
+                  ...serverInfo!,
+                  palworldVersion: latestPalworldVersion,
+                });
+              }
               window.electron.ipcRenderer.sendMessage(
                 'alert',
                 t('ServerUpdateDone'),
@@ -402,53 +410,41 @@ export default function ServerSettings() {
       //   value: false,
       // },
     },
-    // Restart: {
-    //   AutoRestart: {
-    //     disabled: isServerRunning,
-    //     id: 'AutoRestart',
-    //     title: t('AutoRestart'),
-    //     desciption: t('AutoRestartDesc'),
-    //     type: 'options',
-    //     values: [0, 6, 12, 24],
-    //     labels: [
-    //       t('SwitchOff'),
-    //       '6 ' + t('HourPerTime'),
-    //       '12 ' + t('HourPerTime'),
-    //       '24 ' + t('HourPerTime'),
-    //     ],
-    //     value: serverInfo?.AutoRestart,
-    //     onValueChange(v) {
-    //       setServerInfo({
-    //         ...serverInfo!,
-    //         AutoRestart: v,
-    //       });
-    //     },
-    //   },
-    //   CrashRestart: {
-    //     id: 'CrashRestart',
-    //     title: t('CrashRestart'),
-    //     desciption: t('CrashRestartDesc'),
-    //     value: serverInfo?.CrashRestart,
-    //     onValueChange(v) {
-    //       setServerInfo({
-    //         ...serverInfo!,
-    //         CrashRestart: v,
-    //       });
-    //     },
-    //   },
-    //   // OverRamRestart: {
-    //   //   id: 'OverRamRestart',
-    //   //   title: t('OverRamRestart'),
-    //   //   desciption: t('OverRamRestartDesc'),
-    //   //   value: serverInfo?.OverRamRestart,
-    //   //   onValueChange(v) {
-    //   //     setServerInfo({
-    //   //       ...serverInfo!,
-    //   //       OverRamRestart: v,
-    //   //     });
-    //   //   },
-    //   // },
-    // },
+    Restart: {
+      AutoRestart: {
+        disabled: isServerRunning,
+        id: 'AutoRestart',
+        title: t('AutoRestart'),
+        desciption: t('AutoRestartDesc'),
+        type: 'options',
+        values: [0, 6, 12, 24],
+        labels: [
+          t('SwitchOff'),
+          '6 ' + t('HourPerTime'),
+          '12 ' + t('HourPerTime'),
+          '24 ' + t('HourPerTime'),
+        ],
+        value: serverInfo?.AutoRestart,
+        onValueChange(v) {
+          setServerInfo({
+            ...serverInfo!,
+            AutoRestart: v,
+          });
+        },
+      },
+      CrashRestart: {
+        id: 'CrashRestart',
+        title: t('CrashRestart'),
+        desciption: t('CrashRestartDesc'),
+        value: serverInfo?.CrashRestart,
+        onValueChange(v) {
+          setServerInfo({
+            ...serverInfo!,
+            CrashRestart: v,
+          });
+        },
+      },
+    },
     Process: {
       UseIndependentProcess: {
         disabled: isServerRunning,

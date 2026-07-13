@@ -86,6 +86,9 @@ ipcMain.handle(
     const worldSettingsiniJson = {
       ...prevWorldSettingsiniJson,
       ...serverConfig,
+      PalEggDefaultHatchingTime: 1,
+      DeathPenalty: 'Item',
+      bIsStartLocationSelectByMap: false,
     };
 
     setWorldSettingsiniByServerId(serverId, worldSettingsiniJson);

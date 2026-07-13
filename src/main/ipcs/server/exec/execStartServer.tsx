@@ -16,6 +16,13 @@ import osu from 'node-os-utils';
 import axios from 'axios';
 import trimWorldSettingsString from '../../../../utils/trimWorldSettingsString';
 import sendCommand from '../../../utils/rcon/sendCommand';
+import {
+  getRestAdminConfig,
+  isRestApiEnabled,
+  restGetInfo,
+  restSave,
+  restShutdown,
+} from '../../../services/admin/restAdmin';
 
 ipcMain.on(
   Channels.execStartServer,
@@ -255,14 +262,16 @@ const autoRestart = async (
     'Pal/Saved/Config/WindowsServer/PalWorldSettings.ini',
   );
   const worldSettings = await readWorldSettingsini(worldSettingsPath);
+  const restConfig = getRestAdminConfig(worldSettings);
   const serverOptions = {
     ipAddress: '127.0.0.1',
     port: worldSettings.RCONPort,
     password: trimWorldSettingsString(worldSettings.AdminPassword),
   };
   const isEnabledRCON = worldSettings.RCONEnabled;
+  const useRestApi = isRestApiEnabled(worldSettings);
 
-  if (serverInfo.AutoRestart && isEnabledRCON) {
+  if (serverInfo.AutoRestart && (useRestApi || isEnabledRCON)) {
     const clearAutoRestart = setInterval(
       async () => {
         try {
@@ -270,9 +279,13 @@ const autoRestart = async (
           if (!serverInfo.AutoRestart) {
             clearInterval(clearAutoRestart);
           }
-          sendCommand(serverOptions, 'save');
-          sendCommand(serverOptions, 'shutdown 1');
-          // 伺服器重新啟動
+          if (useRestApi) {
+            await restSave(restConfig);
+            await restShutdown(restConfig, 60, 'Scheduled restart');
+          } else {
+            sendCommand(serverOptions, 'save');
+            sendCommand(serverOptions, 'shutdown 1');
+          }
           await sleep(5000);
           await startServer(event, serverId, queryport, useIndependentProcess);
         } catch (e) {
@@ -298,14 +311,16 @@ const crashRestart = async (
     'Pal/Saved/Config/WindowsServer/PalWorldSettings.ini',
   );
   const worldSettings = await readWorldSettingsini(worldSettingsPath);
+  const restConfig = getRestAdminConfig(worldSettings);
   const serverOptions = {
     ipAddress: '127.0.0.1',
     port: worldSettings.RCONPort,
     password: trimWorldSettingsString(worldSettings.AdminPassword),
   };
   const isEnabledRCON = worldSettings.RCONEnabled;
+  const useRestApi = isRestApiEnabled(worldSettings);
 
-  if (serverInfo.CrashRestart && isEnabledRCON) {
+  if (serverInfo.CrashRestart && (useRestApi || isEnabledRCON)) {
     const clearCrashRestart = setInterval(async () => {
       try {
         serverInfo = await getServerInfoByServerId(serverId);
@@ -313,7 +328,11 @@ const crashRestart = async (
           clearInterval(clearCrashRestart);
         }
         try {
-          await sendCommand(serverOptions, 'info');
+          if (useRestApi) {
+            await restGetInfo(restConfig);
+          } else {
+            await sendCommand(serverOptions, 'info');
+          }
         } catch (e) {
           await startServer(event, serverId, queryport, useIndependentProcess);
         }

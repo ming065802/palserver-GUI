@@ -11,6 +11,12 @@ import useTranslation from '../../../../hooks/translation/useTranslation';
 import Channels from '../../../../../main/ipcs/channels';
 import useSelectedServerInstance from '../../../../redux/selectedServerInstance/useSelectedServerInstance';
 import Schedule from './Schedule/Schedule';
+import {
+  restAnnounce,
+  restGetServerInfo,
+  restSaveWorld,
+  restShutdownServer,
+} from '../../../../utils/restAdmin';
 
 export default function Boardcastbar() {
   const { t } = useTranslation();
@@ -30,21 +36,49 @@ export default function Boardcastbar() {
   };
 
   const handleSendCommand = async () => {
-    const response = await window.electron.ipcRenderer.invoke(
-      Channels.sendRCONCommand,
-      selectedServerInstance,
-      input.slice(1),
-    );
-    window.electron.ipcRenderer.sendMessage('alert', response);
+    const command = input.slice(1).trim();
+    const lowerCommand = command.toLowerCase();
+
+    try {
+      if (lowerCommand === 'save') {
+        await restSaveWorld(selectedServerInstance);
+        window.electron.ipcRenderer.sendMessage('alert', 'Save requested');
+        return;
+      }
+
+      if (lowerCommand.startsWith('shutdown')) {
+        const waitTime = Number(command.split(/\s+/u)[1]) || 60;
+        await restShutdownServer(
+          selectedServerInstance,
+          waitTime,
+          'Server shutting down',
+        );
+        window.electron.ipcRenderer.sendMessage('alert', 'Shutdown requested');
+        return;
+      }
+
+      if (lowerCommand === 'info') {
+        const info = await restGetServerInfo(selectedServerInstance);
+        window.electron.ipcRenderer.sendMessage(
+          'alert',
+          JSON.stringify(info, null, 2),
+        );
+        return;
+      }
+
+      const response = await window.electron.ipcRenderer.invoke(
+        Channels.sendRCONCommand,
+        selectedServerInstance,
+        command,
+      );
+      window.electron.ipcRenderer.sendMessage('alert', response);
+    } catch (error) {
+      window.electron.ipcRenderer.sendMessage('alert', String(error));
+    }
   };
 
   const handleSendBoardCast = () => {
-    window.electron.ipcRenderer.invoke(
-      Channels.sendRestAPI,
-      selectedServerInstance,
-      '/announce',
-      { body: { message: input }, method: 'post' },
-    );
+    restAnnounce(selectedServerInstance, input);
   };
 
   const [openSchedule, setOpenSchedule] = useState(false);

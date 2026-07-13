@@ -6,6 +6,10 @@ import useTranslation from '../../../../../hooks/translation/useTranslation';
 import useSelectedServerInstance from '../../../../../redux/selectedServerInstance/useSelectedServerInstance';
 import ActionItem from '../AcionItem/AcionItem';
 import formatLocale from '../../../../../utils/formatLocale';
+import {
+  restBanPlayer,
+  restKickPlayer,
+} from '../../../../../utils/restAdmin';
 
 export default function ActionList({
   actionType,
@@ -36,19 +40,11 @@ export default function ActionList({
   };
 
   const handleKickUser = () => {
-    window.electron.ipcRenderer.invoke(
-      Channels.sendRCONCommand,
-      selectedServerInstance,
-      `KickPlayer ${steamid}`,
-    );
+    restKickPlayer(selectedServerInstance, steamid);
   };
 
   const handleBanUser = () => {
-    window.electron.ipcRenderer.invoke(
-      Channels.sendRCONCommand,
-      selectedServerInstance,
-      `BanPlayer ${playerId}`,
-    );
+    restBanPlayer(selectedServerInstance, steamid);
   };
 
   const handleBanUserIP = () => {
