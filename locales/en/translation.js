@@ -238,6 +238,9 @@ const en = {
   CreateRemoteServerDesc:
     'Connect to a Palworld 1.0 dedicated server already running on a VPS or remote host. Ensure REST API is enabled and port 8212 is reachable from this PC.',
   RemoteServerBadge: 'Remote',
+  RemoteEndpoint: 'Remote endpoint',
+  EditRemoteServer: 'Edit remote connection',
+  RemoteFeatureNotSupported: 'This feature is not available for remote connections.',
   TestConnection: 'Test Connection',
   TestingConnection: 'Testing…',
   RemoteConnectionSuccess: 'Connection successful. You can create the remote link.',

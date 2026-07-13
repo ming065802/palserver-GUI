@@ -248,6 +248,9 @@ const fr = {
   CreateRemoteServerDesc:
     'Connectez-vous à un serveur dédié Palworld 1.0 déjà en cours d exécution sur un VPS ou un hôte distant. Vérifiez que l API REST est activée et que le port 8212 est accessible depuis ce PC.',
   RemoteServerBadge: 'Distant',
+  RemoteEndpoint: 'Point de terminaison distant',
+  EditRemoteServer: 'Modifier la connexion distante',
+  RemoteFeatureNotSupported: 'Cette fonctionnalité n est pas disponible pour les connexions distantes.',
   TestConnection: 'Tester la connexion',
   TestingConnection: 'Test en cours…',
   RemoteConnectionSuccess: 'Connexion réussie. Vous pouvez créer la liaison distante.',

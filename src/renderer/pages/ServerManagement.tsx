@@ -1,5 +1,5 @@
 import { Flex, RadioCards, Tabs, Text, Theme } from '@radix-ui/themes';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PerformanceMonitor from '../components/ServerManagement/PerformanceMonitor/PerformanceMonitor';
 import { cn } from '../../utils/cn';
 import Display from '../components/Display';
@@ -10,6 +10,7 @@ import useServerInfo from '../hooks/server/info/useServerInfo';
 import useSelectedServerInstance from '../redux/selectedServerInstance/useSelectedServerInstance';
 import useTranslation from '../hooks/translation/useTranslation';
 import useIsRunningServers from '../redux/isRunningServers/useIsRunningServers';
+import useIsRemote from '../hooks/server/useIsRemote';
 import OnlineMap from '../components/ServerManagement/OnlineMap/OnlineMap';
 
 export default function ServerManagement() {
@@ -17,10 +18,11 @@ export default function ServerManagement() {
 
   const { selectedServerInstance } = useSelectedServerInstance();
   const { serverInfo } = useServerInfo(selectedServerInstance);
+  const isRemote = useIsRemote();
 
   const [managementMode, setManagementMode] = useState<
     'log' | 'performance' | 'players' | 'settings' | 'map'
-  >('settings');
+  >('players');
 
   // 效能監控相關
   const [performanceMonitorMode, setPerformanceMonitorMode] = useState<
@@ -33,6 +35,12 @@ export default function ServerManagement() {
   const [newLogCount, setNewLogCount] = useState(0);
 
   const { includeRunningServers } = useIsRunningServers();
+
+  useEffect(() => {
+    if (isRemote && managementMode !== 'players') {
+      setManagementMode('players');
+    }
+  }, [isRemote, managementMode]);
 
   return (
     <div className={cn('page-container', 'overflow-y-hidden')}>
@@ -91,7 +99,7 @@ export default function ServerManagement() {
         }}
       >
         <Tabs.List>
-          {serverInfo?.LogEnabled && (
+          {!isRemote && serverInfo?.LogEnabled && (
             <Tabs.Trigger
               value="log"
               style={{ color: 'white', fontWeight: 500 }}
@@ -105,7 +113,7 @@ export default function ServerManagement() {
           >
             {t('ServerPlayers')}
           </Tabs.Trigger>
-          {serverInfo?.OnlineMapEnabled && (
+          {!isRemote && serverInfo?.OnlineMapEnabled && (
             <Tabs.Trigger
               value="map"
               style={{ color: 'white', fontWeight: 500 }}
@@ -113,7 +121,7 @@ export default function ServerManagement() {
               {t('OnlineMap')}
             </Tabs.Trigger>
           )}
-          { serverInfo?.performanceMonitorEnabled && (
+          {!isRemote && serverInfo?.performanceMonitorEnabled && (
               <Tabs.Trigger
                 value="performance"
                 style={{ color: 'white', fontWeight: 500 }}
@@ -121,12 +129,14 @@ export default function ServerManagement() {
                 {t('PerformanceMonitor')}
               </Tabs.Trigger>
             )}
+          {!isRemote && (
           <Tabs.Trigger
             value="settings"
             style={{ color: 'white', fontWeight: 500 }}
           >
             {t('ServerSettings')}
           </Tabs.Trigger>
+          )}
         </Tabs.List>
       </Tabs.Root>
       <Display display={managementMode === 'players'}>

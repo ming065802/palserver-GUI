@@ -17,6 +17,7 @@ import useWorldSettings from '../hooks/server/world-settings/useWorldSettings';
 import WorldSettingsItem from '../components/WorldSettings/WorldSettingsItem/WorldSettingsItem';
 import WorldSettingsJSONView from '../components/WorldSettings/WorldSettingsJSONView/WorldSettingsJSONView';
 import WorldSettingsActionbar from '../components/WorldSettings/WorldSettingsActionbar/WorldSettingsActionbar';
+import RemoteUnsupportedGuard from '../components/RemoteUnsupportedGuard';
 
 export default function WorldSettings() {
   const { t } = useTranslation();
@@ -38,6 +39,7 @@ export default function WorldSettings() {
   const [interfaceMode, setInterfaceMode] = useState<'gui' | 'json'>('gui');
 
   return (
+    <RemoteUnsupportedGuard>
     <div className="page-container overflow-y-scroll">
       <div className="flex flex-row items-start gap-3 flex-wrap overflow-y-scroll overflow-x-hidden">
         <div className="absolute right-6 top-6 flex gap-2">
@@ -237,6 +239,7 @@ export default function WorldSettings() {
         setWorldSettings={setWorldSettings}
       />
     </div>
+    </RemoteUnsupportedGuard>
   );
 }
 // <Button onClick={() => {}}>{t('VerifyChange')}</Button>;

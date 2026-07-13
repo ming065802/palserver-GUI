@@ -30,31 +30,37 @@ export default function ServerInstance(props: Props) {
 
   const [instanceSize, setIntanceSize] = useState();
   useEffect(() => {
-    if (props.info.instancePath)
+    if (props.info.instancePath && !props.info.isRemote)
       window.electron.ipcRenderer
         .invoke(Channels.getFolderSize, props.info.instancePath)
         .then((size) => {
           setIntanceSize(size);
         });
-  }, [props.info.instancePath]);
+  }, [props.info.instancePath, props.info.isRemote]);
+
+  const isRemote = Boolean(props.info.isRemote);
 
   const [currentAlertWindow, setCurrentAlretWindow] = useState('');
+
   const serverOptions: ContextMenuOptions = [
     //* Size
-    {
-      id: 'Size',
-      type: 'disabled',
-      value: `${((instanceSize || 0) / 1024 / 1024 / 1024).toFixed(2)} GB`,
-      color: 'gray',
-      action() {
-        setCurrentAlretWindow('');
-      },
-    },
-    //* ===
-    {
-      id: '',
-      type: 'seperator',
-    },
+    ...(!isRemote
+      ? [
+          {
+            id: 'Size',
+            type: 'disabled' as const,
+            value: `${((instanceSize || 0) / 1024 / 1024 / 1024).toFixed(2)} GB`,
+            color: 'gray' as const,
+            action() {
+              setCurrentAlretWindow('');
+            },
+          },
+          {
+            id: '',
+            type: 'seperator' as const,
+          },
+        ]
+      : []),
     //* 編輯伺服器
     {
       id: 'EditServer',
@@ -64,13 +70,17 @@ export default function ServerInstance(props: Props) {
       },
     },
     //* 複製伺服器
-    {
-      id: 'CopyServer',
-      type: 'action',
-      action() {
-        setCurrentAlretWindow('DuplicateServer');
-      },
-    },
+    ...(!isRemote
+      ? [
+          {
+            id: 'CopyServer',
+            type: 'action' as const,
+            action() {
+              setCurrentAlretWindow('DuplicateServer');
+            },
+          },
+        ]
+      : []),
     //* 修改圖示
     {
       id: 'ChangeIcon',
@@ -100,102 +110,84 @@ export default function ServerInstance(props: Props) {
       id: '',
       type: 'seperator',
     },
-    //* 伺服器資料夾
-    {
-      id: 'ServerFolder',
-      type: 'action',
-      action() {
-        setCurrentAlretWindow('');
+    ...(!isRemote
+      ? [
+          //* 伺服器資料夾
+          {
+            id: 'ServerFolder',
+            type: 'action' as const,
+            action() {
+              setCurrentAlretWindow('');
 
-        const serverFolderPath = window.electron.node
-          .path()
-          .join(
-            window.electron.constant.USER_SERVER_INSTANCES_PATH(),
-            props.info.serverId,
-            'server',
-          );
+              const serverFolderPath = window.electron.node
+                .path()
+                .join(
+                  window.electron.constant.USER_SERVER_INSTANCES_PATH(),
+                  props.info.serverId,
+                  'server',
+                );
 
-        window.electron.openExplorer(serverFolderPath);
-      },
-    },
-    //* 開啟資料夾
-    {
-      id: 'OpenFolder',
-      type: 'sub',
-      sub: [
-        //* 世界設定資料夾
-        {
-          id: 'SaveFolder',
-          type: 'action',
-          action() {
-            setCurrentAlretWindow('');
-
-            const worldSettingsPath = window.electron.node
-              .path()
-              .join(
-                window.electron.constant.USER_SERVER_INSTANCES_PATH(),
-                props.info.serverId,
-                'server',
-                'Pal/Saved',
-              );
-
-            window.electron.openExplorer(worldSettingsPath);
+              window.electron.openExplorer(serverFolderPath);
+            },
           },
-        },
-        //* 地圖檔資料夾
-        {
-          id: 'WorldSaveFolder',
-          type: 'action',
-          action() {
-            setCurrentAlretWindow('');
+          //* 開啟資料夾
+          {
+            id: 'OpenFolder',
+            type: 'sub' as const,
+            sub: [
+              {
+                id: 'SaveFolder',
+                type: 'action' as const,
+                action() {
+                  setCurrentAlretWindow('');
 
-            window.electron.openExplorer(saveGamesPath);
+                  const worldSettingsPath = window.electron.node
+                    .path()
+                    .join(
+                      window.electron.constant.USER_SERVER_INSTANCES_PATH(),
+                      props.info.serverId,
+                      'server',
+                      'Pal/Saved',
+                    );
+
+                  window.electron.openExplorer(worldSettingsPath);
+                },
+              },
+              {
+                id: 'WorldSaveFolder',
+                type: 'action' as const,
+                action() {
+                  setCurrentAlretWindow('');
+
+                  window.electron.openExplorer(saveGamesPath);
+                },
+              },
+              {
+                id: 'PalConfigFolder',
+                type: 'action' as const,
+                action() {
+                  setCurrentAlretWindow('');
+
+                  const worldSettingsPath = window.electron.node
+                    .path()
+                    .join(
+                      window.electron.constant.USER_SERVER_INSTANCES_PATH(),
+                      props.info.serverId,
+                      'server',
+                      'Pal/Saved/Config/WindowsServer',
+                    );
+
+                  window.electron.openExplorer(worldSettingsPath);
+                },
+              },
+            ],
           },
-        },
-        //* 設定檔資料夾
-        {
-          id: 'PalConfigFolder',
-          type: 'action',
-          action() {
-            setCurrentAlretWindow('');
-
-            const worldSettingsPath = window.electron.node
-              .path()
-              .join(
-                window.electron.constant.USER_SERVER_INSTANCES_PATH(),
-                props.info.serverId,
-                'server',
-                'Pal/Saved/Config/WindowsServer',
-              );
-
-            window.electron.openExplorer(worldSettingsPath);
+          {
+            id: '',
+            type: 'seperator' as const,
           },
-        },
-        //* GUI 實例資料夾
-        // {
-        //   id: 'ServerInstanceFolder',
-        //   type: 'action',
-        //   action() {
-        //     setCurrentAlretWindow('');
-
-        //     const worldSettingsPath = window.electron.node
-        //       .path()
-        //       .join(
-        //         window.electron.constant.USER_SERVER_INSTANCES_PATH(),
-        //         props.info.serverId,
-        //       );
-
-        //     window.electron.openExplorer(worldSettingsPath);
-        //   },
-        // },
-      ],
-    },
-
-    //* ===
-    {
-      id: '',
-      type: 'seperator',
-    },
+        ]
+      : []),
     //* 詳細資料
     {
       id: 'DetailData',

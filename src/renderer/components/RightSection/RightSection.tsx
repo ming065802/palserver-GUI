@@ -1,14 +1,13 @@
 import React from 'react';
 import ServerPreview from './ServerPreview/ServerPreview';
-import { Badge, Button, IconButton } from '@radix-ui/themes';
 import BootServerButton from './BootServer/BootServerButton';
 import ServerRunningBadge from './ServerRunningBadge/ServerRunningBadge';
 import RightSectionButton from './ui/RightSectionButton/RightSectionButton';
 import useTranslation from '../../hooks/translation/useTranslation';
 import { useHistory } from 'react-router-dom';
-import { MdAnnouncement } from 'react-icons/md';
 import useSelectedServerInstance from '../../redux/selectedServerInstance/useSelectedServerInstance';
 import useServerInfo from '../../hooks/server/info/useServerInfo';
+import useIsRemote from '../../hooks/server/useIsRemote';
 
 export default function RightSection() {
   const { t } = useTranslation();
@@ -16,6 +15,7 @@ export default function RightSection() {
 
   const { selectedServerInstance } = useSelectedServerInstance();
   const { serverInfo } = useServerInfo(selectedServerInstance);
+  const isRemote = useIsRemote();
 
   return (
     <div className="w-[400px] h-full p-4 bg-bg2 flex flex-col gap-4 relative">
@@ -29,14 +29,16 @@ export default function RightSection() {
         >
           {t('ServerManagement')}
         </RightSectionButton>
-        <RightSectionButton
-          onClick={() => {
-            history.push('/world-settings');
-          }}
-        >
-          {t('WorldSettings')}
-        </RightSectionButton>
-        {serverInfo?.modManagementEnabled && (
+        {!isRemote && (
+          <RightSectionButton
+            onClick={() => {
+              history.push('/world-settings');
+            }}
+          >
+            {t('WorldSettings')}
+          </RightSectionButton>
+        )}
+        {!isRemote && serverInfo?.modManagementEnabled && (
           <RightSectionButton
             onClick={() => {
               history.push('/mod-management');
@@ -45,7 +47,7 @@ export default function RightSection() {
             {t('ModManagement')}
           </RightSectionButton>
         )}
-        <BootServerButton />
+        {!isRemote && <BootServerButton />}
       </div>
     </div>
   );

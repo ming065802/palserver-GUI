@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useTranslation from '../../../../hooks/translation/useTranslation';
 import Channels from '../../../../../main/ipcs/channels';
 import useThisServerInfo from '../ServerInfoProvider/useThisServerInfo';
@@ -6,7 +6,6 @@ import {
   AlertDialog,
   Button,
   Flex,
-  Separator,
   TextField,
 } from '@radix-ui/themes';
 import _ from 'lodash';
@@ -15,11 +14,45 @@ import trimWorldSettingsString from '../../../../../utils/trimWorldSettingsStrin
 import SecureEye from '../../../SecureEye';
 import useIsRunningServers from '../../../../redux/isRunningServers/useIsRunningServers';
 
+const remoteFieldDefaults = {
+  serverName: {
+    id: 'ServerName',
+    value: '',
+    secure: false,
+    showValue: true,
+  },
+  publicIP: {
+    id: 'PublicIP',
+    value: '',
+    secure: false,
+    showValue: true,
+  },
+  restApiPort: {
+    id: 'RESTAPIPort',
+    value: '',
+    secure: false,
+    showValue: true,
+  },
+  rconPort: {
+    id: 'RCONPort',
+    value: '',
+    secure: false,
+    showValue: true,
+  },
+  adminPassword: {
+    id: 'AdminPassword',
+    value: '',
+    secure: true,
+    showValue: false,
+  },
+};
+
 export default function EditServerAlert() {
   const { t } = useTranslation();
 
   const { serverInfo } = useThisServerInfo();
   const { worldSettings } = useThisWorldSettings();
+  const isRemote = Boolean(serverInfo?.isRemote);
 
   const { includeRunningServers } = useIsRunningServers();
   const isServerRunning = includeRunningServers(serverInfo?.serverId!);
@@ -57,7 +90,66 @@ export default function EditServerAlert() {
     },
   });
 
+  const [remoteConfigOptions, setRemoteConfigOptions] = useState(
+    remoteFieldDefaults,
+  );
+
+  useEffect(() => {
+    if (!isRemote) {
+      return;
+    }
+
+    setRemoteConfigOptions({
+      serverName: {
+        ...remoteFieldDefaults.serverName,
+        value: trimWorldSettingsString(worldSettings.ServerName) || '',
+      },
+      publicIP: {
+        ...remoteFieldDefaults.publicIP,
+        value:
+          serverInfo?.remoteHost ||
+          trimWorldSettingsString(worldSettings.PublicIP) ||
+          '',
+      },
+      restApiPort: {
+        ...remoteFieldDefaults.restApiPort,
+        value: String(
+          serverInfo?.remoteRestPort || worldSettings.RESTAPIPort || 8212,
+        ),
+      },
+      rconPort: {
+        ...remoteFieldDefaults.rconPort,
+        value: String(
+          serverInfo?.remoteRconPort || worldSettings.RCONPort || 25575,
+        ),
+      },
+      adminPassword: {
+        ...remoteFieldDefaults.adminPassword,
+        value: '',
+      },
+    });
+  }, [isRemote, serverInfo, worldSettings]);
+
   const handleEditServer = async () => {
+    if (isRemote) {
+      await window.electron.ipcRenderer.invoke(
+        Channels.editRemoteServerInstance,
+        serverInfo?.serverId,
+        {
+          ServerName: remoteConfigOptions.serverName.value.trim() || undefined,
+          PublicIP: remoteConfigOptions.publicIP.value.trim() || undefined,
+          RESTAPIPort: remoteConfigOptions.restApiPort.value
+            ? Number(remoteConfigOptions.restApiPort.value)
+            : undefined,
+          RCONPort: remoteConfigOptions.rconPort.value
+            ? Number(remoteConfigOptions.rconPort.value)
+            : undefined,
+          AdminPassword: remoteConfigOptions.adminPassword.value || undefined,
+        },
+      );
+      return;
+    }
+
     await window.electron.ipcRenderer.invoke(
       Channels.editServerInstance,
       serverInfo?.serverId,
@@ -80,29 +172,38 @@ export default function EditServerAlert() {
     );
   };
 
+  const activeOptions = isRemote ? remoteConfigOptions : serverConfigOptions;
+  const setActiveOptions = isRemote
+    ? setRemoteConfigOptions
+    : setServerConfigOptions;
+
   return (
     <AlertDialog.Content style={{ maxWidth: 450 }}>
       <AlertDialog.Title>
-        {t('EditServer')} {isServerRunning && `(${t('PlzCloseServerFirst')})`}
+        {isRemote ? t('EditRemoteServer') : t('EditServer')}{' '}
+        {!isRemote && isServerRunning && `(${t('PlzCloseServerFirst')})`}
       </AlertDialog.Title>
       <div className="flex flex-col w-[78%]">
-        {_.map(serverConfigOptions, (option, key) => (
-          <div className="w-full my-2 flex gap-2 items-center justify-between relative">
+        {_.map(activeOptions, (option, key) => (
+          <div
+            key={key}
+            className="w-full my-2 flex gap-2 items-center justify-between relative"
+          >
             <span>{t(option.id)}：</span>
             <TextField.Root
-              disabled={isServerRunning}
+              disabled={!isRemote && isServerRunning}
               type={option.showValue ? 'text' : 'password'}
               placeholder={
-                option.showValue
-                  ? trimWorldSettingsString(worldSettings[option.id])
-                  : trimWorldSettingsString(
+                option.secure && !option.showValue
+                  ? trimWorldSettingsString(
                       worldSettings[option.id],
                     )?.replaceAll(/./gu, '•')
+                  : trimWorldSettingsString(worldSettings[option.id])
               }
               value={option.value}
               onChange={(e) => {
-                setServerConfigOptions({
-                  ...serverConfigOptions,
+                setActiveOptions({
+                  ...activeOptions,
                   ...{ [key]: { ...option, value: e.target.value } },
                 });
               }}
@@ -112,8 +213,8 @@ export default function EditServerAlert() {
                 <SecureEye
                   open={option?.showValue}
                   onOpenChange={(o) => {
-                    setServerConfigOptions({
-                      ...serverConfigOptions,
+                    setActiveOptions({
+                      ...activeOptions,
                       ...{ [key]: { ...option, showValue: o } },
                     });
                   }}

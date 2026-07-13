@@ -24,6 +24,7 @@ const Channels = {
   createRemoteServerInstance: 'create-remote-server-instance',
   testRemoteConnection: 'test-remote-connection',
   editServerInstance: 'edit-server-instance',
+  editRemoteServerInstance: 'edit-remote-server-instance',
   deleteServerInstance: 'delete-server-instance',
   duplicateServerInstance: 'duplicate-server-instance',
   updateServerInstance: 'update-server-instance',

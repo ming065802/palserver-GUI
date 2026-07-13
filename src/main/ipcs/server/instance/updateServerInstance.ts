@@ -3,8 +3,23 @@ import Channels from '../../channels';
 import { STEAMCMD_PATH, USER_SERVER_INSTANCES_PATH } from '../../../constant';
 import path from 'path';
 import { spawn } from 'child_process';
+import fs from 'fs/promises';
+import { ServerInstanceSetting } from '../../../../types/ServerInstanceSetting.types';
 
 ipcMain.on(Channels.updateServerInstance, async (event, serverId: string) => {
+  const serverInstanceSettingPath = path.join(
+    USER_SERVER_INSTANCES_PATH,
+    serverId,
+    '.pal',
+  );
+  const serverInstanceSetting: ServerInstanceSetting = JSON.parse(
+    await fs.readFile(serverInstanceSettingPath, { encoding: 'utf-8' }),
+  );
+
+  if (serverInstanceSetting.isRemote) {
+    event.reply(Channels.updateServerInstanceReply.DONE);
+    return;
+  }
   const steamcmd = path.join(STEAMCMD_PATH, 'steamcmd.exe');
 
   const palserverUpdate = spawn(steamcmd, [

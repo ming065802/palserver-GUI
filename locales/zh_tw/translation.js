@@ -226,6 +226,9 @@ const zh_tw = {
   CreateRemoteServerDesc:
     '連線至已在 VPS 或遠端主機上運行的 Palworld 1.0 專服。請確認遠端已啟用 REST API，且 8212 埠可從本機連線。',
   RemoteServerBadge: '遠端',
+  RemoteEndpoint: '遠端位址',
+  EditRemoteServer: '編輯遠端連線',
+  RemoteFeatureNotSupported: '遠端連線不支援此功能。',
   TestConnection: '測試連線',
   TestingConnection: '測試中…',
   RemoteConnectionSuccess: '連線成功，可以建立遠端連接。',

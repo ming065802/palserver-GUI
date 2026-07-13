@@ -219,6 +219,9 @@ const jp = {
   CreateRemoteServerDesc:
     'VPS やリモートホストで稼働中の Palworld 1.0 専用サーバーに接続します。REST API が有効で、8212 番ポートにこの PC から到達できることを確認してください。',
   RemoteServerBadge: 'リモート',
+  RemoteEndpoint: 'リモート接続先',
+  EditRemoteServer: 'リモート接続を編集',
+  RemoteFeatureNotSupported: 'リモート接続ではこの機能は利用できません。',
   TestConnection: '接続テスト',
   TestingConnection: 'テスト中…',
   RemoteConnectionSuccess: '接続に成功しました。リモート接続を作成できます。',
