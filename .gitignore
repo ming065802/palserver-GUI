@@ -15,6 +15,11 @@ coverage
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
 
+# Discord bot secrets
+discord-bot/config.json
+discord-bot/dist
+discord-bot/node_modules
+
 # OSX
 .DS_Store
 

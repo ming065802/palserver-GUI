@@ -1,7 +1,7 @@
 # 實作計畫：Discord Bot 整合（Node.js）
 
 > **功能代號**：`P3-DISCORD-BOT` / `feature/discord-bot`  
-> **狀態**：規劃中（未實作）  
+> **狀態**：Phase 1 已實作（v1.5.0 建議最小交付）  
 > **目標版本**：v1.5.0（建議最小交付）  
 > **基準版本**：v1.4.2（本機 Management API、每日排程啟停）  
 > **規格依據**：[ROADMAP_P3_FEATURES.md](./ROADMAP_P3_FEATURES.md) 跨功能自動化延伸  

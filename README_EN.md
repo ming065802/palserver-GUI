@@ -220,7 +220,7 @@ You can also support me with a cup of coffee on [buymeacoffee](https://www.buyme
 
 ### Roadmap
 
-v1.4.2 adds **daily scheduled stop/start/restart** and a **local Management API**; v1.4.1 was the first binary release with remote Tier 2. Upcoming work (Tier 3 SSH/SFTP, mod compatibility gate, settings import/export) is in [docs/ROADMAP_P3_FEATURES.md](/docs/ROADMAP_P3_FEATURES.md).  
+v1.4.2 adds **daily scheduled stop/start/restart** and a **local Management API**; v1.5.0 (in development) will add an optional **Discord Bot** (slash commands for status and controlled lifecycle — see [docs/PLAN_DISCORD_BOT.md](/docs/PLAN_DISCORD_BOT.md)). Upcoming work (Tier 3 SSH/SFTP, mod compatibility gate, settings import/export) is in [docs/ROADMAP_P3_FEATURES.md](/docs/ROADMAP_P3_FEATURES.md).  
 Palworld 1.0 **known issues** (SAV sync, mod checks, Pal data) are in [docs/KNOWN_ISSUES.md](/docs/KNOWN_ISSUES.md).
 
 ### Report issues

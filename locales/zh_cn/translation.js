@@ -486,6 +486,27 @@ const zh_cn = {
   ManagementApiSave: '保存',
   ManagementApiSaving: '保存中…',
   ManagementApiSaved: '已保存并重新加载 API',
+  DiscordBotTitle: 'Discord Bot',
+  DiscordBotDesc:
+    '启用后可通过 Discord slash 指令查询服务器状态与受控启停。Bot 随 GUI 启动，关闭 GUI 时一并结束。',
+  DiscordBotManagementApiWarning:
+    '启用 Discord Bot 前请先启用本地 Management API。',
+  DiscordBotRunning: 'Bot 运行中',
+  DiscordBotLastError: 'Bot 错误',
+  DiscordBotToken: 'Bot Token',
+  DiscordBotTokenPlaceholder: '从 Discord Developer Portal 复制',
+  DiscordBotClientId: 'Application Client ID',
+  DiscordBotGuildId: 'Guild ID',
+  DiscordBotAllowedRoleIds: '允许操作的角色 ID',
+  DiscordBotAllowedUserIds: '允许操作的用户 ID',
+  DiscordBotIdListPlaceholder: '多个 ID 以逗号分隔',
+  DiscordBotDefaultServerId: '默认服务器',
+  DiscordBotDefaultServerPlaceholder: '选择默认 serverId',
+  DiscordBotSecurityNote:
+    '危险指令（启动／关闭／重启）仅允许上方设定的角色或用户。Token 不会写入日志。',
+  DiscordBotSave: '保存',
+  DiscordBotSaving: '保存中…',
+  DiscordBotSaved: '已保存并重新加载 Bot',
   HowToGetIPAdress: '如何获取 IP 地址？',
 };
 export default zh_cn;

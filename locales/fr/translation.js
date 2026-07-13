@@ -540,6 +540,27 @@ const fr = {
   ManagementApiSave: 'Enregistrer',
   ManagementApiSaving: 'Enregistrement…',
   ManagementApiSaved: 'Enregistré et API rechargée',
+  DiscordBotTitle: 'Discord Bot',
+  DiscordBotDesc:
+    "Une fois activé, consultez l'état du serveur et contrôlez démarrage/arrêt/redémarrage via des commandes slash Discord. Le bot démarre avec le GUI et s'arrête à la fermeture du GUI.",
+  DiscordBotManagementApiWarning:
+    "Activez l'API de gestion locale avant d'activer le Discord Bot.",
+  DiscordBotRunning: 'Bot en cours d’exécution',
+  DiscordBotLastError: 'Erreur du bot',
+  DiscordBotToken: 'Bot Token',
+  DiscordBotTokenPlaceholder: 'Copier depuis le Discord Developer Portal',
+  DiscordBotClientId: 'Application Client ID',
+  DiscordBotGuildId: 'Guild ID',
+  DiscordBotAllowedRoleIds: 'IDs de rôles autorisés',
+  DiscordBotAllowedUserIds: 'IDs d’utilisateurs autorisés',
+  DiscordBotIdListPlaceholder: 'Séparer plusieurs IDs par des virgules',
+  DiscordBotDefaultServerId: 'Serveur par défaut',
+  DiscordBotDefaultServerPlaceholder: 'Choisir le serverId par défaut',
+  DiscordBotSecurityNote:
+    'Les commandes sensibles (démarrer/arrêter/redémarrer) sont limitées aux rôles ou utilisateurs ci-dessus. Les tokens ne sont jamais journalisés en clair.',
+  DiscordBotSave: 'Enregistrer',
+  DiscordBotSaving: 'Enregistrement…',
+  DiscordBotSaved: 'Enregistré et bot rechargé',
   HowToGetIPAdress: 'Comment obtenir une adresse IP ?',
 };
 export default fr;

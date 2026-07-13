@@ -14,6 +14,8 @@ import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
+import { readDiscordBotConfig } from './services/discord-bot/discordBotConfig';
+import { startDiscordBot, stopDiscordBot } from './services/discord-bot/discordBotProcess';
 
 // ipc
 import './ipcs/index';
@@ -140,8 +142,18 @@ const createWindow = async () => {
 
 app
   .whenReady()
-  .then(() => {
+  .then(async () => {
     createWindow();
+
+    const discordBotConfig = readDiscordBotConfig();
+    if (discordBotConfig.enabled) {
+      try {
+        await startDiscordBot();
+      } catch (error) {
+        log.error('[discord-bot] failed to start', error);
+      }
+    }
+
     app.on('activate', () => {
       // On macOS it's common to re-create a window in the app when the
       // dock icon is clicked and there are no other windows open.
@@ -149,6 +161,10 @@ app
     });
   })
   .catch(console.log);
+
+app.on('before-quit', () => {
+  void stopDiscordBot();
+});
 
 ipcMain.handle('selectDir', async () => {
   const { canceled, filePaths } = await dialog.showOpenDialog(mainWindow, {

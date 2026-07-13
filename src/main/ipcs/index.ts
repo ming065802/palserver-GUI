@@ -68,6 +68,9 @@ import './server/engine/getEngineHasError';
 import './management-api/getManagementApiConfig';
 import './management-api/setManagementApiConfig';
 
+import './discord-bot/getDiscordBotConfig';
+import './discord-bot/setDiscordBotConfig';
+
 import { initServerScheduleService } from '../services/scheduler/serverScheduleService';
 
 void initServerScheduleService();

@@ -223,7 +223,7 @@ v1.4.0 完成 **遠端伺服器管理 Tier 2**（Phase 1–4），在 Tier 1 RES
 
 ### 開發路線圖
 
-v1.4.2 新增 **每日排程啟停** 與 **本機 Management API**；v1.4.1 為遠端 Tier 2 首個二進位發布。後續規劃（Tier 3 SSH/SFTP、Mod 相容檢查、設定匯入／匯出）見 [docs/ROADMAP_P3_FEATURES.md](/docs/ROADMAP_P3_FEATURES.md)。  
+v1.4.2 新增 **每日排程啟停** 與 **本機 Management API**；v1.5.0（開發中）將提供可選 **Discord Bot**（slash 指令查狀態與受控啟停，見 [docs/PLAN_DISCORD_BOT.md](/docs/PLAN_DISCORD_BOT.md)）。後續規劃（Tier 3 SSH/SFTP、Mod 相容檢查、設定匯入／匯出）見 [docs/ROADMAP_P3_FEATURES.md](/docs/ROADMAP_P3_FEATURES.md)。  
 目前 **Palworld 1.0 已知問題**（設定不生效、Mod 閃退、帕魯資料過時等情境說明）見 [docs/KNOWN_ISSUES.md](/docs/KNOWN_ISSUES.md)。
 
 ### 回報問題

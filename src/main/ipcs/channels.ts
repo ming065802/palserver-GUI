@@ -78,5 +78,8 @@ const Channels = {
   getManagementApiConfig: 'get-management-api-config',
   setManagementApiConfig: 'set-management-api-config',
   generateManagementApiKey: 'generate-management-api-key',
+  // discord bot
+  getDiscordBotConfig: 'get-discord-bot-config',
+  setDiscordBotConfig: 'set-discord-bot-config',
 } as const;
 export default Channels;

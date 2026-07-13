@@ -99,6 +99,22 @@
 
 ---
 
+## 2D. Discord Bot（Unreleased — v1.5.0 Phase 1）
+
+> 需 GUI 執行中、**本機 Management API 已啟用**，並於 **設定 → Discord Bot** 填寫有效 Token 與 Client ID。建議使用測試用 Discord 伺服器。
+
+| # | 步驟 | 預期結果 | 通過 |
+|---|------|----------|------|
+| 2D.1 | 啟用 Management API + Discord Bot，填 Token／Client ID／Guild ID，儲存 | 設定保留；bot 子程序存在（設定頁顯示運行中） | ☐ |
+| 2D.2 | Discord 執行 `/status` | 回傳 running／offline 正確（本機與遠端實例） | ☐ |
+| 2D.3 | Discord 執行 `/servers` | 列出 GUI 內所有實例摘要 | ☐ |
+| 2D.4 | Admin 角色執行 `/restart` | 本機實例重啟；一般使用者被拒絕 | ☐ |
+| 2D.5 | 遠端實例 `/start` 或 `/restart` | 回覆不支援說明（對應 Management API `501`） | ☐ |
+| 2D.6 | 關閉 GUI | bot 子程序結束 | ☐ |
+| 2D.7 | Management API 未啟用時開啟 Discord Bot | 設定頁顯示警告 | ☐ |
+
+---
+
 ## 3. 世界設定（Palworld 1.0）
 
 | # | 步驟 | 預期結果 | 通過 |
