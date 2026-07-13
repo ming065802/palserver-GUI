@@ -242,7 +242,13 @@ const en = {
   EditRemoteServer: 'Edit remote connection',
   RemoteFeatureNotSupported: 'This feature is not available for remote connections.',
   RemoteBanListNotAvailable:
-    'Remote connections cannot read the local ban list. Manage banlist.txt on the remote server, or ban online players via REST.',
+    'Remote connections cannot read the local ban list. Manage banlist.txt on the remote server, or ban online players via REST. If you know a Steam ID, you can manually unban below.',
+  RemoteUnbanSteamIdLabel: 'Steam ID / UserId',
+  RemoteUnbanSteamIdPlaceholder: 'e.g. 76561198XXXXXXXX or steam_76561198XXXXXXXX',
+  RemoteUnbanSuccess: 'Unban request sent successfully.',
+  RemoteUnbanFailed: 'Failed to unban. Check the Steam ID and admin password.',
+  RemoteUnbanAuthFailed: 'Admin password is incorrect. Unable to unban.',
+  RemoteUnbanEmptyId: 'Please enter a Steam ID.',
   RemoteOnlineMapUnreachable:
     'Cannot reach the remote REST API. The online map may not show player positions. Ensure the remote server is online and the REST port is reachable.',
   RemoteWorldSettingsReadOnly:

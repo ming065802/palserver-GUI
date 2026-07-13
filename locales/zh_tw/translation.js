@@ -230,7 +230,13 @@ const zh_tw = {
   EditRemoteServer: '編輯遠端連線',
   RemoteFeatureNotSupported: '遠端連線不支援此功能。',
   RemoteBanListNotAvailable:
-    '遠端連線無法讀取本機封禁名單；請在遠端伺服器上管理 banlist.txt，或透過 REST 封禁線上玩家。',
+    '遠端連線無法讀取本機封禁名單；請在遠端伺服器上管理 banlist.txt，或透過 REST 封禁線上玩家。若已知 Steam ID，可在下方手動解除封禁。',
+  RemoteUnbanSteamIdLabel: 'Steam ID / UserId',
+  RemoteUnbanSteamIdPlaceholder: '例：76561198XXXXXXXX 或 steam_76561198XXXXXXXX',
+  RemoteUnbanSuccess: '已送出解除封禁請求。',
+  RemoteUnbanFailed: '解除封禁失敗，請確認 Steam ID 與 Admin 密碼是否正確。',
+  RemoteUnbanAuthFailed: 'Admin 密碼錯誤，無法解除封禁。',
+  RemoteUnbanEmptyId: '請輸入 Steam ID。',
   RemoteOnlineMapUnreachable:
     '無法連線至遠端 REST API，線上地圖可能無法顯示玩家位置。請確認遠端伺服器在線且防火牆已開放 REST 埠。',
   RemoteWorldSettingsReadOnly:

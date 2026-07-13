@@ -223,7 +223,13 @@ const jp = {
   EditRemoteServer: 'リモート接続を編集',
   RemoteFeatureNotSupported: 'リモート接続ではこの機能は利用できません。',
   RemoteBanListNotAvailable:
-    'リモート接続ではローカルの BAN リストを読み取れません。リモートサーバー上の banlist.txt を管理するか、REST でオンラインプレイヤーを BAN してください。',
+    'リモート接続ではローカルの BAN リストを読み取れません。リモートサーバー上の banlist.txt を管理するか、REST でオンラインプレイヤーを BAN してください。Steam ID が分かる場合は、下で手動解除できます。',
+  RemoteUnbanSteamIdLabel: 'Steam ID / UserId',
+  RemoteUnbanSteamIdPlaceholder: '例：76561198XXXXXXXX または steam_76561198XXXXXXXX',
+  RemoteUnbanSuccess: 'BAN 解除リクエストを送信しました。',
+  RemoteUnbanFailed: 'BAN 解除に失敗しました。Steam ID と Admin パスワードを確認してください。',
+  RemoteUnbanAuthFailed: 'Admin パスワードが正しくないため、BAN 解除できません。',
+  RemoteUnbanEmptyId: 'Steam ID を入力してください。',
   RemoteOnlineMapUnreachable:
     'リモート REST API に接続できません。オンラインマップにプレイヤー位置が表示されない場合があります。リモートサーバーがオンラインで、REST ポートが開放されていることを確認してください。',
   RemoteWorldSettingsReadOnly:
