@@ -1,8 +1,6 @@
 import React from 'react';
 import TheContextMenu, { ContextMenuOptions } from '../../ContextMenu';
 import { AlertDialog } from '@radix-ui/themes';
-import useLuaMods from '../../../hooks/server/mods/useLuaMods';
-import LuaModItem from './LuaModsItem/LuaModsItem';
 import useSelectedServerInstance from '../../../redux/selectedServerInstance/useSelectedServerInstance';
 import usePakMods from '../../../hooks/server/mods/usePakMods';
 import PakModsItem from './PakModsItem/PakModsItem';
