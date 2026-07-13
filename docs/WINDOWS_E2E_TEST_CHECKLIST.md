@@ -78,6 +78,27 @@
 
 ---
 
+## 2C. 本機 Management API（Unreleased — HTTP 自動化）
+
+> 需 GUI 執行中，並於 **設定 → 本機 Management API** 啟用（預設埠 `3435`、`127.0.0.1`）。建議先以 PowerShell 或 `curl` 驗證。
+
+| # | 步驟 | 預期結果 | 通過 |
+|---|------|----------|------|
+| 2C.1 | 設定頁啟用 Management API 並儲存 | GUI 無錯誤；重開 GUI 後設定保留 | ☐ |
+| 2C.2 | `GET http://127.0.0.1:3435/api/health` | 回傳 `{ ok: true, enabled: true, port, bindAddress }` | ☐ |
+| 2C.3 | 未帶金鑰呼叫 `GET /api/servers`（本機綁定且未設金鑰） | 回傳伺服器列表 JSON | ☐ |
+| 2C.4 | 設定 API 金鑰後，未帶金鑰呼叫受保護端點 | HTTP `401`，`code: UNAUTHORIZED` | ☐ |
+| 2C.5 | 帶 `Authorization: Bearer <key>` 呼叫 `GET /api/servers/:id/status` | 回傳該實例 `running` 等狀態 | ☐ |
+| 2C.6 | `POST /api/servers/:id/start`（本機實例、未運行） | 伺服器啟動，`running: true` | ☐ |
+| 2C.7 | `POST /api/servers/:id/stop`（body 含 `waitMinutes`、`message`） | 優雅關閉成功 | ☐ |
+| 2C.8 | `POST /api/servers/:id/restart` | 重啟成功 | ☐ |
+| 2C.9 | 對遠端實例 `POST .../start` 或 `.../restart` | HTTP `501`，`REMOTE_START_NOT_SUPPORTED` 或 `REMOTE_RESTART_NOT_SUPPORTED` | ☐ |
+| 2C.10 | 對遠端實例 `POST .../stop` | 透過 REST 關閉成功 | ☐ |
+| 2C.11 | 綁定 `0.0.0.0` 並儲存 | 自動產生 48 字元 API 金鑰 | ☐ |
+| 2C.12 | 關閉 Management API 並儲存 | `/api/health` 無法連線 | ☐ |
+
+---
+
 ## 3. 世界設定（Palworld 1.0）
 
 | # | 步驟 | 預期結果 | 通過 |
