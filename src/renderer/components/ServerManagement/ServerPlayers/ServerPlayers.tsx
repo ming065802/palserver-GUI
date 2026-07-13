@@ -1,9 +1,9 @@
-import { Callout } from '@radix-ui/themes';
 import useServerOnlinePlayers from '../../../hooks/server/players/useServerOnlinePlayers';
 import useSelectedServerInstance from '../../../redux/selectedServerInstance/useSelectedServerInstance';
 import PlayerPreview from './PlayerPreview/PlayerPreview';
 import useTranslation from '../../../hooks/translation/useTranslation';
 import useServerBanList from '../../../hooks/server/ban/useServerBanList';
+import RemoteUnbanPanel from './RemoteUnbanPanel';
 
 export default function ServerPlayers() {
   const { t } = useTranslation();
@@ -15,11 +15,7 @@ export default function ServerPlayers() {
 
   return (
     <div className="w-full h-full mt-4 flex flex-col gap-3">
-      {remoteLimited && (
-        <Callout.Root color="amber" size="1">
-          <Callout.Text>{t('RemoteBanListNotAvailable')}</Callout.Text>
-        </Callout.Root>
-      )}
+      {remoteLimited && <RemoteUnbanPanel />}
       {players.length ? (
         <div className="w-full flex justify-between pr-4">
           <div className="w-full h-[calc(100vh-180px)] overflow-y-scroll flex flex-col gap-4">

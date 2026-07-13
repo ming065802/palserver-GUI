@@ -252,7 +252,13 @@ const fr = {
   EditRemoteServer: 'Modifier la connexion distante',
   RemoteFeatureNotSupported: 'Cette fonctionnalité n est pas disponible pour les connexions distantes.',
   RemoteBanListNotAvailable:
-    'Les connexions distantes ne peuvent pas lire la liste de bannissement locale. Gérez banlist.txt sur le serveur distant ou bannissez les joueurs en ligne via REST.',
+    'Les connexions distantes ne peuvent pas lire la liste de bannissement locale. Gérez banlist.txt sur le serveur distant ou bannissez les joueurs en ligne via REST. Si vous connaissez un Steam ID, vous pouvez le débannir manuellement ci-dessous.',
+  RemoteUnbanSteamIdLabel: 'Steam ID / UserId',
+  RemoteUnbanSteamIdPlaceholder: 'ex. 76561198XXXXXXXX ou steam_76561198XXXXXXXX',
+  RemoteUnbanSuccess: 'Demande de débannissement envoyée.',
+  RemoteUnbanFailed: 'Échec du débannissement. Vérifiez le Steam ID et le mot de passe admin.',
+  RemoteUnbanAuthFailed: 'Mot de passe admin incorrect. Débannissement impossible.',
+  RemoteUnbanEmptyId: 'Veuillez saisir un Steam ID.',
   RemoteOnlineMapUnreachable:
     'Impossible de joindre l API REST distante. La carte en ligne peut ne pas afficher les positions des joueurs. Vérifiez que le serveur distant est en ligne et que le port REST est ouvert.',
   RemoteWorldSettingsReadOnly:
