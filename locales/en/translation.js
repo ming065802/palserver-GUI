@@ -509,6 +509,19 @@ const en = {
   Fix: 'Fix',
   Install: 'Install',
   OneClickUpdate: 'Update',
+  ManagementApiTitle: 'Local Management API',
+  ManagementApiDesc:
+    'When enabled, control local server instances via HTTP API for start, stop, restart, and status. Only works while palserver GUI is running.',
+  ManagementApiPort: 'API port',
+  ManagementApiBindAddress: 'Bind address',
+  ManagementApiKey: 'API key',
+  ManagementApiKeyPlaceholder: 'Leave empty for localhost without a key',
+  ManagementApiGenerateKey: 'Generate key',
+  ManagementApiSecurityNote:
+    'If bind address is not 127.0.0.1, an API key is auto-generated on save. Send Authorization: Bearer <key> or X-API-Key in request headers.',
+  ManagementApiSave: 'Save',
+  ManagementApiSaving: 'Saving…',
+  ManagementApiSaved: 'Saved and API reloaded',
   HowToGetIPAdress: 'How to get an IP address?',
 };
 export default en;

@@ -19,6 +19,7 @@ import { resolveHtmlPath } from './util';
 import './ipcs/index';
 // servers
 import './server/server-online-map/server';
+import './server/management-api/server';
 
 process.setMaxListeners(0);
 

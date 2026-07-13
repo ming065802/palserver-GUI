@@ -473,6 +473,19 @@ const zh_cn = {
   Fix: '修復',
   Install: '安裝',
   OneClickUpdate: '一次更新',
+  ManagementApiTitle: '本地管理 API',
+  ManagementApiDesc:
+    '启用后可通过 HTTP API 控制本地服务器实例的启动、关闭、重启与状态查询。仅在 palserver GUI 运行中时生效。',
+  ManagementApiPort: 'API 端口',
+  ManagementApiBindAddress: '绑定地址',
+  ManagementApiKey: 'API 密钥',
+  ManagementApiKeyPlaceholder: '留空则仅限本机且不需密钥',
+  ManagementApiGenerateKey: '生成密钥',
+  ManagementApiSecurityNote:
+    '若绑定非 127.0.0.1，保存时会自动生成 API 密钥。请在请求头传入 Authorization: Bearer <密钥> 或 X-API-Key。',
+  ManagementApiSave: '保存',
+  ManagementApiSaving: '保存中…',
+  ManagementApiSaved: '已保存并重新加载 API',
   HowToGetIPAdress: '如何获取 IP 地址？',
 };
 export default zh_cn;

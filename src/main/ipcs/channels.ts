@@ -74,5 +74,9 @@ const Channels = {
   exportModsToClientSide: 'export-mods-to-client-side',
   // ban
   getServerBanList: 'get-server-ban-list',
+  // management api
+  getManagementApiConfig: 'get-management-api-config',
+  setManagementApiConfig: 'set-management-api-config',
+  generateManagementApiKey: 'generate-management-api-key',
 } as const;
 export default Channels;

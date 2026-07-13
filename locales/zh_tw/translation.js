@@ -496,6 +496,19 @@ const zh_tw = {
   Fix: '修復',
   Install: '安裝',
   OneClickUpdate: '一次更新',
+  ManagementApiTitle: '本機管理 API',
+  ManagementApiDesc:
+    '啟用後可透過 HTTP API 控制本機伺服器實例的啟動、關閉、重啟與狀態查詢。僅在 palserver GUI 執行中時生效。',
+  ManagementApiPort: 'API 埠號',
+  ManagementApiBindAddress: '綁定位址',
+  ManagementApiKey: 'API 金鑰',
+  ManagementApiKeyPlaceholder: '留空則僅限本機且不需金鑰',
+  ManagementApiGenerateKey: '產生金鑰',
+  ManagementApiSecurityNote:
+    '若綁定非 127.0.0.1，儲存時會自動產生 API 金鑰。請在請求標頭帶入 Authorization: Bearer <金鑰> 或 X-API-Key。',
+  ManagementApiSave: '儲存',
+  ManagementApiSaving: '儲存中…',
+  ManagementApiSaved: '已儲存並重新載入 API',
   //
   HowToGetIPAdress: '如何獲取 IP 位址？',
 };

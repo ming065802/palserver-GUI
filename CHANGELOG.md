@@ -2,6 +2,16 @@
 
 All notable changes to **palserver-GUI** are documented in this file.
 
+## [Unreleased]
+
+### Added
+
+- **本機 Management API（方案 A）**：設定頁可啟用 HTTP API（預設關閉、埠 `3435`、`127.0.0.1`），支援本機實例的狀態查詢、啟動、關閉、重啟；遠端實例僅支援狀態與關閉，啟動／重啟回傳 `501`
+- 端點：`GET /api/health`、`GET /api/servers`、`GET /api/servers/:id/status`、`POST .../start|stop|restart`
+- API 金鑰認證（`Authorization: Bearer` 或 `X-API-Key`）；綁定非本機位址時自動產生金鑰
+
+---
+
 ## [1.4.1] — 2026-07-13
 
 Palworld 1.0 **remote server management** Tier 2 — integration tests and binary release.

@@ -11,6 +11,7 @@ import useOnlineLinksMap from '../../../hooks/firebase/useOnlineLinksMap';
 import { FaDiscord, FaGithub } from 'react-icons/fa';
 import useServerEngineVersion from '../../../hooks/server/useServerEngineVersion';
 import { SERVER_URL } from '../../../../constant/app';
+import ManagementApiSettings from './ManagementApiSettings';
 
 export default function Settings() {
   const { t } = useTranslation();
@@ -115,6 +116,8 @@ export default function Settings() {
               <SettingsItem {...option} />
             ))}
           </div>
+
+          <ManagementApiSettings />
 
           <div className="flex items-center justify-center gap-8 mt-8 mb-4">
             {/* <div

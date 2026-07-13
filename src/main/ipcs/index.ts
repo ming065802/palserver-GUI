@@ -65,6 +65,9 @@ import './server/ban/getServerBanList';
 
 import './server/engine/getEngineHasError';
 
+import './management-api/getManagementApiConfig';
+import './management-api/setManagementApiConfig';
+
 import { initServerScheduleService } from '../services/scheduler/serverScheduleService';
 
 void initServerScheduleService();

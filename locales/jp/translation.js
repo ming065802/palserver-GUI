@@ -496,6 +496,19 @@ const jp = {
   Fix: '修復',
   Install: 'インストール',
   OneClickUpdate: '一括更新',
+  ManagementApiTitle: 'ローカル管理 API',
+  ManagementApiDesc:
+    '有効にすると HTTP API でローカルサーバーインスタンスの起動・停止・再起動・状態確認ができます。palserver GUI 実行中のみ有効です。',
+  ManagementApiPort: 'API ポート',
+  ManagementApiBindAddress: 'バインドアドレス',
+  ManagementApiKey: 'API キー',
+  ManagementApiKeyPlaceholder: '空欄の場合はローカルのみ・キー不要',
+  ManagementApiGenerateKey: 'キーを生成',
+  ManagementApiSecurityNote:
+    '127.0.0.1 以外にバインドする場合、保存時に API キーを自動生成します。Authorization: Bearer <キー> または X-API-Key ヘッダーを付けてください。',
+  ManagementApiSave: '保存',
+  ManagementApiSaving: '保存中…',
+  ManagementApiSaved: '保存し API を再読み込みしました',
   HowToGetIPAdress: 'IPアドレスを取得する方法は？',
 };
 
