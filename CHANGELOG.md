@@ -2,6 +2,31 @@
 
 All notable changes to **palserver-GUI** are documented in this file.
 
+## [1.3.1] — 2026-07-13
+
+Palworld 1.0 **remote server management** Tier 1 Phase 4 — UI gating (`isRemote`).
+
+### Added
+
+- `useIsRemote` hook：依選中實例判斷是否為遠端連線
+- IPC：`editRemoteServerInstance` — 編輯遠端連線參數（`remote-settings.json` 與 `.pal` metadata）
+- `RemoteUnsupportedGuard`：世界設定、Mod 管理頁面路由保護
+- i18n：`RemoteFeatureNotSupported`、`RemoteEndpoint`、`EditRemoteServer`（五語系）
+
+### Changed
+
+- 遠端實例隱藏本機專用 UI：啟動/停止、世界設定、Mod 管理、伺服器日誌、線上地圖、效能監控、伺服器設定（Steam 更新等）
+- 右側 `ServerPreview` 顯示遠端 `host:port`
+- 首頁右鍵選單隱藏資料夾、複製、大小；保留編輯遠端連線與刪除
+- `EngineNeedInstall` 與 `updateServerInstance` 跳過遠端實例
+
+### Known limitations (v1.3.1)
+
+- 遠端 `ServerRunningBadge` 仍依本機程序狀態（Phase 5）
+- 遠端封禁列表仍讀不到本機 `banlist.txt`（Phase 5）
+
+---
+
 ## [1.3.0] — 2026-07-13
 
 Palworld 1.0 **remote server management** (P3 Feature 1 Tier 1, Phases 1–3).
@@ -25,7 +50,7 @@ Palworld 1.0 **remote server management** (P3 Feature 1 Tier 1, Phases 1–3).
 
 ### Known limitations (v1.3.0)
 
-- 遠端 Tier 1 **尚未**隱藏啟動按鈕、世界設定、Mod 管理等本機專用 UI（計畫 v1.3.1 / Phase 4）
+- ~~遠端 Tier 1 **尚未**隱藏啟動按鈕、世界設定、Mod 管理等本機專用 UI（計畫 v1.3.1 / Phase 4）~~ → **v1.3.1 Phase 4 已實作**
 - 遠端**不支援**：Steam 更新、Mod 管理、日誌、備份、世界設定 INI 編輯、線上地圖 proxy
 - P3 功能 2（Mod 相容檢查）、功能 5（設定匯入／匯出）仍規劃中，見 `docs/ROADMAP_P3_FEATURES.md`
 

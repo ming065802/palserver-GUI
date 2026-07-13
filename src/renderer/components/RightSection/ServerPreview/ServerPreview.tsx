@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import useServerIcon from '../../../hooks/server/icons/useServerIcon';
 import useServerInfo from '../../../hooks/server/info/useServerInfo';
 import useWorldSettings from '../../../hooks/server/world-settings/useWorldSettings';
+import useIsRemote from '../../../hooks/server/useIsRemote';
 import trimWorldSettingsString from '../../../../utils/trimWorldSettingsString';
 import { Tooltip } from '@radix-ui/themes';
 import _ from 'lodash';
@@ -17,10 +18,26 @@ export default function ServerPreview() {
 
   const { selectedServerInstance } = useSelectedServerInstance();
   const { serverInfo } = useServerInfo(selectedServerInstance!);
+  const isRemote = useIsRemote();
   const serverIcon = useServerIcon(serverInfo?.iconId!);
   const { worldSettings } = useWorldSettings(selectedServerInstance!);
 
-  const serverPreviewInfo = {
+  const remoteEndpoint =
+    serverInfo?.remoteHost && serverInfo?.remoteRestPort
+      ? `${serverInfo.remoteHost}:${serverInfo.remoteRestPort}`
+      : '';
+
+  const serverPreviewInfo = isRemote
+    ? {
+        remoteEndpoint: {
+          id: 'RemoteEndpoint',
+          value: remoteEndpoint,
+          display: true,
+          secure: false,
+          showValue: true,
+        },
+      }
+    : {
     publicIP: {
       id: 'PublicIP',
       value: '',
@@ -83,17 +100,20 @@ export default function ServerPreview() {
                 <span
                   className="cursor-pointer hover:underline font-mono "
                   onClick={() => {
-                    handleCopyToClickboard(
-                      trimWorldSettingsString(worldSettings?.[info.id]),
-                    );
+                    const displayValue = isRemote
+                      ? info.value
+                      : trimWorldSettingsString(worldSettings?.[info.id]);
+                    handleCopyToClickboard(displayValue);
                   }}
                 >
-                  {(info.secure
-                    ? trimWorldSettingsString(
-                        worldSettings?.[info.id],
-                      )?.replace(/./gu, '*')
-                    : trimWorldSettingsString(worldSettings?.[info.id])) ||
-                    t('HaventSavedYet')}
+                  {isRemote
+                    ? info.value || t('HaventSavedYet')
+                    : (info.secure
+                        ? trimWorldSettingsString(
+                            worldSettings?.[info.id],
+                          )?.replace(/./gu, '*')
+                        : trimWorldSettingsString(worldSettings?.[info.id])) ||
+                      t('HaventSavedYet')}
                 </span>
                 {/* <div
               className="absolute -right-5 cursor-pointer"

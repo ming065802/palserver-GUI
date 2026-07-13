@@ -3,13 +3,12 @@ import useTranslation from '../../../hooks/translation/useTranslation';
 import Channels from '../../../../main/ipcs/channels';
 import useSelectedServerInstance from '../../../redux/selectedServerInstance/useSelectedServerInstance';
 import useIsRunningServers from '../../../redux/isRunningServers/useIsRunningServers';
-import { AlertDialog } from '@radix-ui/themes';
-import { doc, getDoc, updateDoc } from 'firebase/firestore';
-import db from '../../../firebase/db';
+import useIsRemote from '../../../hooks/server/useIsRemote';
 import { SERVER_URL, VERSION } from '../../../../constant/app';
 
 export default function BootServerButton() {
   const { t } = useTranslation();
+  const isRemote = useIsRemote();
 
   const { selectedServerInstance } = useSelectedServerInstance();
   const {
@@ -81,6 +80,10 @@ export default function BootServerButton() {
       exit();
     };
   }, [addIsRunningServers, removeIsRunningServers]);
+
+  if (isRemote) {
+    return null;
+  }
 
   return (
     <div>

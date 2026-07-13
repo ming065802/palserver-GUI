@@ -36,6 +36,7 @@ import testRemoteConnection from '../main/services/remote/testRemoteConnection';
 import readRemoteSettings from '../main/services/remote/readRemoteSettings';
 import writeRemoteSettings from '../main/services/remote/writeRemoteSettings';
 import { buildRemoteServerInstanceSetting } from '../main/services/remote/buildRemoteServerInstanceSetting';
+import editRemoteServerInstance from '../main/services/remote/editRemoteServerInstance';
 import { resolveAdminConnectionConfig } from '../main/services/admin/adminConnectionConfig';
 
 function startMockRestServer({ password = 'admin-secret', status = 200 } = {}) {
@@ -122,6 +123,45 @@ describe('remote Tier 1 integration', () => {
       rconPort: 25575,
       adminPassword: 'secret',
     });
+  });
+
+  it('editRemoteServerInstance updates remote-settings.json and .pal metadata', async () => {
+    const serverId = 'sr-edit-remote';
+    const { serverInstanceSetting, remoteSettings } =
+      buildRemoteServerInstanceSetting(instancesRoot, serverId, {
+        ServerName: 'Before Edit',
+        PublicIP: '203.0.113.10',
+        RESTAPIPort: 8212,
+        AdminPassword: 'old-secret',
+      });
+
+    const instancePath = path.join(instancesRoot, serverId);
+    await fs.mkdir(instancePath, { recursive: true });
+    await fs.writeFile(
+      path.join(instancePath, '.pal'),
+      JSON.stringify(serverInstanceSetting, null, 2),
+    );
+    await writeRemoteSettings(serverId, remoteSettings);
+
+    await editRemoteServerInstance(serverId, {
+      ServerName: 'After Edit',
+      PublicIP: 'vps.example.com',
+      RESTAPIPort: 18212,
+      AdminPassword: 'new-secret',
+    });
+
+    const loadedSettings = await readRemoteSettings(serverId);
+    expect(loadedSettings.ServerName).toBe('After Edit');
+    expect(loadedSettings.PublicIP).toBe('vps.example.com');
+    expect(loadedSettings.RESTAPIPort).toBe(18212);
+    expect(loadedSettings.AdminPassword).toBe('new-secret');
+
+    const updatedPal = JSON.parse(
+      await fs.readFile(path.join(instancePath, '.pal'), 'utf-8'),
+    );
+    expect(updatedPal.remoteHost).toBe('vps.example.com');
+    expect(updatedPal.remoteRestPort).toBe(18212);
+    expect(updatedPal.editedAt).toBeTruthy();
   });
 
   it('testRemoteConnection succeeds against a mock REST server', async () => {

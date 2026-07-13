@@ -12,7 +12,7 @@
 | 功能 | 狀態 | 說明 |
 |------|------|------|
 | **功能 1：遠端管理 Tier 1** | 部分交付 | Phase 1–3 已發布：連線解析、建立遠端連接、REST 測試、列表 badge |
-| 功能 1 Phase 4（UI gating） | 未實作 | 隱藏啟動、世界設定、Mod 等本機專用 UI |
+| 功能 1 Phase 4（UI gating） | **已實作**（v1.3.1） | 隱藏啟動、世界設定、Mod 等本機專用 UI |
 | 功能 1 Tier 2+ | 未實作 | 遠端地圖、SSH/SFTP 等 |
 | **功能 2：Mod 相容檢查** | 未實作 | 規劃中 |
 | **功能 5：設定產生器** | 未實作 | 規劃中 |
@@ -103,7 +103,7 @@ Tier 1 **不包含**（可列 Tier 2/3 或未來版本）：
 | 連線解析 | `getAdminHost.ts` / `adminConnectionConfig.ts` | **已實作** |
 | IPC | `testRemoteConnection`、`createRemoteServerInstance` | **已實作** |
 | REST/RCON host | `sendRestAPI.ts` 等 | **已參數化** |
-| UI gating（`isRemote`） | 各管理頁 | **未實作**（Phase 4） |
+| UI gating（`isRemote`） | 各管理頁 | **已實作**（v1.3.1 / Phase 4） |
 | 遠端編輯連線 | `EditServerAlert` | **未實作**（仍為本機 INI 流程） |
 
 ### 1.6.1 歷史現況（v1.2.0，供對照）

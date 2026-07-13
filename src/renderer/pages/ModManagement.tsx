@@ -5,6 +5,7 @@ import LuaMods from '../components/ModManagement/LuaMods/LuaMods';
 import PakMods from '../components/ModManagement/PakMods/PakMods';
 import PakLogicMods from '../components/ModManagement/PakLogicMods/PakLogicMods';
 import ExportModsToClientSide from '../components/ModManagement/ExportModsToClientSide/ExportModsToClientSide';
+import RemoteUnsupportedGuard from '../components/RemoteUnsupportedGuard';
 
 export default function ModManagement() {
   const { t } = useTranslation();
@@ -12,6 +13,7 @@ export default function ModManagement() {
   const [modMode, setModMode] = useState('lua');
 
   return (
+    <RemoteUnsupportedGuard>
     <div className="page-container overflow-y-scroll">
       <div className="absolute right-6 top-6">
         <ExportModsToClientSide />
@@ -41,5 +43,6 @@ export default function ModManagement() {
       {modMode === 'pak' && <PakMods />}
       {modMode === 'pak-l' && <PakLogicMods />}
     </div>
+    </RemoteUnsupportedGuard>
   );
 }

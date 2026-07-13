@@ -80,10 +80,12 @@ export default function EngineNeedInstall() {
       Channels.runServerInstallReply.DONE,
       async () => {
         await Promise.all(
-          serverInfos.map((serverId) =>
+          serverInfos
+            .filter((serverInfo) => !serverInfo.isRemote)
+            .map((serverInfo) =>
             window.electron.ipcRenderer.invoke(
               Channels.updateServerInstance,
-              serverId,
+              serverInfo.serverId,
             ),
           ),
         );
