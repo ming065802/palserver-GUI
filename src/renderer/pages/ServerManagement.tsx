@@ -12,6 +12,7 @@ import useTranslation from '../hooks/translation/useTranslation';
 import useIsRunningServers from '../redux/isRunningServers/useIsRunningServers';
 import useIsRemote from '../hooks/server/useIsRemote';
 import OnlineMap from '../components/ServerManagement/OnlineMap/OnlineMap';
+import ServerSchedule from '../components/ServerManagement/ServerSchedule/ServerSchedule';
 
 export default function ServerManagement() {
   const { t } = useTranslation();
@@ -21,7 +22,7 @@ export default function ServerManagement() {
   const isRemote = useIsRemote();
 
   const [managementMode, setManagementMode] = useState<
-    'log' | 'performance' | 'players' | 'settings' | 'map'
+    'log' | 'performance' | 'players' | 'settings' | 'map' | 'schedule'
   >('players');
 
   // 效能監控相關
@@ -41,7 +42,10 @@ export default function ServerManagement() {
       return;
     }
 
-    const allowedRemoteModes: Array<typeof managementMode> = ['players'];
+    const allowedRemoteModes: Array<typeof managementMode> = [
+      'players',
+      'schedule',
+    ];
     if (serverInfo?.OnlineMapEnabled) {
       allowedRemoteModes.push('map');
     }
@@ -146,6 +150,12 @@ export default function ServerManagement() {
             {t('ServerSettings')}
           </Tabs.Trigger>
           )}
+          <Tabs.Trigger
+            value="schedule"
+            style={{ color: 'white', fontWeight: 500 }}
+          >
+            {t('Schedule')}
+          </Tabs.Trigger>
         </Tabs.List>
       </Tabs.Root>
       <Display display={managementMode === 'players'}>
@@ -173,6 +183,9 @@ export default function ServerManagement() {
       </Display>
       <Display display={managementMode === 'settings'}>
         <ServerSettings />
+      </Display>
+      <Display display={managementMode === 'schedule'}>
+        <ServerSchedule />
       </Display>
     </div>
   );

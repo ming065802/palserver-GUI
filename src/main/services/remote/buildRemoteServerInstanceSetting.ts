@@ -1,5 +1,6 @@
 import path from 'path';
 import { ServerInstanceSetting } from '../../../types/ServerInstanceSetting.types';
+import { DEFAULT_DAILY_SCHEDULE } from '../../../types/DailySchedule.types';
 import { RemoteSettings } from '../../../types/RemoteSettings.types';
 import { CreateRemoteServerInstanceInput } from '../../../types/RemoteConnection.types';
 import {
@@ -51,6 +52,9 @@ export function buildRemoteServerInstanceSetting(
     AutoRestart: 0,
     CrashRestart: false,
     OverRamRestart: false,
+    scheduledStop: { ...DEFAULT_DAILY_SCHEDULE },
+    scheduledStart: { ...DEFAULT_DAILY_SCHEDULE, time: '08:00' },
+    scheduledRestart: { ...DEFAULT_DAILY_SCHEDULE },
     openToCommunity: false,
     OnlineMapEnabled: true,
     LogEnabled: false,

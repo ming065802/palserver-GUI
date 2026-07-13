@@ -64,3 +64,7 @@ import './server/mods/exportModsToClientSide';
 import './server/ban/getServerBanList';
 
 import './server/engine/getEngineHasError';
+
+import { initServerScheduleService } from '../services/scheduler/serverScheduleService';
+
+void initServerScheduleService();

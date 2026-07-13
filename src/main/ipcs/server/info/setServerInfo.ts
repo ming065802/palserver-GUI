@@ -4,6 +4,7 @@ import fsc from 'fs';
 import path from 'path';
 import { USER_SERVER_INSTANCES_PATH } from '../../../constant';
 import { ServerInstanceSetting } from '../../../../types/ServerInstanceSetting.types';
+import { rescheduleServer } from '../../../services/scheduler/serverScheduleService';
 
 ipcMain.handle(
   Channels.setServerInfo,
@@ -19,5 +20,7 @@ ipcMain.handle(
       JSON.stringify(newServerInfo),
       { encoding: 'utf-8' },
     );
+
+    await rescheduleServer(serverId);
   },
 );
