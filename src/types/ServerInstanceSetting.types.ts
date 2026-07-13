@@ -1,3 +1,5 @@
+import { DailySchedule } from './DailySchedule.types';
+
 export type ServerInstanceSetting = {
   readonly palworldVersion?: string;
   readonly serverId: string;
@@ -15,6 +17,9 @@ export type ServerInstanceSetting = {
   readonly AutoRestart: number;
   readonly CrashRestart: boolean;
   readonly OverRamRestart: boolean;
+  readonly scheduledStop?: DailySchedule;
+  readonly scheduledStart?: DailySchedule;
+  readonly scheduledRestart?: DailySchedule;
   readonly openToCommunity: boolean;
   readonly OnlineMapEnabled: boolean;
   readonly LogEnabled: boolean;

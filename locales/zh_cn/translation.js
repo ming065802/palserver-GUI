@@ -315,6 +315,24 @@ const zh_cn = {
   AutoRestart: '自动重启',
   AutoRestartDesc:
     '每隔一段时间重新启动服务器。需启用 REST API（或 RCON）才能使用。建议 1.0 服务器设为 6–12 小时。',
+  ScheduledStop: '定时关闭',
+  ScheduledStopDesc:
+    '每天在指定时间优雅关闭服务器（先存档再关闭）。需启用 REST API（或 RCON）。',
+  ScheduledStopRemoteDesc:
+    '每天在指定时间通过 REST API 优雅关闭远程服务器。',
+  ScheduledStart: '定时启动',
+  ScheduledStartDesc:
+    '每天在指定时间自动启动本地服务器。仅在 palserver GUI 运行中时生效。',
+  ScheduledRestart: '定时重启',
+  ScheduledRestartDesc:
+    '每天在指定时间关闭并重新启动本地服务器。需启用 REST API（或 RCON）。',
+  ScheduledRestartRemoteDesc:
+    '每天在指定时间通过 REST API 关闭远程服务器。远程服务器无法由 GUI 自动重新启动。',
+  ScheduleWarningMinutes: '关闭前倒数（分钟）',
+  ScheduleRequiresGuiOpen:
+    '定时任务仅在 palserver GUI 运行中时生效；关闭 GUI 后排程不会执行。',
+  ScheduleRequiresRestApi:
+    '定时关闭与重启需启用 REST API（建议）或 RCON，并在服务器设定中设定管理员密码。',
   CrashRestart: '崩溃重启',
   CrashRestartDesc:
     '在服务器崩溃时重新启动服务器。需启用 REST API（或 RCON）才能使用。',

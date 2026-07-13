@@ -5,6 +5,7 @@ import { USER_SERVER_INSTANCES_PATH } from '../../constant';
 import { CreateRemoteServerInstanceInput } from '../../../types/RemoteConnection.types';
 import writeRemoteSettings from './writeRemoteSettings';
 import { buildRemoteServerInstanceSetting } from './buildRemoteServerInstanceSetting';
+import { rescheduleServer } from '../scheduler/serverScheduleService';
 
 export { buildRemoteServerInstanceSetting } from './buildRemoteServerInstanceSetting';
 
@@ -27,6 +28,8 @@ export default async function createRemoteServerInstance(
     { encoding: 'utf-8' },
   );
   await writeRemoteSettings(serverId, remoteSettings);
+
+  await rescheduleServer(serverId);
 
   return serverId;
 }

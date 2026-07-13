@@ -344,6 +344,24 @@ const en = {
   AutoRestart: 'Auto Restart',
   AutoRestartDesc:
     'Restart the server periodically. Requires REST API (or RCON). Recommended every 6–12 hours for Palworld 1.0.',
+  ScheduledStop: 'Scheduled Stop',
+  ScheduledStopDesc:
+    'Gracefully shut down the server daily at a set time (save then shutdown). Requires REST API (or RCON).',
+  ScheduledStopRemoteDesc:
+    'Gracefully shut down the remote server daily via REST API.',
+  ScheduledStart: 'Scheduled Start',
+  ScheduledStartDesc:
+    'Automatically start the local server daily at a set time. Only works while palserver GUI is running.',
+  ScheduledRestart: 'Scheduled Restart',
+  ScheduledRestartDesc:
+    'Shut down and restart the local server daily at a set time. Requires REST API (or RCON).',
+  ScheduledRestartRemoteDesc:
+    'Shut down the remote server daily via REST API. The GUI cannot auto-start remote servers.',
+  ScheduleWarningMinutes: 'Countdown before shutdown (minutes)',
+  ScheduleRequiresGuiOpen:
+    'Schedules only run while palserver GUI is open. Closing the GUI stops all scheduled tasks.',
+  ScheduleRequiresRestApi:
+    'Scheduled stop and restart require REST API (recommended) or RCON, plus an admin password in server settings.',
   CrashRestart: 'Crash Restart',
   CrashRestartDesc:
     'Restart the server when it crashes. Requires REST API (or RCON).',

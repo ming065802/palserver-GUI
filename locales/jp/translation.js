@@ -326,6 +326,24 @@ const jp = {
   AutoRestart: '自動再起動',
   AutoRestartDesc:
     '定期的にサーバーを再起動します。REST API（またはRCON）が必要です。1.0サーバーでは6〜12時間ごとを推奨します。',
+  ScheduledStop: '定時停止',
+  ScheduledStopDesc:
+    '毎日指定時刻にサーバーを優雅に停止します（セーブ後にシャットダウン）。REST API（または RCON）が必要です。',
+  ScheduledStopRemoteDesc:
+    '毎日指定時刻に REST API 経由でリモートサーバーを停止します。',
+  ScheduledStart: '定時起動',
+  ScheduledStartDesc:
+    '毎日指定時刻にローカルサーバーを自動起動します。palserver GUI 実行中のみ有効です。',
+  ScheduledRestart: '定時再起動',
+  ScheduledRestartDesc:
+    '毎日指定時刻にローカルサーバーを停止して再起動します。REST API（または RCON）が必要です。',
+  ScheduledRestartRemoteDesc:
+    '毎日指定時刻に REST API 経由でリモートサーバーを停止します。GUI からリモートサーバーの自動起動はできません。',
+  ScheduleWarningMinutes: '停止前のカウントダウン（分）',
+  ScheduleRequiresGuiOpen:
+    'スケジュールは palserver GUI 実行中のみ動作します。GUI を閉じると停止します。',
+  ScheduleRequiresRestApi:
+    '定時停止・再起動には REST API（推奨）または RCON と管理者パスワードが必要です。',
   CrashRestart: 'クラッシュ時再起動',
   CrashRestartDesc:
     'サーバーがクラッシュした場合に再起動します。REST API（またはRCON）が必要です。',

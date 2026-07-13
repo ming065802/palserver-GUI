@@ -8,8 +8,10 @@ import fs from 'fs/promises';
 import path from 'path';
 import uniqid from 'uniqid';
 import { ServerInstanceSetting } from '../../../../types/ServerInstanceSetting.types';
+import { DEFAULT_DAILY_SCHEDULE } from '../../../../types/DailySchedule.types';
 import setWorldSettingsiniByServerId from '../../../services/worldSettings/setWorldSettingsiniByServerId';
 import getWorldSettingsByServerId from '../../../services/worldSettings/getWorldSettingsByServerId';
+import { rescheduleServer } from '../../../services/scheduler/serverScheduleService';
 
 ipcMain.handle(
   Channels.createServerInstance,
@@ -69,6 +71,9 @@ ipcMain.handle(
       AutoRestart: 0,
       CrashRestart: false,
       OverRamRestart: false,
+      scheduledStop: { ...DEFAULT_DAILY_SCHEDULE },
+      scheduledStart: { ...DEFAULT_DAILY_SCHEDULE, time: '08:00' },
+      scheduledRestart: { ...DEFAULT_DAILY_SCHEDULE },
       openToCommunity: false,
       OnlineMapEnabled: false,
       LogEnabled: true,
@@ -92,6 +97,8 @@ ipcMain.handle(
     };
 
     setWorldSettingsiniByServerId(serverId, worldSettingsiniJson);
+
+    await rescheduleServer(serverId);
 
     // 寫入世界設定 (sav)
 

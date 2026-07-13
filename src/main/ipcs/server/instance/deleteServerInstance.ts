@@ -3,10 +3,13 @@ import Channels from '../../channels';
 import { USER_SERVER_INSTANCES_PATH } from '../../../constant';
 import fs from 'fs/promises';
 import path from 'path';
+import { unscheduleServer } from '../../../services/scheduler/serverScheduleService';
 
 ipcMain.handle(
   Channels.deleteServerInstance,
   async (event, serverId: string) => {
+    unscheduleServer(serverId);
+
     // 實體路徑
     const editedInstancePath = path.join(USER_SERVER_INSTANCES_PATH, serverId);
     try {
