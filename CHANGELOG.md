@@ -2,6 +2,37 @@
 
 All notable changes to **palserver-GUI** are documented in this file.
 
+## [1.3.3] — 2026-07-13
+
+Palworld 1.0 **remote server management** Tier 1 Phase 6 — documentation and release.
+
+### Added
+
+- README（中／英）新增完整 **遠端伺服器管理** 章節：建立連線、支援／不支援功能、埠與安全說明
+- `docs/WINDOWS_E2E_TEST_CHECKLIST.md` 補齊 Phase 4–5 遠端驗收項目（UI 隱藏、Online 狀態、封禁名單限制、編輯連線）
+
+### Changed
+
+- 版本號更新為 `1.3.3`（`src/constant/app.ts`、`release/app/package.json`）
+- `docs/ROADMAP_P3_FEATURES.md`：功能 1 Tier 1（Phase 1–6）標記為已交付
+- `docs/KNOWN_ISSUES.md` 基準版本更新為 v1.3.3
+
+### Tier 1 交付摘要（v1.3.0 → v1.3.3）
+
+| Phase | 內容 |
+|-------|------|
+| 1–3（v1.3.0） | 遠端連線解析、建立 UI、REST 測試、列表 badge |
+| 4（v1.3.1） | `isRemote` UI gating、編輯遠端連線 |
+| 5（v1.3.2） | REST 輪詢 Online 狀態、封禁名單限制說明 |
+| 6（v1.3.3） | 文件、E2E 清單、發布 |
+
+### Known limitations (v1.3.3)
+
+- 遠端封禁名單仍無法從 GUI 讀取遠端 `banlist.txt`（需 Tier 2 SSH/SFTP 或官方 REST）
+- 線上地圖 proxy 仍僅支援本機實例
+
+---
+
 ## [1.3.2] — 2026-07-13
 
 Palworld 1.0 **remote server management** Tier 1 Phase 5 — status display and edge cases.

@@ -1,6 +1,6 @@
 # palserver GUI
 
-![RELEASE](https://img.shields.io/badge/RELEASE-1.3.0-green)
+![RELEASE](https://img.shields.io/badge/RELEASE-1.3.3-green)
 [![Website](https://img.shields.io/badge/website-click-blue)](https://dalufishes-team.gitbook.io/palserver-gui-en)
 [![Discord](https://img.shields.io/badge/discord-click-blue)](https://discord.gg/sgMMdUZd3V)
 ![Make With Love](https://img.shields.io/badge/make_with_%E2%9D%A4%EF%B8%8F-white)
@@ -15,7 +15,7 @@ Palserver GUI is a dedicated server setup and management tool with a fully graph
 - **Fully Graphical Interface**：Provides a complete and powerful GUI for adjusting world settings, server settings, and more.
 - **Powerful Feature Extensions**：Includes built-in UE4SS and Palguard, player list, online maps, multiple save management, and mod management, significantly enhancing server management efficiency and player experience.
 - **Palworld 1.0 support**: crossplay settings, voice chat, REST API admin, auto-restart, and 1.0 world parameters.
-- **Remote server management (v1.3.0)**: connect to Palworld 1.0 dedicated servers already running on a VPS or remote host via REST API (kick, broadcast, save, shutdown, and more).
+- **Remote server management (v1.3.3)**: connect to Palworld 1.0 dedicated servers already running on a VPS or remote host via REST API (kick, broadcast, save, shutdown, and more); Tier 1 complete.
 
 ---
 
@@ -30,14 +30,54 @@ palserver-GUI helps manage **Palworld 1.0** (full release, July 10, 2026) dedica
 | **1.0 world settings** | Voice chat, ranch speed, guild master transfer, PvP drops, and more |
 | **Auto-restart** | Recommended every 6–12 hours on 1.0 servers to reduce memory pressure |
 | **One-click update** | Update dedicated server binaries to 1.0 via SteamCMD |
-| **Remote connection (v1.3.0)** | Create a remote link from the home context menu after a successful REST connection test |
+| **Remote connection (v1.3.3)** | Create a remote link from the home context menu after a successful REST connection test |
 
-**Remote management requirements:**
+---
 
-- Remote server must have `RESTAPIEnabled=True`
-- Port `8212/TCP` must be reachable from the PC running this GUI (configure firewall / port forwarding yourself)
-- REST uses plain HTTP + Basic Auth; do not expose the admin password on untrusted networks
-- v1.3.0 remote instances do **not** support: local process spawn, Steam updates, mod management, world INI editing, or the online map proxy
+### Remote server management (Tier 1)
+
+v1.3.3 completes **remote server management Tier 1** (Phases 1–6). The GUI connects to Palworld 1.0 dedicated servers already running on a VPS or remote host and performs day-to-day admin via the official REST API—no local process spawn or `server/` directory copy.
+
+#### Create a remote connection
+
+1. **Right-click** on the home page or an instance → **Remote Connection**
+2. Enter **name**, **host IP/domain**, **REST port** (default `8212`), and **admin password**
+3. Click **Test Connection**; when successful, click **Create**
+4. The list shows a **Remote** badge; the preview panel shows `host:port`
+
+#### Supported on remote instances
+
+| Feature | Notes |
+|---------|-------|
+| Player list | Shows online players on the remote server |
+| Kick / ban / unban | Via REST |
+| Broadcast | Server-wide announcement |
+| Manual save | REST save |
+| Shutdown | REST shutdown |
+| Edit connection | Right-click → Edit remote connection (host, port, password) |
+| Online status | Polls REST `/info` every 30s (Online / Offline) |
+
+#### Not supported on remote instances (local only)
+
+| Feature | Reason |
+|---------|--------|
+| Start / stop process | Remote process must be managed on the remote host |
+| Steam one-click update | No local `server/` directory |
+| World INI editing | Tier 1 does not write remote settings |
+| Mod management | No remote file access |
+| Server logs | No remote process stdout |
+| Online map | Proxy supports local instances only |
+| Performance monitor | Local process only |
+| Duplicate instance | Remote links are metadata-only |
+| Ban list file | Cannot read remote `banlist.txt`; ban online players via REST |
+
+#### Remote management requirements
+
+- Remote server must have `RESTAPIEnabled=True` and `AdminPassword` set
+- Port **`8212/TCP`** must be reachable from the PC running this GUI (configure firewall / port forwarding yourself)
+- REST uses **plain HTTP + Basic Auth**; do not expose the admin password on untrusted networks
+- **`25575/TCP` (RCON)** is optional advanced use; exposing it publicly is a security risk and only needed for some Palguard commands
+- If remote REST binds only to `127.0.0.1`, it is unreachable from outside; configure the remote host or reverse proxy accordingly
 
 **Port reference:**
 
@@ -93,11 +133,11 @@ In addition, there are more server settings and features to fine-tune your serve
 
 ### Installation Links and Updates
 
-Installation Package (Recommended): [Click here to download](https://github.com/ming065802/palserver-GUI/releases/download/1.3.0/1.3.0-palserver-gui.exe)
+Installation Package (Recommended): [Click here to download](https://github.com/ming065802/palserver-GUI/releases/download/1.3.3/1.3.3-palserver-gui.exe)
 
-Portable Version (No installation required): [Click here to download](https://github.com/ming065802/palserver-GUI/releases/download/1.3.0/unpack-1.3.0-palserver-gui.zip)
+Portable Version (No installation required): [Click here to download](https://github.com/ming065802/palserver-GUI/releases/download/1.3.3/unpack-1.3.3-palserver-gui.zip)
 
-Previous v1.2.1: [installer](https://github.com/ming065802/palserver-GUI/releases/download/1.2.1/1.2.1-palserver-gui.exe) / [portable](https://github.com/ming065802/palserver-GUI/releases/download/1.2.1/unpack-1.2.1-palserver-gui.zip)
+Previous v1.3.0: [installer](https://github.com/ming065802/palserver-GUI/releases/download/1.3.0/1.3.0-palserver-gui.exe) / [portable](https://github.com/ming065802/palserver-GUI/releases/download/1.3.0/unpack-1.3.0-palserver-gui.zip)
 
 ### FAQs
 
@@ -114,7 +154,7 @@ Previous v1.2.1: [installer](https://github.com/ming065802/palserver-GUI/release
 - Steam players: use Direct Connect at `your-ip:8211`
 - Save migration: use `palworld-save-tools==0.24.0`; back up before migrating to 1.0
 - Mods: test without mods after updating, then re-enable one by one
-- **Remote connection (v1.3.0)**: home right-click → Create Remote Connection → enter host IP, REST port `8212`, admin password → test connection, then create; see [CHANGELOG.md](/CHANGELOG.md)
+- **Remote connection (v1.3.3)**: home right-click → Create Remote Connection → enter host IP, REST port `8212`, admin password → test connection, then create; see the Remote server management section above and [CHANGELOG.md](/CHANGELOG.md)
 
 See [CHANGELOG.md](/CHANGELOG.md) for full release notes.
 
@@ -153,7 +193,7 @@ You can also support me with a cup of coffee on [buymeacoffee](https://www.buyme
 
 ### Roadmap
 
-v1.3.0 ships **remote server management Tier 1 (Phases 1–3)**. Upcoming work (remote UI polish, mod compatibility gate, settings import/export) is in [docs/ROADMAP_P3_FEATURES.md](/docs/ROADMAP_P3_FEATURES.md).  
+v1.3.3 ships **remote server management Tier 1 (Phases 1–6)**. Upcoming work (Tier 2 remote map/SSH, mod compatibility gate, settings import/export) is in [docs/ROADMAP_P3_FEATURES.md](/docs/ROADMAP_P3_FEATURES.md).  
 Palworld 1.0 **known issues** (SAV sync, mod checks, Pal data) are in [docs/KNOWN_ISSUES.md](/docs/KNOWN_ISSUES.md).
 
 ### Report issues
