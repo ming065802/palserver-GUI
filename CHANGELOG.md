@@ -10,6 +10,7 @@ All notable changes to **palserver-GUI** are documented in this file.
 - `remote-settings.json` read/write services and `RemoteSettings` type
 - P3 remote Tier 1 Phase 2: `testRemoteConnection` and `createRemoteServerInstance` IPC handlers
 - Remote instance guards for local spawn, duplicate, and shutdown flows
+- P3 remote Tier 1 Phase 3: `CreateRemoteServerAlert` UI with connection test, Home entry, and remote badge
 - Unit tests for admin connection config, REST admin config, and remote connection helpers
 
 ### Changed
@@ -17,6 +18,7 @@ All notable changes to **palserver-GUI** are documented in this file.
 - `ServerInstanceSetting` extended with optional `isRemote`, `remoteHost`, `remoteRestPort`, `remoteRconPort`
 - `getWorldSettingsByServerId` reads `remote-settings.json` for remote instances
 - REST/RCON IPC, `restAdmin`, exec shutdown/restart, and online map proxy use parameterized host instead of hardcoded `127.0.0.1`
+- Home context menu re-enables **建立遠端連接** entry
 
 ---
 

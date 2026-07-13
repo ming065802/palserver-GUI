@@ -245,6 +245,21 @@ const fr = {
     'La duplication inclura tous les fichiers de configuration, modules et fichiers mondiaux :',
   ExportServer: 'exporter le serveur',
   CreateRemoteServer: 'Connexion à distance',
+  CreateRemoteServerDesc:
+    'Connectez-vous à un serveur dédié Palworld 1.0 déjà en cours d exécution sur un VPS ou un hôte distant. Vérifiez que l API REST est activée et que le port 8212 est accessible depuis ce PC.',
+  RemoteServerBadge: 'Distant',
+  TestConnection: 'Tester la connexion',
+  TestingConnection: 'Test en cours…',
+  RemoteConnectionSuccess: 'Connexion réussie. Vous pouvez créer la liaison distante.',
+  RemoteConnectionInvalidHost: 'Saisissez l adresse IP ou le nom de domaine de l hôte distant.',
+  RemoteConnectionAuthFailed:
+    'Mot de passe Admin incorrect. Vérifiez les paramètres du serveur distant.',
+  RemoteConnectionFailed:
+    'Impossible d atteindre l API REST distante. Vérifiez le pare-feu, la redirection de port et l adresse de l hôte.',
+  RemoteConnectionRestDisabled:
+    'L API REST est désactivée sur le serveur distant ou le point de terminaison est indisponible.',
+  RemoteConnectionTestRequired:
+    'Lancez Test de connexion avec succès avant de créer.',
   ChangeServerIcon: 'Changer l icône du serveur',
   OpenFolder: 'Ouvrir le dossier',
   ServerFolder: 'Dossier du serveur',

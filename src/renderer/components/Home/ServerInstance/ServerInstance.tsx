@@ -1,4 +1,4 @@
-import { AlertDialog, Spinner } from '@radix-ui/themes';
+import { AlertDialog, Badge, Spinner } from '@radix-ui/themes';
 import React, { useEffect, useState } from 'react';
 import useTranslation from '../../../hooks/translation/useTranslation';
 import ChangeServerIcon from './ChangeServerIcon/ChangeServerIcon';
@@ -255,6 +255,15 @@ export default function ServerInstance(props: Props) {
                     alt=""
                     className="w-12 h-12 select-none"
                   />
+                  {props.info.isRemote && (
+                    <Badge
+                      size="1"
+                      color="blue"
+                      className="absolute -top-1 -right-3"
+                    >
+                      {t('RemoteServerBadge')}
+                    </Badge>
+                  )}
                 </div>
               ) : (
                 <div className="w-12 h-12 flex justify-center items-center translate-y-2">

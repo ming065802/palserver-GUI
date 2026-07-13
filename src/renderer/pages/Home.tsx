@@ -44,15 +44,15 @@ export default function Home() {
         setCurrentAction('ImportServer');
       },
     },
-    //* 建立遠端連接 (未完成)
-    // {
-    //   id: 'CreateRemoteServer',
-    //   type: 'action',
-    //   shortcut: '⇗',
-    //   action() {
-    //     setCurrentAction('CreateRemoteServer');
-    //   },
-    // },
+    //* 建立遠端連接
+    {
+      id: 'CreateRemoteServer',
+      type: 'action',
+      shortcut: '⇗',
+      action() {
+        setCurrentAction('CreateRemoteServer');
+      },
+    },
   ];
 
   return (
