@@ -1,6 +1,6 @@
 # palserver GUI
 
-![RELEASE](https://img.shields.io/badge/RELEASE-1.4.2-green)
+![RELEASE](https://img.shields.io/badge/RELEASE-1.5.0-green)
 [![Website](https://img.shields.io/badge/website-click-blue)](https://dalufishes-team.gitbook.io/palserver-gui-en)
 [![Discord](https://img.shields.io/badge/discord-click-blue)](https://discord.gg/sgMMdUZd3V)
 ![Make With Love](https://img.shields.io/badge/make_with_%E2%9D%A4%EF%B8%8F-white)
@@ -165,9 +165,9 @@ v1.4.0 完成 **遠端伺服器管理 Tier 2**（Phase 1–4），在 Tier 1 RES
 
 ### 安裝連結及更新
 
-- 安裝包 (推薦)：[點我下載](https://github.com/ming065802/palserver-GUI/releases/download/v1.4.2/1.4.2-palserver-gui.exe)
-- 免安裝版本：[點我下載](https://github.com/ming065802/palserver-GUI/releases/download/v1.4.2/unpack-1.4.2-palserver-gui.zip)
-- 上一版 v1.4.1：[安裝包](https://github.com/ming065802/palserver-GUI/releases/download/v1.4.1/1.4.1-palserver-gui.exe) / [免安裝](https://github.com/ming065802/palserver-GUI/releases/download/v1.4.1/unpack-1.4.1-palserver-gui.zip)
+- 安裝包 (推薦)：[點我下載](https://github.com/ming065802/palserver-GUI/releases/download/v1.5.0/1.5.0-palserver-gui.exe)
+- 免安裝版本：[點我下載](https://github.com/ming065802/palserver-GUI/releases/download/v1.5.0/unpack-1.5.0-palserver-gui.zip)
+- 上一版 v1.4.2：[安裝包](https://github.com/ming065802/palserver-GUI/releases/download/v1.4.2/1.4.2-palserver-gui.exe) / [免安裝](https://github.com/ming065802/palserver-GUI/releases/download/v1.4.2/unpack-1.4.2-palserver-gui.zip)
 
 ### 常見問題
 
@@ -223,7 +223,7 @@ v1.4.0 完成 **遠端伺服器管理 Tier 2**（Phase 1–4），在 Tier 1 RES
 
 ### 開發路線圖
 
-v1.4.2 新增 **每日排程啟停** 與 **本機 Management API**；v1.5.0（開發中）將提供可選 **Discord Bot**（slash 指令查狀態與受控啟停，見 [docs/PLAN_DISCORD_BOT.md](/docs/PLAN_DISCORD_BOT.md)）。後續規劃（Tier 3 SSH/SFTP、Mod 相容檢查、設定匯入／匯出）見 [docs/ROADMAP_P3_FEATURES.md](/docs/ROADMAP_P3_FEATURES.md)。  
+v1.5.0 新增可選 **Discord Bot**（slash 指令查狀態、受控啟停、`/players`、`/announce`，見 [docs/PLAN_DISCORD_BOT.md](/docs/PLAN_DISCORD_BOT.md)）；v1.4.2 提供 **每日排程啟停** 與 **本機 Management API**。後續規劃（Tier 3 SSH/SFTP、Mod 相容檢查、設定匯入／匯出）見 [docs/ROADMAP_P3_FEATURES.md](/docs/ROADMAP_P3_FEATURES.md)。  
 目前 **Palworld 1.0 已知問題**（設定不生效、Mod 閃退、帕魯資料過時等情境說明）見 [docs/KNOWN_ISSUES.md](/docs/KNOWN_ISSUES.md)。
 
 ### 回報問題

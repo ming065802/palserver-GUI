@@ -18,6 +18,7 @@
 
 | 版本 | 狀態 | 重點 |
 |------|------|------|
+| **v1.5.0** | 已發布 | Discord Bot Phase 1–2：slash 指令（含 `/players`、`/announce`）、GUI 可選 spawn、`discord-bot/` 獨立部署 |
 | **v1.4.2** | 已發布 | 每日排程啟停；本機 Management API；CI 驗證 |
 | **v1.4.1** | 已發布 | Tier 2 首個二進位發布；整合測試套件；安裝連結更新 |
 | **v1.4.0** | 已發布（原始碼） | 遠端伺服器 REST 管理 Tier 2 完整交付（Phase 1–4）；線上地圖、設定唯讀、手動 unban |
@@ -27,7 +28,6 @@
 | **v1.3.0** | 已發布 | 遠端連線建立、REST 測試、列表 badge |
 | **v1.2.1** | 已發布 | CrossplayPlatforms INI、版本檢查、已知問題文件 |
 | **v1.2.0** | 已發布 | Palworld 1.0 本機專服對齊 |
-| **v1.5.0（規劃）** | 開發中 | Discord Bot Phase 1–2：slash 指令（含 `/players`、`/announce`）、GUI 可選 spawn、`discord-bot/` 獨立部署 |
 | **v1.4.x 後續** | 規劃中 | Mod 相容檢查、設定產生器；遠端 Tier 3 SSH/SFTP |
 
 ## 給 AI / 新貢獻者的提示

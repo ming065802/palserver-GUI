@@ -4,13 +4,31 @@ All notable changes to **palserver-GUI** are documented in this file.
 
 ## [Unreleased]
 
+---
+
+## [1.5.0] — 2026-07-13
+
+Optional **Discord Bot** integration (Phase 1–2) via the local Management API.
+
 ### Added
 
 - **Discord Bot（Phase 2）**：新增 `/players`、`/announce` slash 指令；透過 Management API 代理 Palworld REST API（玩家列表、全服廣播），bot 無需持有 Admin 密碼
 - Management API 新增 `GET /api/servers/:id/players`、`POST /api/servers/:id/announce` 端點
 - **Discord Bot（Phase 1）**：新增獨立 `discord-bot/` Node.js 專案，透過 Management API 支援 `/status`、`/servers`、`/start`、`/stop`、`/restart` slash 指令
 - GUI 設定頁可啟用 Discord Bot、配置 Token／Guild／角色權限與預設 `serverId`；啟動 GUI 時可選 spawn bot，關閉 GUI 時終止子程序
-- 五語系 i18n、`discord-bot/README.md`、`docs/WINDOWS_E2E_TEST_CHECKLIST.md` §2D、單元測試
+- 五語系 i18n、`discord-bot/README.md`、`docs/WINDOWS_E2E_TEST_CHECKLIST.md` §2D–2E、單元測試
+
+### Changed
+
+- 版本號更新為 `1.5.0`（`src/constant/app.ts`、`release/app/package.json`）
+- README（中／英）安裝連結更新為 `1.5.0`；上一版指向 `v1.4.2`
+- `docs/KNOWN_ISSUES.md`、`docs/README.md`、`docs/WINDOWS_E2E_TEST_CHECKLIST.md` 基準版本更新為 v1.5.0
+
+### Notes (v1.5.0)
+
+- Discord Bot 需啟用本機 Management API；`/players`、`/announce` 另需伺服器已運行且 REST API 已啟用
+- Bot 可隨 GUI 啟動，亦可於 `discord-bot/` 目錄獨立部署（見 `discord-bot/README.md`）
+- 建議發布後依 `docs/WINDOWS_E2E_TEST_CHECKLIST.md` §2D–2E 驗收 Discord Bot 指令
 
 ---
 

@@ -1,6 +1,6 @@
 # palserver GUI
 
-![RELEASE](https://img.shields.io/badge/RELEASE-1.4.2-green)
+![RELEASE](https://img.shields.io/badge/RELEASE-1.5.0-green)
 [![Website](https://img.shields.io/badge/website-click-blue)](https://dalufishes-team.gitbook.io/palserver-gui-en)
 [![Discord](https://img.shields.io/badge/discord-click-blue)](https://discord.gg/sgMMdUZd3V)
 ![Make With Love](https://img.shields.io/badge/make_with_%E2%9D%A4%EF%B8%8F-white)
@@ -160,11 +160,11 @@ In addition, there are more server settings and features to fine-tune your serve
 
 ### Installation Links and Updates
 
-Installation Package (Recommended): [Click here to download](https://github.com/ming065802/palserver-GUI/releases/download/v1.4.2/1.4.2-palserver-gui.exe)
+Installation Package (Recommended): [Click here to download](https://github.com/ming065802/palserver-GUI/releases/download/v1.5.0/1.5.0-palserver-gui.exe)
 
-Portable Version (No installation required): [Click here to download](https://github.com/ming065802/palserver-GUI/releases/download/v1.4.2/unpack-1.4.2-palserver-gui.zip)
+Portable Version (No installation required): [Click here to download](https://github.com/ming065802/palserver-GUI/releases/download/v1.5.0/unpack-1.5.0-palserver-gui.zip)
 
-Previous v1.4.1: [installer](https://github.com/ming065802/palserver-GUI/releases/download/v1.4.1/1.4.1-palserver-gui.exe) / [portable](https://github.com/ming065802/palserver-GUI/releases/download/v1.4.1/unpack-1.4.1-palserver-gui.zip)
+Previous v1.4.2: [installer](https://github.com/ming065802/palserver-GUI/releases/download/v1.4.2/1.4.2-palserver-gui.exe) / [portable](https://github.com/ming065802/palserver-GUI/releases/download/v1.4.2/unpack-1.4.2-palserver-gui.zip)
 
 ### FAQs
 
@@ -220,7 +220,7 @@ You can also support me with a cup of coffee on [buymeacoffee](https://www.buyme
 
 ### Roadmap
 
-v1.4.2 adds **daily scheduled stop/start/restart** and a **local Management API**; v1.5.0 (in development) will add an optional **Discord Bot** (slash commands for status and controlled lifecycle — see [docs/PLAN_DISCORD_BOT.md](/docs/PLAN_DISCORD_BOT.md)). Upcoming work (Tier 3 SSH/SFTP, mod compatibility gate, settings import/export) is in [docs/ROADMAP_P3_FEATURES.md](/docs/ROADMAP_P3_FEATURES.md).  
+v1.5.0 adds an optional **Discord Bot** (slash commands for status, controlled lifecycle, `/players`, `/announce` — see [docs/PLAN_DISCORD_BOT.md](/docs/PLAN_DISCORD_BOT.md)); v1.4.2 provides **daily scheduled stop/start/restart** and a **local Management API**. Upcoming work (Tier 3 SSH/SFTP, mod compatibility gate, settings import/export) is in [docs/ROADMAP_P3_FEATURES.md](/docs/ROADMAP_P3_FEATURES.md).  
 Palworld 1.0 **known issues** (SAV sync, mod checks, Pal data) are in [docs/KNOWN_ISSUES.md](/docs/KNOWN_ISSUES.md).
 
 ### Report issues

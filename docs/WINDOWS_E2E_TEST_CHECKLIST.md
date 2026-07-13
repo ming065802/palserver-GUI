@@ -7,7 +7,7 @@
 - [ ] 確認 Windows 使用者名稱與安裝路徑均為 ASCII（無中文/特殊字元）
 - [ ] 防火牆已放行：`8211/UDP`（遊戲）、`8212/TCP`（REST API）、`27015/UDP`（社群列表，若需要）
 - [ ] 以系統管理員身分執行 GUI（首次 SteamCMD 安裝時建議）
-- [ ] 記錄測試版本：GUI `1.4.2`、引擎版本、Palworld 客戶端版本
+- [ ] 記錄測試版本：GUI `1.5.0`、引擎版本、Palworld 客戶端版本
 
 ---
 
@@ -62,7 +62,7 @@
 
 ## 2B. 遠端 Tier 2（v1.4.0 — 地圖、設定唯讀、手動解封）
 
-> 需有 §2A 已建立的遠端連線，且遠端 REST 可達。建議測試機 GUI 版本為 **1.4.2**。
+> 需有 §2A 已建立的遠端連線，且遠端 REST 可達。建議測試機 GUI 版本為 **1.5.0**。
 
 | # | 步驟 | 預期結果 | 通過 |
 |---|------|----------|------|
@@ -78,7 +78,7 @@
 
 ---
 
-## 2C. 本機 Management API（Unreleased — HTTP 自動化）
+## 2C. 本機 Management API（v1.4.2 — HTTP 自動化）
 
 > 需 GUI 執行中，並於 **設定 → 本機 Management API** 啟用（預設埠 `3435`、`127.0.0.1`）。建議先以 PowerShell 或 `curl` 驗證。
 
@@ -99,7 +99,7 @@
 
 ---
 
-## 2D. Discord Bot（Unreleased — v1.5.0 Phase 1）
+## 2D. Discord Bot（v1.5.0 — Phase 1）
 
 > 需 GUI 執行中、**本機 Management API 已啟用**，並於 **設定 → Discord Bot** 填寫有效 Token 與 Client ID。建議使用測試用 Discord 伺服器。
 
@@ -115,7 +115,7 @@
 
 ---
 
-## 2E. Discord Bot Phase 2（Unreleased — v1.5.x）
+## 2E. Discord Bot Phase 2（v1.5.0）
 
 > 需伺服器**已運行**且世界設定已啟用 **REST API**；Management API 與 Discord Bot 已啟用。
 
