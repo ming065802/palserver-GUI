@@ -1,6 +1,6 @@
 # palserver GUI
 
-![RELEASE](https://img.shields.io/badge/RELEASE-1.4.1-green)
+![RELEASE](https://img.shields.io/badge/RELEASE-1.4.2-green)
 [![Website](https://img.shields.io/badge/website-click-blue)](https://dalufishes-team.gitbook.io/palserver-gui-en)
 [![Discord](https://img.shields.io/badge/discord-click-blue)](https://discord.gg/sgMMdUZd3V)
 ![Make With Love](https://img.shields.io/badge/make_with_%E2%9D%A4%EF%B8%8F-white)
@@ -165,9 +165,9 @@ v1.4.0 完成 **遠端伺服器管理 Tier 2**（Phase 1–4），在 Tier 1 RES
 
 ### 安裝連結及更新
 
-- 安裝包 (推薦)：[點我下載](https://github.com/ming065802/palserver-GUI/releases/download/v1.4.1/1.4.1-palserver-gui.exe)
-- 免安裝版本：[點我下載](https://github.com/ming065802/palserver-GUI/releases/download/v1.4.1/unpack-1.4.1-palserver-gui.zip)
-- 上一版 v1.3.3：[安裝包](https://github.com/ming065802/palserver-GUI/releases/download/v1.3.3/1.3.3-palserver-gui.exe) / [免安裝](https://github.com/ming065802/palserver-GUI/releases/download/v1.3.3/unpack-1.3.3-palserver-gui.zip)
+- 安裝包 (推薦)：[點我下載](https://github.com/ming065802/palserver-GUI/releases/download/v1.4.2/1.4.2-palserver-gui.exe)
+- 免安裝版本：[點我下載](https://github.com/ming065802/palserver-GUI/releases/download/v1.4.2/unpack-1.4.2-palserver-gui.zip)
+- 上一版 v1.4.1：[安裝包](https://github.com/ming065802/palserver-GUI/releases/download/v1.4.1/1.4.1-palserver-gui.exe) / [免安裝](https://github.com/ming065802/palserver-GUI/releases/download/v1.4.1/unpack-1.4.1-palserver-gui.zip)
 
 ### 常見問題
 
@@ -223,7 +223,7 @@ v1.4.0 完成 **遠端伺服器管理 Tier 2**（Phase 1–4），在 Tier 1 RES
 
 ### 開發路線圖
 
-v1.4.1 為 **遠端伺服器管理 Tier 2** 的首個二進位發布，已交付 **Tier 1（Phase 1–6）與 Tier 2（Phase 1–4）**；後續規劃（Tier 3 SSH/SFTP、Mod 相容檢查、設定匯入／匯出）見 [docs/ROADMAP_P3_FEATURES.md](/docs/ROADMAP_P3_FEATURES.md)。  
+v1.4.2 新增 **每日排程啟停** 與 **本機 Management API**；v1.4.1 為遠端 Tier 2 首個二進位發布。後續規劃（Tier 3 SSH/SFTP、Mod 相容檢查、設定匯入／匯出）見 [docs/ROADMAP_P3_FEATURES.md](/docs/ROADMAP_P3_FEATURES.md)。  
 目前 **Palworld 1.0 已知問題**（設定不生效、Mod 閃退、帕魯資料過時等情境說明）見 [docs/KNOWN_ISSUES.md](/docs/KNOWN_ISSUES.md)。
 
 ### 回報問題
