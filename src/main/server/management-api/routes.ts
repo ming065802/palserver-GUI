@@ -8,6 +8,10 @@ import {
   stopManagedServer,
 } from '../../services/management-api/serverLifecycle';
 import {
+  announceManagedServer,
+  getManagedServerPlayers,
+} from '../../services/management-api/serverRestProxy';
+import {
   createManagementApiAuthMiddleware,
   managementApiErrorHandler,
 } from './middleware';
@@ -90,6 +94,24 @@ export function registerManagementApiRoutes(app: Express) {
   app.post('/api/servers/:serverId/restart', async (req, res, next) => {
     try {
       await handleLifecycleAction(req, res, 'restart');
+    } catch (error) {
+      next(error);
+    }
+  });
+
+  app.get('/api/servers/:serverId/players', async (req, res, next) => {
+    try {
+      res.json(await getManagedServerPlayers(req.params.serverId));
+    } catch (error) {
+      next(error);
+    }
+  });
+
+  app.post('/api/servers/:serverId/announce', async (req, res, next) => {
+    try {
+      const message =
+        typeof req.body?.message === 'string' ? req.body.message : '';
+      res.json(await announceManagedServer(req.params.serverId, message));
     } catch (error) {
       next(error);
     }

@@ -2,6 +2,8 @@ import { Client, Events, GatewayIntentBits } from 'discord.js';
 import { createManagementApiClient } from '../api/managementApiClient';
 import { DiscordBotConfig } from '../types';
 import { executeRestart } from '../commands/restart';
+import { executeAnnounce } from '../commands/announce';
+import { executePlayers } from '../commands/players';
 import { executeServers } from '../commands/servers';
 import { executeStart } from '../commands/start';
 import { executeStatus } from '../commands/status';
@@ -30,6 +32,12 @@ export function createDiscordClient(config: DiscordBotConfig) {
           break;
         case 'servers':
           await executeServers(interaction, config, api);
+          break;
+        case 'players':
+          await executePlayers(interaction, config, api);
+          break;
+        case 'announce':
+          await executeAnnounce(interaction, config, api);
           break;
         case 'start':
           await executeStart(interaction, config, api);

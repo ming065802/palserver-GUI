@@ -1,6 +1,7 @@
 import {
   ManagementApiErrorBody,
   ManagementApiServerStatus,
+  PalworldPlayersResponse,
 } from '../types';
 
 export class ManagementApiClientError extends Error {
@@ -135,6 +136,23 @@ export function createManagementApiClient(options: RequestOptions) {
         payload,
       );
     },
+
+    getServerPlayers(serverId: string) {
+      return request<PalworldPlayersResponse>(
+        options,
+        'GET',
+        `/api/servers/${encodeURIComponent(serverId)}/players`,
+      );
+    },
+
+    announceServer(serverId: string, message: string) {
+      return request<{ serverId: string; message: string; announced: boolean }>(
+        options,
+        'POST',
+        `/api/servers/${encodeURIComponent(serverId)}/announce`,
+        { message },
+      );
+    },
   };
 }
 
@@ -154,6 +172,19 @@ export function formatManagementApiError(error: unknown): string {
 
     if (error.statusCode === 401) {
       return 'Management API 驗證失敗，請確認 API 金鑰是否正確。';
+    }
+
+    if (error.statusCode === 409 && error.code === 'SERVER_NOT_RUNNING') {
+      return '伺服器目前未運行，無法查詢玩家或發送廣播。';
+    }
+
+    if (error.statusCode === 503) {
+      if (error.code === 'REST_API_DISABLED') {
+        return '此伺服器未啟用 Palworld REST API，請於世界設定中開啟。';
+      }
+      if (error.code === 'REST_NOT_REACHABLE') {
+        return '無法連線至 Palworld REST API，請確認伺服器已啟動且 REST 埠可達。';
+      }
     }
 
     if (error.statusCode === 0) {

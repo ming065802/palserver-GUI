@@ -1,7 +1,7 @@
 # 實作計畫：Discord Bot 整合（Node.js）
 
 > **功能代號**：`P3-DISCORD-BOT` / `feature/discord-bot`  
-> **狀態**：Phase 1 已實作（v1.5.0 建議最小交付）  
+> **狀態**：Phase 1 已實作（v1.5.0 建議最小交付）；Phase 2 已實作（`/players`、`/announce` + Management API 代理）  
 > **目標版本**：v1.5.0（建議最小交付）  
 > **基準版本**：v1.4.2（本機 Management API、每日排程啟停）  
 > **規格依據**：[ROADMAP_P3_FEATURES.md](./ROADMAP_P3_FEATURES.md) 跨功能自動化延伸  
@@ -211,6 +211,8 @@ async function request(method: string, path: string, body?: unknown) {
 | POST | `/api/servers/:serverId/start` | `/start` |
 | POST | `/api/servers/:serverId/stop` | `/stop`（body 可含 `waitMinutes`, `message`） |
 | POST | `/api/servers/:serverId/restart` | `/restart` |
+| GET | `/api/servers/:serverId/players` | `/players`（Phase 2，GUI 代理 Palworld REST） |
+| POST | `/api/servers/:serverId/announce` | `/announce`（Phase 2，body: `{ message }`） |
 
 認證：與 `middleware.ts` 一致，支援 `Authorization: Bearer` 或 `X-API-Key`。
 
@@ -388,8 +390,8 @@ function assertCanManage(interaction: ChatInputCommandInteraction, config: Confi
 
 ### Phase 2（若實作）
 
-- [ ] `/players`、`/announce` 在本機運行中的伺服器上可用
-- [ ] 文件說明 Admin 密碼存放方式與風險
+- [x] `/players`、`/announce` 在本機運行中的伺服器上可用
+- [x] 文件說明 Admin 密碼存放方式與風險（透過 Management API 代理，bot 不持有 Admin 密碼）
 
 ---
 

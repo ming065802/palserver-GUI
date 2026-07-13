@@ -115,6 +115,20 @@
 
 ---
 
+## 2E. Discord Bot Phase 2（Unreleased — v1.5.x）
+
+> 需伺服器**已運行**且世界設定已啟用 **REST API**；Management API 與 Discord Bot 已啟用。
+
+| # | 步驟 | 預期結果 | 通過 |
+|---|------|----------|------|
+| 2E.1 | 伺服器運行中，Discord 執行 `/players` | 回傳線上玩家列表（或「目前沒有玩家在線」） | ☐ |
+| 2E.2 | 伺服器未運行時執行 `/players` | 回覆伺服器未運行說明 | ☐ |
+| 2E.3 | Admin 角色執行 `/announce message:測試廣播` | 遊戲內收到廣播；Discord 回覆成功 | ☐ |
+| 2E.4 | 一般使用者執行 `/announce` | 被拒絕 | ☐ |
+| 2E.5 | REST API 未啟用時執行 `/players` | 回覆 REST API 未啟用說明 | ☐ |
+
+---
+
 ## 3. 世界設定（Palworld 1.0）
 
 | # | 步驟 | 預期結果 | 通過 |
