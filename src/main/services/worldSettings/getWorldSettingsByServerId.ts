@@ -2,8 +2,10 @@ import path from 'path';
 import { USER_SERVER_INSTANCES_PATH } from '../../constant';
 import fsc from 'fs';
 import readWorldSettingsini from './readWorldSettingsini';
+import getServerInfoByServerId from '../serverInstanceSettings/getServerInfoByServerId';
+import readRemoteSettings from '../remote/readRemoteSettings';
 
-export default async (serverId: string) => {
+async function getLocalWorldSettings(serverId: string) {
   const worldSettingsPath = path.join(
     USER_SERVER_INSTANCES_PATH,
     serverId,
@@ -12,8 +14,18 @@ export default async (serverId: string) => {
   );
 
   if (fsc.existsSync(worldSettingsPath)) {
-    const worldSetting = await readWorldSettingsini(worldSettingsPath);
-    return worldSetting;
+    return readWorldSettingsini(worldSettingsPath);
   }
+
   return {};
+}
+
+export default async (serverId: string) => {
+  const serverInfo = await getServerInfoByServerId(serverId);
+
+  if (serverInfo.isRemote) {
+    return readRemoteSettings(serverId);
+  }
+
+  return getLocalWorldSettings(serverId);
 };

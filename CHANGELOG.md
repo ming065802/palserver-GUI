@@ -2,6 +2,22 @@
 
 All notable changes to **palserver-GUI** are documented in this file.
 
+## [Unreleased]
+
+### Added
+
+- P3 remote Tier 1 Phase 1: `getAdminConnectionConfig` / `resolveAdminConnectionConfig` for local vs remote admin host resolution
+- `remote-settings.json` read/write services and `RemoteSettings` type
+- Unit tests for admin connection config and `RestAdminConfig` host support
+
+### Changed
+
+- `ServerInstanceSetting` extended with optional `isRemote`, `remoteHost`, `remoteRestPort`, `remoteRconPort`
+- `getWorldSettingsByServerId` reads `remote-settings.json` for remote instances
+- REST/RCON IPC, `restAdmin`, exec shutdown/restart, and online map proxy use parameterized host instead of hardcoded `127.0.0.1`
+
+---
+
 ## [1.2.1] — 2026-07-13
 
 Patch release after v1.2.0 with INI write fixes, version-check hardening, and documentation.

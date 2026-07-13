@@ -19,4 +19,8 @@ export type ServerInstanceSetting = {
   readonly OnlineMapEnabled: boolean;
   readonly LogEnabled: boolean;
   readonly UseIndependentProcess: boolean;
+  readonly isRemote?: boolean;
+  readonly remoteHost?: string;
+  readonly remoteRestPort?: number;
+  readonly remoteRconPort?: number;
 };

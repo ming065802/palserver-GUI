@@ -1,17 +1,15 @@
 import { ipcMain } from 'electron';
 import Channels from '../../channels';
-import getServerInfoByServerId from '../../../services/serverInstanceSettings/getServerInfoByServerId';
 import getWorldSettingsByServerId from '../../../services/worldSettings/getWorldSettingsByServerId';
-import trimWorldSettingsString from '../../../../utils/trimWorldSettingsString';
 import sendCommand from '../../../utils/rcon/sendCommand';
+import getAdminConnectionConfig, {
+  getRconOptions,
+} from '../../../services/admin/getAdminHost';
 
 ipcMain.on(Channels.execShutdownServer, async (event, serverId, processId) => {
   const worldSettings = await getWorldSettingsByServerId(serverId);
-  const serverOptions = {
-    ipAddress: '127.0.0.1',
-    port: worldSettings.RCONPort,
-    password: trimWorldSettingsString(worldSettings.AdminPassword),
-  };
+  const connection = await getAdminConnectionConfig(serverId);
+  const serverOptions = getRconOptions(connection);
   const isEnabledRCON = worldSettings.RCONEnabled;
 
   try {
