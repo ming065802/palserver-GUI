@@ -38,6 +38,15 @@ export default function RightSection() {
             {t('WorldSettings')}
           </RightSectionButton>
         )}
+        {isRemote && (
+          <RightSectionButton
+            onClick={() => {
+              history.push('/world-settings');
+            }}
+          >
+            {t('RemoteWorldSettingsReadOnlyShort')}
+          </RightSectionButton>
+        )}
         {!isRemote && serverInfo?.modManagementEnabled && (
           <RightSectionButton
             onClick={() => {

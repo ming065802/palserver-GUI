@@ -245,6 +245,16 @@ const en = {
     'Remote connections cannot read the local ban list. Manage banlist.txt on the remote server, or ban online players via REST.',
   RemoteOnlineMapUnreachable:
     'Cannot reach the remote REST API. The online map may not show player positions. Ensure the remote server is online and the REST port is reachable.',
+  RemoteWorldSettingsReadOnly:
+    'Remote world settings are read-only and loaded from the server REST API. To change values, edit PalWorldSettings.ini on the remote host and restart the server.',
+  RemoteWorldSettingsReadOnlyShort: 'World Settings (Read-only)',
+  RemoteWorldSettingsFetchFailed:
+    'Failed to fetch settings from the remote server. Ensure the REST API is reachable, then click Refresh.',
+  RemoteWorldSettingsUnknownKeys:
+    'Some REST fields are not mapped to GUI tabs. Switch to JSON view to see the full response.',
+  WorldSettingsJsonView: 'JSON view',
+  WorldSettingsGuiView: 'GUI view',
+  Refresh: 'Refresh',
   TestConnection: 'Test Connection',
   TestingConnection: 'Testing…',
   RemoteConnectionSuccess: 'Connection successful. You can create the remote link.',

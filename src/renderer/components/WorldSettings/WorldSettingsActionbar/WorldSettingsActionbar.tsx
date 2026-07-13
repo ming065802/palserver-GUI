@@ -9,12 +9,18 @@ export default function WorldSettingsActionbar({
   prevWorldSettings,
   worldSettings,
   setWorldSettings,
+  readOnly = false,
 }: {
   prevWorldSettings: any;
   worldSettings: any;
   setWorldSettings: any;
+  readOnly?: boolean;
 }) {
   const { t } = useTranslation();
+
+  if (readOnly) {
+    return null;
+  }
 
   const transition = useTransition(
     !_.isEqual(prevWorldSettings, worldSettings),

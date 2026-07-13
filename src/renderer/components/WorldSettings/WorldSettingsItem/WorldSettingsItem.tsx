@@ -5,7 +5,7 @@ import { isBoolean } from 'lodash';
 import useTranslation from '../../../hooks/translation/useTranslation';
 import { worldSettingsOptions } from '../settings';
 
-function WorldSettingsItem({ id, worldSettings, setWorldSettings }) {
+function WorldSettingsItem({ id, worldSettings, setWorldSettings, readOnly = false }) {
   const { t } = useTranslation();
 
   return (
@@ -38,6 +38,7 @@ function WorldSettingsItem({ id, worldSettings, setWorldSettings }) {
                 }}
                 size="1"
                 type="number"
+                disabled={readOnly}
                 value={
                   worldSettings[id] ||
                   (worldSettingsOptions[id].type === 'num'
@@ -45,6 +46,9 @@ function WorldSettingsItem({ id, worldSettings, setWorldSettings }) {
                     : (worldSettingsOptions[id]?.default || 0) / 10)
                 }
                 onChange={(e) => {
+                  if (readOnly) {
+                    return;
+                  }
                   setWorldSettings({
                     ...worldSettings,
                     [id]: Number(e.target.value),
@@ -58,12 +62,16 @@ function WorldSettingsItem({ id, worldSettings, setWorldSettings }) {
       {worldSettingsOptions[id]?.type === 'switch' && (
         <Switch
           variant="classic"
+          disabled={readOnly}
           checked={
             typeof worldSettings[id] === 'undefined'
               ? worldSettingsOptions[id]?.default
               : worldSettings[id]
           }
           onCheckedChange={(v) => {
+            if (readOnly) {
+              return;
+            }
             setWorldSettings({
               ...worldSettings,
               [id]: v,
@@ -74,8 +82,12 @@ function WorldSettingsItem({ id, worldSettings, setWorldSettings }) {
       {worldSettingsOptions[id]?.type === 'options' && (
         <Select.Root
           size="2"
+          disabled={readOnly}
           value={worldSettings[id] || worldSettingsOptions[id]?.default}
           onValueChange={(v) => {
+            if (readOnly) {
+              return;
+            }
             setWorldSettings({
               ...worldSettings,
               [id]: v,
@@ -102,6 +114,7 @@ function WorldSettingsItem({ id, worldSettings, setWorldSettings }) {
         <Slider
           size="1"
           defaultValue={[1]}
+          disabled={readOnly}
           min={worldSettingsOptions[id].range[0]}
           max={worldSettingsOptions[id].range[1]}
           value={[
@@ -110,6 +123,9 @@ function WorldSettingsItem({ id, worldSettings, setWorldSettings }) {
               : worldSettings[id] * 10) || worldSettingsOptions[id]?.default,
           ]}
           onValueChange={(v) => {
+            if (readOnly) {
+              return;
+            }
             setWorldSettings({
               ...worldSettings,
               [id]: worldSettingsOptions[id].type === 'num' ? v[0] : v[0] / 10,

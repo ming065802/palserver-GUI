@@ -255,6 +255,16 @@ const fr = {
     'Les connexions distantes ne peuvent pas lire la liste de bannissement locale. Gérez banlist.txt sur le serveur distant ou bannissez les joueurs en ligne via REST.',
   RemoteOnlineMapUnreachable:
     'Impossible de joindre l API REST distante. La carte en ligne peut ne pas afficher les positions des joueurs. Vérifiez que le serveur distant est en ligne et que le port REST est ouvert.',
+  RemoteWorldSettingsReadOnly:
+    'Les paramètres du monde distants sont en lecture seule et proviennent de l API REST du serveur. Pour les modifier, éditez PalWorldSettings.ini sur l hôte distant puis redémarrez le serveur.',
+  RemoteWorldSettingsReadOnlyShort: 'Paramètres du monde (lecture seule)',
+  RemoteWorldSettingsFetchFailed:
+    'Impossible de récupérer les paramètres du serveur distant. Vérifiez que l API REST est accessible, puis cliquez sur Actualiser.',
+  RemoteWorldSettingsUnknownKeys:
+    'Certains champs REST ne sont pas mappés aux onglets GUI. Passez en vue JSON pour voir la réponse complète.',
+  WorldSettingsJsonView: 'Vue JSON',
+  WorldSettingsGuiView: 'Vue GUI',
+  Refresh: 'Actualiser',
   TestConnection: 'Tester la connexion',
   TestingConnection: 'Test en cours…',
   RemoteConnectionSuccess: 'Connexion réussie. Vous pouvez créer la liaison distante.',

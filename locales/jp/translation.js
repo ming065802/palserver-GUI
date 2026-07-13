@@ -226,6 +226,16 @@ const jp = {
     'リモート接続ではローカルの BAN リストを読み取れません。リモートサーバー上の banlist.txt を管理するか、REST でオンラインプレイヤーを BAN してください。',
   RemoteOnlineMapUnreachable:
     'リモート REST API に接続できません。オンラインマップにプレイヤー位置が表示されない場合があります。リモートサーバーがオンラインで、REST ポートが開放されていることを確認してください。',
+  RemoteWorldSettingsReadOnly:
+    'リモートのワールド設定は読み取り専用で、サーバー REST API から取得されます。変更するにはリモートホストで PalWorldSettings.ini を編集し、サーバーを再起動してください。',
+  RemoteWorldSettingsReadOnlyShort: 'ワールド設定（読み取り専用）',
+  RemoteWorldSettingsFetchFailed:
+    'リモートサーバーから設定を取得できませんでした。REST API に接続できることを確認してから更新してください。',
+  RemoteWorldSettingsUnknownKeys:
+    '一部の REST フィールドは GUI タブに対応していません。JSON 表示で全体を確認してください。',
+  WorldSettingsJsonView: 'JSON 表示',
+  WorldSettingsGuiView: 'GUI 表示',
+  Refresh: '更新',
   TestConnection: '接続テスト',
   TestingConnection: 'テスト中…',
   RemoteConnectionSuccess: '接続に成功しました。リモート接続を作成できます。',
