@@ -1,11 +1,15 @@
 import React from 'react';
 import useSelectedServerInstance from '../../../redux/selectedServerInstance/useSelectedServerInstance';
-import useWorldSettings from '../../../hooks/server/world-settings/useWorldSettings';
-import trimWorldSettingsString from '../../../../utils/trimWorldSettingsString';
+import useIsRemote from '../../../hooks/server/useIsRemote';
 import { LuExternalLink } from 'react-icons/lu';
 
 export default function OnlineMap() {
   const { selectedServerInstance } = useSelectedServerInstance();
+  const isRemote = useIsRemote();
+
+  if (isRemote) {
+    return null;
+  }
 
   return (
     <div className="relative w-full">

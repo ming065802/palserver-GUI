@@ -222,6 +222,8 @@ const jp = {
   RemoteEndpoint: 'リモート接続先',
   EditRemoteServer: 'リモート接続を編集',
   RemoteFeatureNotSupported: 'リモート接続ではこの機能は利用できません。',
+  RemoteBanListNotAvailable:
+    'リモート接続ではローカルの BAN リストを読み取れません。リモートサーバー上の banlist.txt を管理するか、REST でオンラインプレイヤーを BAN してください。',
   TestConnection: '接続テスト',
   TestingConnection: 'テスト中…',
   RemoteConnectionSuccess: '接続に成功しました。リモート接続を作成できます。',

@@ -251,6 +251,8 @@ const fr = {
   RemoteEndpoint: 'Point de terminaison distant',
   EditRemoteServer: 'Modifier la connexion distante',
   RemoteFeatureNotSupported: 'Cette fonctionnalité n est pas disponible pour les connexions distantes.',
+  RemoteBanListNotAvailable:
+    'Les connexions distantes ne peuvent pas lire la liste de bannissement locale. Gérez banlist.txt sur le serveur distant ou bannissez les joueurs en ligne via REST.',
   TestConnection: 'Tester la connexion',
   TestingConnection: 'Test en cours…',
   RemoteConnectionSuccess: 'Connexion réussie. Vous pouvez créer la liaison distante.',

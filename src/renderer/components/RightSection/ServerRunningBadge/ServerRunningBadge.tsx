@@ -1,15 +1,15 @@
 import { Badge } from '@radix-ui/themes';
 import React from 'react';
-import useIsRunningServers from '../../../redux/isRunningServers/useIsRunningServers';
 import useSelectedServerInstance from '../../../redux/selectedServerInstance/useSelectedServerInstance';
+import useServerOnlineStatus from '../../../hooks/server/useServerOnlineStatus';
 
 export default function ServerRunningBadge() {
   const { selectedServerInstance } = useSelectedServerInstance();
-  const { includeRunningServers } = useIsRunningServers();
+  const isOnline = useServerOnlineStatus(selectedServerInstance);
 
   return (
     <div className="self-end">
-      {includeRunningServers(selectedServerInstance) ? (
+      {isOnline ? (
         <Badge color="grass" size="3" variant="solid">
           Online
         </Badge>
