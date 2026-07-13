@@ -1,6 +1,6 @@
 # palserver GUI
 
-![RELEASE](https://img.shields.io/badge/RELEASE-1.2.1-green)
+![RELEASE](https://img.shields.io/badge/RELEASE-1.3.0-green)
 [![Website](https://img.shields.io/badge/website-click-blue)](https://dalufishes-team.gitbook.io/palserver-gui-en)
 [![Discord](https://img.shields.io/badge/discord-click-blue)](https://discord.gg/sgMMdUZd3V)
 ![Make With Love](https://img.shields.io/badge/make_with_%E2%9D%A4%EF%B8%8F-white)
@@ -15,6 +15,7 @@ palserver GUI 是一款全圖形化介面的專用伺服器架設、管理工具
 - **全圖形化介面**：提供完整且功能強大的 GUI 介面調整世界設定、伺服器設定等。
 - **強大功能擴展**：內建 UE4SS 和 Palguard 防作弊系統、玩家列表、線上地圖、多存檔管理和模組管理等功能，大幅提升伺服器的管理效率和玩家體驗。
 - **Palworld 1.0 支援**：跨平台設定、語音聊天、REST API 管理、自動重啟與 1.0 世界參數。
+- **遠端伺服器管理（v1.3.0）**：透過 REST API 連線管理 VPS／遠端主機上已運行的 1.0 專服（踢人、廣播、存檔、關機等）。
 
 ---
 
@@ -29,6 +30,14 @@ palserver-GUI 可協助管理 **Palworld 1.0**（2026/7/10 正式版）專用伺
 | **1.0 世界設定** | 語音聊天、牧場速度、公會會長移交、PvP 掉落等 |
 | **自動重啟** | 建議 1.0 伺服器每 6–12 小時重啟，緩解記憶體壓力 |
 | **一鍵更新** | 透過 SteamCMD 將專用伺服器更新至 1.0 |
+| **遠端連接（v1.3.0）** | 首頁右鍵建立遠端連接，測試 REST 後管理遠端 1.0 專服 |
+
+**遠端管理前提：**
+
+- 遠端伺服器需已啟用 `RESTAPIEnabled=True`
+- 從本機 GUI 所在電腦可連線至遠端 `8212/TCP`（防火牆／埠轉發需自行設定）
+- REST 使用 HTTP 明文 + Basic Auth，請勿在不可信網路暴露 Admin 密碼
+- v1.3.0 遠端**不支援**：本機啟動程序、Steam 更新、Mod 管理、世界設定編輯、線上地圖
 
 **連線埠參考：**
 
@@ -89,8 +98,9 @@ palserver-GUI 可協助管理 **Palworld 1.0**（2026/7/10 正式版）專用伺
 
 ### 安裝連結及更新
 
-- 安裝包 (推薦)：[點我下載](https://github.com/ming065802/palserver-GUI/releases/download/1.2.1/1.2.1-palserver-gui.exe)
-- 免安裝版本：[點我下載](https://github.com/ming065802/palserver-GUI/releases/download/1.2.1/unpack-1.2.1-palserver-gui.zip)
+- 安裝包 (推薦)：[點我下載](https://github.com/ming065802/palserver-GUI/releases/download/1.3.0/1.3.0-palserver-gui.exe)
+- 免安裝版本：[點我下載](https://github.com/ming065802/palserver-GUI/releases/download/1.3.0/unpack-1.3.0-palserver-gui.zip)
+- 上一版 v1.2.1：[安裝包](https://github.com/ming065802/palserver-GUI/releases/download/1.2.1/1.2.1-palserver-gui.exe) / [免安裝](https://github.com/ming065802/palserver-GUI/releases/download/1.2.1/unpack-1.2.1-palserver-gui.zip)
 
 ### 常見問題
 
@@ -107,6 +117,7 @@ palserver-GUI 可協助管理 **Palworld 1.0**（2026/7/10 正式版）專用伺
 - Steam 玩家建議使用 Direct Connect：`你的IP:8211`
 - 存檔遷移：建議使用 `palworld-save-tools==0.24.0`；1.0 機制變動大，遷移前務必備份
 - Mod 與 1.0：更新後先無 Mod 測試，確認穩定後再逐一啟用
+- **遠端連接（v1.3.0）**：首頁右鍵 → 建立遠端連接 → 填主機 IP、REST 埠 `8212`、Admin 密碼 → 測試連線成功後建立；詳見 [CHANGELOG.md](/CHANGELOG.md)
 
 完整變更紀錄見 [CHANGELOG.md](/CHANGELOG.md)。
 
@@ -145,7 +156,7 @@ palserver-GUI 可協助管理 **Palworld 1.0**（2026/7/10 正式版）專用伺
 
 ### 開發路線圖
 
-v1.2.0 之後的規劃功能（遠端伺服器管理、Mod 相容檢查、設定產生器整合）見 [docs/ROADMAP_P3_FEATURES.md](/docs/ROADMAP_P3_FEATURES.md)。  
+v1.3.0 已交付 **遠端伺服器管理 Tier 1（Phase 1–3）**；後續規劃（遠端 UI 完善、Mod 相容檢查、設定匯入／匯出）見 [docs/ROADMAP_P3_FEATURES.md](/docs/ROADMAP_P3_FEATURES.md)。  
 目前 **Palworld 1.0 已知問題**（設定不生效、Mod 閃退、帕魯資料過時等情境說明）見 [docs/KNOWN_ISSUES.md](/docs/KNOWN_ISSUES.md)。
 
 ### 回報問題

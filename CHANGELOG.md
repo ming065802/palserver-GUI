@@ -2,23 +2,32 @@
 
 All notable changes to **palserver-GUI** are documented in this file.
 
-## [Unreleased]
+## [1.3.0] — 2026-07-13
+
+Palworld 1.0 **remote server management** (P3 Feature 1 Tier 1, Phases 1–3).
 
 ### Added
 
-- P3 remote Tier 1 Phase 1: `getAdminConnectionConfig` / `resolveAdminConnectionConfig` for local vs remote admin host resolution
-- `remote-settings.json` read/write services and `RemoteSettings` type
-- P3 remote Tier 1 Phase 2: `testRemoteConnection` and `createRemoteServerInstance` IPC handlers
-- Remote instance guards for local spawn, duplicate, and shutdown flows
-- P3 remote Tier 1 Phase 3: `CreateRemoteServerAlert` UI with connection test, Home entry, and remote badge
-- Unit tests for admin connection config, REST admin config, and remote connection helpers
+- **遠端伺服器連接**：首頁右鍵「建立遠端連接」，可連線至 VPS／遠端主機上已運行的 1.0 專服
+- 建立前 **REST 連線測試**（`GET /v1/api/info`），失敗時顯示明確錯誤（埠不通、密碼錯、REST 未啟用）
+- 遠端實例列表 **「遠端」badge** 標記
+- `getAdminConnectionConfig` / `resolveAdminConnectionConfig`：本機與遠端 admin host 解析
+- `remote-settings.json` 讀寫與 `RemoteSettings` 型別
+- IPC：`testRemoteConnection`、`createRemoteServerInstance`
+- 單元與整合測試（admin 連線解析、遠端建立流程、mock REST）
 
 ### Changed
 
-- `ServerInstanceSetting` extended with optional `isRemote`, `remoteHost`, `remoteRestPort`, `remoteRconPort`
-- `getWorldSettingsByServerId` reads `remote-settings.json` for remote instances
-- REST/RCON IPC, `restAdmin`, exec shutdown/restart, and online map proxy use parameterized host instead of hardcoded `127.0.0.1`
-- Home context menu re-enables **建立遠端連接** entry
+- `ServerInstanceSetting` 新增 `isRemote`、`remoteHost`、`remoteRestPort`、`remoteRconPort`
+- `getWorldSettingsByServerId` 對遠端實例讀取 `remote-settings.json`
+- REST/RCON、自動重啟、線上地圖 proxy 改為參數化 host（不再硬編碼 `127.0.0.1`）
+- 遠端實例：`execStartServer` 不 spawn 本機程序；`execShutdownServer` 改走 REST；不可複製遠端實例
+
+### Known limitations (v1.3.0)
+
+- 遠端 Tier 1 **尚未**隱藏啟動按鈕、世界設定、Mod 管理等本機專用 UI（計畫 v1.3.1 / Phase 4）
+- 遠端**不支援**：Steam 更新、Mod 管理、日誌、備份、世界設定 INI 編輯、線上地圖 proxy
+- P3 功能 2（Mod 相容檢查）、功能 5（設定匯入／匯出）仍規劃中，見 `docs/ROADMAP_P3_FEATURES.md`
 
 ---
 
