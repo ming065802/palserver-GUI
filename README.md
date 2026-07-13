@@ -1,6 +1,6 @@
 # palserver GUI
 
-![RELEASE](https://img.shields.io/badge/RELEASE-1.1.0-green)
+![RELEASE](https://img.shields.io/badge/RELEASE-1.2.0-green)
 [![Website](https://img.shields.io/badge/website-click-blue)](https://dalufishes-team.gitbook.io/palserver-gui-en)
 [![Discord](https://img.shields.io/badge/discord-click-blue)](https://discord.gg/sgMMdUZd3V)
 ![Make With Love](https://img.shields.io/badge/make_with_%E2%9D%A4%EF%B8%8F-white)
@@ -14,7 +14,7 @@ palserver GUI 是一款全圖形化介面的專用伺服器架設、管理工具
 - **開箱即用**：易於上手，傻瓜式安裝 + 一鍵啟動伺服器。
 - **全圖形化介面**：提供完整且功能強大的 GUI 介面調整世界設定、伺服器設定等。
 - **強大功能擴展**：內建 UE4SS 和 Palguard 防作弊系統、玩家列表、線上地圖、多存檔管理和模組管理等功能，大幅提升伺服器的管理效率和玩家體驗。
-- **Palworld 1.0 支援**（開發中）：跨平台設定、語音聊天、REST API 管理、自動重啟與 1.0 世界參數。
+- **Palworld 1.0 支援**：跨平台設定、語音聊天、REST API 管理、自動重啟與 1.0 世界參數。
 
 ---
 
@@ -89,8 +89,8 @@ palserver-GUI 可協助管理 **Palworld 1.0**（2026/7/10 正式版）專用伺
 
 ### 安裝連結及更新
 
-- 安裝包 (推薦)：[點我下載](https://github.com/Dalufishe/palserver-GUI/releases/download/1.1.0/1.1.0-palserver-gui.exe)
-- 免安裝版本：[點我下載](https://github.com/Dalufishe/palserver-GUI/releases/download/1.1.0/unpack-1.1.0-palserver-gui.zip)
+- 安裝包 (推薦)：[點我下載](https://github.com/ming065802/palserver-GUI/releases/download/1.2.0/1.2.0-palserver-gui.exe)
+- 免安裝版本：[點我下載](https://github.com/ming065802/palserver-GUI/releases/download/1.2.0/unpack-1.2.0-palserver-gui.zip)
 
 ### 常見問題
 
@@ -145,7 +145,7 @@ palserver-GUI 可協助管理 **Palworld 1.0**（2026/7/10 正式版）專用伺
 
 ### 回報問題
 
-目前專案持續維護中，若您使用 Palworld 1.0 專服，建議追蹤 [GitHub Releases](https://github.com/Dalufishe/palserver-GUI/releases) 與 [CHANGELOG.md](/CHANGELOG.md) 以取得最新 1.0 相容更新。若發現錯誤歡迎到 [issues](https://github.com/Dalufishe/palserver-GUI/issues) 發表。
+目前專案持續維護中，若您使用 Palworld 1.0 專服，建議追蹤 [GitHub Releases](https://github.com/ming065802/palserver-GUI/releases) 與 [CHANGELOG.md](/CHANGELOG.md) 以取得最新 1.0 相容更新。若發現錯誤歡迎到 [issues](https://github.com/ming065802/palserver-GUI/issues) 發表。
 
 ### 特別感謝
 

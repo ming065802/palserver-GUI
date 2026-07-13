@@ -2,7 +2,9 @@
 
 All notable changes to **palserver-GUI** are documented in this file.
 
-## [Unreleased] — Palworld 1.0 alignment
+## [1.2.0] — 2026-07-13
+
+Palworld **1.0** alignment release.
 
 ### Added
 
