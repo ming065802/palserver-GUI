@@ -6,6 +6,8 @@ All notable changes to **palserver-GUI** are documented in this file.
 
 ### Added
 
+- **Discord Bot（Phase 2）**：新增 `/players`、`/announce` slash 指令；透過 Management API 代理 Palworld REST API（玩家列表、全服廣播），bot 無需持有 Admin 密碼
+- Management API 新增 `GET /api/servers/:id/players`、`POST /api/servers/:id/announce` 端點
 - **Discord Bot（Phase 1）**：新增獨立 `discord-bot/` Node.js 專案，透過 Management API 支援 `/status`、`/servers`、`/start`、`/stop`、`/restart` slash 指令
 - GUI 設定頁可啟用 Discord Bot、配置 Token／Guild／角色權限與預設 `serverId`；啟動 GUI 時可選 spawn bot，關閉 GUI 時終止子程序
 - 五語系 i18n、`discord-bot/README.md`、`docs/WINDOWS_E2E_TEST_CHECKLIST.md` §2D、單元測試
@@ -20,7 +22,7 @@ Daily **scheduled stop / start / restart** and **local Management API** for auto
 
 - **每日排程啟停**：伺服器管理 →「排程」分頁可設定每日定時關閉、啟動、重啟；支援提前廣播警告分鐘數；本機實例支援三項，遠端實例支援關閉與重啟（啟動需本機程序）
 - **本機 Management API（方案 A）**：設定頁可啟用 HTTP API（預設關閉、埠 `3435`、`127.0.0.1`），支援本機實例的狀態查詢、啟動、關閉、重啟；遠端實例僅支援狀態與關閉，啟動／重啟回傳 `501`
-- 端點：`GET /api/health`、`GET /api/servers`、`GET /api/servers/:id/status`、`POST .../start|stop|restart`
+- 端點：`GET /api/health`、`GET /api/servers`、`GET /api/servers/:id/status`、`POST .../start|stop|restart`、`GET .../players`、`POST .../announce`
 - API 金鑰認證（`Authorization: Bearer` 或 `X-API-Key`）；綁定非本機位址時自動產生金鑰
 - Management API 單元與整合測試；CI workflow 驗證步驟
 

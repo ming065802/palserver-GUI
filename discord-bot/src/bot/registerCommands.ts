@@ -1,6 +1,8 @@
 import { REST, Routes, SlashCommandBuilder } from 'discord.js';
 import { DiscordBotConfig } from '../types';
 import { restartCommand } from '../commands/restart';
+import { announceCommand } from '../commands/announce';
+import { playersCommand } from '../commands/players';
 import { serversCommand } from '../commands/servers';
 import { startCommand } from '../commands/start';
 import { statusCommand } from '../commands/status';
@@ -9,6 +11,8 @@ import { stopCommand } from '../commands/stop';
 const commandBuilders = [
   statusCommand,
   serversCommand,
+  playersCommand,
+  announceCommand,
   startCommand,
   stopCommand,
   restartCommand,

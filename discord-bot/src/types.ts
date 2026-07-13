@@ -47,3 +47,18 @@ export type ManagementApiErrorBody = {
   code?: string;
   message?: string;
 };
+
+export type PalworldPlayer = {
+  name?: string;
+  playerId?: string;
+  userId?: string;
+  ip?: string;
+  ping?: number;
+  location_x?: number;
+  location_y?: number;
+  level?: number;
+};
+
+export type PalworldPlayersResponse = {
+  players?: PalworldPlayer[];
+};

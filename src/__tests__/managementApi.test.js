@@ -44,6 +44,11 @@ jest.mock('../main/services/management-api/serverLifecycle', () => ({
   },
 }));
 
+jest.mock('../main/services/management-api/serverRestProxy', () => ({
+  getManagedServerPlayers: jest.fn(),
+  announceManagedServer: jest.fn(),
+}));
+
 import {
   getServerLifecycleStatus,
   listServerLifecycleStatuses,
@@ -52,12 +57,18 @@ import {
   stopManagedServer,
   ManagementApiError,
 } from '../main/services/management-api/serverLifecycle';
+import {
+  announceManagedServer,
+  getManagedServerPlayers,
+} from '../main/services/management-api/serverRestProxy';
 
 const mockedGetStatus = getServerLifecycleStatus;
 const mockedListStatuses = listServerLifecycleStatuses;
 const mockedStart = startManagedServer;
 const mockedStop = stopManagedServer;
 const mockedRestart = restartManagedServer;
+const mockedGetPlayers = getManagedServerPlayers;
+const mockedAnnounce = announceManagedServer;
 
 function createTestApp() {
   const app = express();
@@ -266,6 +277,67 @@ describe('management api routes', () => {
     expect(response.status).toBe(200);
     expect(response.body.running).toBe(true);
     expect(mockedGetStatus).toHaveBeenCalledWith('local-1');
+  });
+
+  it('returns server players', async () => {
+    mockedGetPlayers.mockResolvedValue({
+      players: [{ name: 'Alice', level: 12, ping: 42 }],
+    });
+
+    const app = createTestApp();
+    const response = await requestTestApp(
+      app,
+      'GET',
+      '/api/servers/local-1/players',
+      null,
+      { Authorization: 'Bearer test-secret-key' },
+    );
+
+    expect(response.status).toBe(200);
+    expect(response.body.players).toHaveLength(1);
+    expect(mockedGetPlayers).toHaveBeenCalledWith('local-1');
+  });
+
+  it('announces to a running server', async () => {
+    mockedAnnounce.mockResolvedValue({
+      serverId: 'local-1',
+      message: 'Server maintenance in 5 minutes',
+      announced: true,
+    });
+
+    const app = createTestApp();
+    const response = await requestTestApp(
+      app,
+      'POST',
+      '/api/servers/local-1/announce',
+      { message: 'Server maintenance in 5 minutes' },
+      { Authorization: 'Bearer test-secret-key' },
+    );
+
+    expect(response.status).toBe(200);
+    expect(response.body.announced).toBe(true);
+    expect(mockedAnnounce).toHaveBeenCalledWith(
+      'local-1',
+      'Server maintenance in 5 minutes',
+    );
+  });
+
+  it('returns 409 when players are requested for a stopped server', async () => {
+    mockedGetPlayers.mockRejectedValue(
+      new ManagementApiError(409, 'SERVER_NOT_RUNNING', 'Server is not running'),
+    );
+
+    const app = createTestApp();
+    const response = await requestTestApp(
+      app,
+      'GET',
+      '/api/servers/local-1/players',
+      null,
+      { Authorization: 'Bearer test-secret-key' },
+    );
+
+    expect(response.status).toBe(409);
+    expect(response.body.code).toBe('SERVER_NOT_RUNNING');
   });
 });
 

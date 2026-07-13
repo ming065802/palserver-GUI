@@ -47,8 +47,11 @@ npm run dev
 | `/start [serverId]` | 啟動本機實例 | Admin 角色／使用者 |
 | `/stop [serverId]` | 關閉實例 | Admin 角色／使用者 |
 | `/restart [serverId]` | 重啟本機實例 | Admin 角色／使用者 |
+| `/players [serverId]` | 查詢線上玩家列表 | 所有人 |
+| `/announce message [serverId]` | 向遊戲內發送全服廣播 | Admin 角色／使用者 |
 
-遠端實例的 `/start`、`/restart` 會回傳 Management API `501` 的友善說明。
+遠端實例的 `/start`、`/restart` 會回傳 Management API `501` 的友善說明。  
+`/players`、`/announce` 需伺服器已運行且已啟用 Palworld REST API；bot 透過 Management API 代理，**無需**在 `config.json` 存放 Admin 密碼。
 
 ## 獨立部署
 

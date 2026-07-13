@@ -44,6 +44,10 @@ export async function restGetInfo(config: RestAdminConfig) {
   return restRequest(config, '/info');
 }
 
+export async function restGetPlayers(config: RestAdminConfig) {
+  return restRequest(config, '/players');
+}
+
 export async function restSave(config: RestAdminConfig) {
   return restRequest(config, '/save', { method: 'post' });
 }

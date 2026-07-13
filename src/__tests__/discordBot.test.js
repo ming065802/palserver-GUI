@@ -10,6 +10,7 @@ import {
 import { assertCanManage } from '../../discord-bot/src/auth/assertAllowed';
 import { UserFacingError } from '../../discord-bot/src/config';
 import { formatStatusEmbed } from '../../discord-bot/src/utils/formatStatusEmbed';
+import { formatPlayersEmbed } from '../../discord-bot/src/utils/formatPlayersEmbed';
 
 const apiOptions = {
   baseUrl: 'http://127.0.0.1:3435',
@@ -57,6 +58,32 @@ describe('discord-bot managementApiClient', () => {
   it('formats connection errors', () => {
     const error = new ManagementApiClientError(0, '無法連線至 Management API');
     expect(formatManagementApiError(error)).toContain('Management API');
+  });
+
+  it('calls players endpoint', async () => {
+    global.fetch.mockResolvedValue({
+      ok: true,
+      json: async () => ({ players: [{ name: 'Bob', level: 5 }] }),
+    });
+
+    const client = createManagementApiClient(apiOptions);
+    const result = await client.getServerPlayers('local-1');
+
+    expect(result.players).toHaveLength(1);
+    expect(global.fetch).toHaveBeenCalledWith(
+      'http://127.0.0.1:3435/api/servers/local-1/players',
+      expect.objectContaining({ method: 'GET' }),
+    );
+  });
+
+  it('formats rest api disabled errors', () => {
+    const error = new ManagementApiClientError(
+      503,
+      'REST API is disabled for this server',
+      'REST_API_DISABLED',
+    );
+
+    expect(formatManagementApiError(error)).toContain('REST API');
   });
 });
 
@@ -144,5 +171,25 @@ describe('discord-bot formatStatusEmbed', () => {
     expect(embed.data.fields?.some((field) => field.name === '運行中')).toBe(
       true,
     );
+  });
+});
+
+describe('discord-bot formatPlayersEmbed', () => {
+  it('lists online players', () => {
+    const embed = formatPlayersEmbed('demo', [
+      { name: 'Alice', level: 10, ping: 35 },
+      { name: 'Bob', level: 5 },
+    ]);
+
+    expect(embed.data.title).toContain('demo');
+    expect(embed.data.description).toContain('Alice');
+    expect(embed.data.footer?.text).toContain('2');
+  });
+
+  it('shows empty state when no players are online', () => {
+    const embed = formatPlayersEmbed('demo', []);
+
+    expect(embed.data.description).toContain('沒有玩家');
+    expect(embed.data.footer?.text).toContain('0');
   });
 });
