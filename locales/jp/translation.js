@@ -216,6 +216,19 @@ const jp = {
     '設定ファイル、モッド、ワールドファイルを含めて複製します:',
   ExportServer: 'サーバーエクスポート',
   CreateRemoteServer: 'リモート接続作成',
+  CreateRemoteServerDesc:
+    'VPS やリモートホストで稼働中の Palworld 1.0 専用サーバーに接続します。REST API が有効で、8212 番ポートにこの PC から到達できることを確認してください。',
+  RemoteServerBadge: 'リモート',
+  TestConnection: '接続テスト',
+  TestingConnection: 'テスト中…',
+  RemoteConnectionSuccess: '接続に成功しました。リモート接続を作成できます。',
+  RemoteConnectionInvalidHost: 'リモートホストの IP またはドメイン名を入力してください。',
+  RemoteConnectionAuthFailed: 'Admin パスワードが正しくありません。リモートサーバー設定を確認してください。',
+  RemoteConnectionFailed:
+    'リモート REST API に接続できません。ファイアウォール、ポート転送、ホストアドレスを確認してください。',
+  RemoteConnectionRestDisabled:
+    'リモートサーバーで REST API が無効、またはエンドポイントにアクセスできません。',
+  RemoteConnectionTestRequired: '作成前に「接続テスト」を実行し、成功を確認してください。',
   ChangeServerIcon: 'サーバーアイコン変更',
   OpenFolder: 'その他ファイル場所',
   ServerFolder: 'サーバーフォルダ',

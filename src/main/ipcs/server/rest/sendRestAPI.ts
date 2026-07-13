@@ -1,8 +1,7 @@
-import { ipcMain, ipcRenderer } from 'electron';
+import { ipcMain } from 'electron';
 import Channels from '../../channels';
-import trimWorldSettingsString from '../../../../utils/trimWorldSettingsString';
 import axios from 'axios';
-import getWorldSettingsByServerId from '../../../services/worldSettings/getWorldSettingsByServerId';
+import getAdminConnectionConfig from '../../../services/admin/getAdminHost';
 
 ipcMain.handle(
   Channels.sendRestAPI,
@@ -12,17 +11,14 @@ ipcMain.handle(
     api: string,
     options?: { body: any; method: string },
   ) => {
-    const worldSettings = await getWorldSettingsByServerId(serverId);
+    const { host, restPort, adminPassword } =
+      await getAdminConnectionConfig(serverId);
 
-    const { RESTAPIPort } = worldSettings;
-    const username = 'admin';
-    const password = trimWorldSettingsString(worldSettings.AdminPassword);
-
-    const result = await axios(`http://127.0.0.1:${RESTAPIPort}/v1/api${api}`, {
+    const result = await axios(`http://${host}:${restPort}/v1/api${api}`, {
       method: options?.method || 'get',
       auth: {
-        username,
-        password,
+        username: 'admin',
+        password: adminPassword,
       },
       data: options?.body,
     });

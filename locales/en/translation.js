@@ -235,6 +235,19 @@ const en = {
     'Duplication will include all configuration files, modules, and world files:',
   ExportServer: 'Export Server',
   CreateRemoteServer: 'Remote Connection',
+  CreateRemoteServerDesc:
+    'Connect to a Palworld 1.0 dedicated server already running on a VPS or remote host. Ensure REST API is enabled and port 8212 is reachable from this PC.',
+  RemoteServerBadge: 'Remote',
+  TestConnection: 'Test Connection',
+  TestingConnection: 'Testing…',
+  RemoteConnectionSuccess: 'Connection successful. You can create the remote link.',
+  RemoteConnectionInvalidHost: 'Enter a remote host IP address or domain name.',
+  RemoteConnectionAuthFailed: 'Admin password is incorrect. Check the remote server settings.',
+  RemoteConnectionFailed:
+    'Unable to reach the remote REST API. Check firewall rules, port forwarding, and the host address.',
+  RemoteConnectionRestDisabled:
+    'REST API is disabled on the remote server or the endpoint is unavailable.',
+  RemoteConnectionTestRequired: 'Run Test Connection successfully before creating.',
   ChangeServerIcon: 'Change Server Icon',
   OpenFolder: 'Open Folder',
   ServerFolder: 'Server Folder',

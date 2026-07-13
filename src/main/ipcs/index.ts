@@ -1,5 +1,7 @@
 // instance
 import './server/instance/createServerInstance';
+import './server/instance/createRemoteServerInstance';
+import './server/instance/testRemoteConnection';
 import './server/instance/editServerInstance';
 import './server/instance/deleteServerInstance';
 import './server/instance/duplicateServerInstance';

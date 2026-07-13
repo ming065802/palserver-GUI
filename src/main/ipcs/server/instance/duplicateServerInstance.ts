@@ -9,10 +9,17 @@ import uniqid from 'uniqid';
 import { ServerInstanceSetting } from '../../../../types/ServerInstanceSetting.types';
 import getWorldSettingsByServerId from '../../../services/worldSettings/getWorldSettingsByServerId';
 import setWorldSettingsiniByServerId from '../../../services/worldSettings/setWorldSettingsiniByServerId';
+import getServerInfoByServerId from '../../../services/serverInstanceSettings/getServerInfoByServerId';
 
 ipcMain.handle(
   Channels.duplicateServerInstance,
   async (event, fromServerId: string, newServerName: string) => {
+    const sourceServerInfo = await getServerInfoByServerId(fromServerId);
+
+    if (sourceServerInfo.isRemote) {
+      throw new Error('Remote server instances cannot be duplicated');
+    }
+
     const newServerId = uniqid('sr-');
     const createdTime = Date.now();
 

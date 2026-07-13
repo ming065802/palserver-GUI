@@ -14,20 +14,26 @@ import sleep from '../../../../utils/sleep';
 import pidusage from 'pidusage';
 import osu from 'node-os-utils';
 import axios from 'axios';
-import trimWorldSettingsString from '../../../../utils/trimWorldSettingsString';
 import sendCommand from '../../../utils/rcon/sendCommand';
 import {
-  getRestAdminConfig,
   isRestApiEnabled,
   restGetInfo,
   restSave,
   restShutdown,
 } from '../../../services/admin/restAdmin';
+import getAdminConnectionConfig, {
+  getRconOptions,
+} from '../../../services/admin/getAdminHost';
 
 ipcMain.on(
   Channels.execStartServer,
   async (event, serverId, queryport = 27015) => {
     const serverInfo = await getServerInfoByServerId(serverId);
+
+    if (serverInfo.isRemote) {
+      return;
+    }
+
     const serverPath = path.join(
       USER_SERVER_INSTANCES_PATH,
       serverId,
@@ -262,12 +268,13 @@ const autoRestart = async (
     'Pal/Saved/Config/WindowsServer/PalWorldSettings.ini',
   );
   const worldSettings = await readWorldSettingsini(worldSettingsPath);
-  const restConfig = getRestAdminConfig(worldSettings);
-  const serverOptions = {
-    ipAddress: '127.0.0.1',
-    port: worldSettings.RCONPort,
-    password: trimWorldSettingsString(worldSettings.AdminPassword),
+  const connection = await getAdminConnectionConfig(serverId);
+  const restConfig = {
+    host: connection.host,
+    port: connection.restPort,
+    password: connection.adminPassword,
   };
+  const serverOptions = getRconOptions(connection);
   const isEnabledRCON = worldSettings.RCONEnabled;
   const useRestApi = isRestApiEnabled(worldSettings);
 
@@ -311,12 +318,13 @@ const crashRestart = async (
     'Pal/Saved/Config/WindowsServer/PalWorldSettings.ini',
   );
   const worldSettings = await readWorldSettingsini(worldSettingsPath);
-  const restConfig = getRestAdminConfig(worldSettings);
-  const serverOptions = {
-    ipAddress: '127.0.0.1',
-    port: worldSettings.RCONPort,
-    password: trimWorldSettingsString(worldSettings.AdminPassword),
+  const connection = await getAdminConnectionConfig(serverId);
+  const restConfig = {
+    host: connection.host,
+    port: connection.restPort,
+    password: connection.adminPassword,
   };
+  const serverOptions = getRconOptions(connection);
   const isEnabledRCON = worldSettings.RCONEnabled;
   const useRestApi = isRestApiEnabled(worldSettings);
 

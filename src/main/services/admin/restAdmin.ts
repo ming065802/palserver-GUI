@@ -1,7 +1,9 @@
 import axios from 'axios';
 import trimWorldSettingsString from '../../../utils/trimWorldSettingsString';
+import { LOCALHOST } from './adminConnectionConfig';
 
 export type RestAdminConfig = {
+  host: string;
   port: number;
   password: string;
 };
@@ -12,8 +14,10 @@ export function isRestApiEnabled(worldSettings: Record<string, unknown>) {
 
 export function getRestAdminConfig(
   worldSettings: Record<string, unknown>,
+  host = LOCALHOST,
 ): RestAdminConfig {
   return {
+    host,
     port: Number(worldSettings.RESTAPIPort) || 8212,
     password: trimWorldSettingsString(String(worldSettings.AdminPassword || '')),
   };
@@ -24,7 +28,7 @@ async function restRequest(
   api: string,
   options?: { method?: string; body?: unknown },
 ) {
-  const result = await axios(`http://127.0.0.1:${config.port}/v1/api${api}`, {
+  const result = await axios(`http://${config.host}:${config.port}/v1/api${api}`, {
     method: options?.method || 'get',
     auth: {
       username: 'admin',
