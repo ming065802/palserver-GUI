@@ -2,6 +2,31 @@
 
 All notable changes to **palserver-GUI** are documented in this file.
 
+## [1.3.2] — 2026-07-13
+
+Palworld 1.0 **remote server management** Tier 1 Phase 5 — status display and edge cases.
+
+### Added
+
+- `useServerOnlineStatus` hook：遠端實例每 30 秒輪詢 REST `/info` 判斷 Online/Offline
+- 遠端玩家頁面顯示封禁名單限制說明（`RemoteBanListNotAvailable`）
+- i18n：`RemoteBanListNotAvailable`（五語系）
+
+### Changed
+
+- `ServerRunningBadge`：遠端實例改依 REST 連線狀態顯示，不再依本機程序
+- `getServerBanList`：遠端實例回傳 `{ bans: [], remoteLimited: true }`，避免讀取不存在的本機 `banlist.txt`
+- `OnlineMap`：遠端實例不渲染 iframe（防禦性處理）
+- `preload.ts`：`SERVER_PALGUARD_VERSION` / `SERVER_UE4SS_VERSION` 對遠端實例 skip
+- `sendRCONCommand`：失敗時回傳 `null`，不再吞掉錯誤
+
+### Known limitations (v1.3.2)
+
+- 遠端封禁名單仍無法從 GUI 讀取遠端 `banlist.txt`（需 Tier 2 SSH/SFTP 或官方 REST）
+- 線上地圖 proxy 仍僅支援本機實例
+
+---
+
 ## [1.3.1] — 2026-07-13
 
 Palworld 1.0 **remote server management** Tier 1 Phase 4 — UI gating (`isRemote`).
@@ -22,8 +47,8 @@ Palworld 1.0 **remote server management** Tier 1 Phase 4 — UI gating (`isRemot
 
 ### Known limitations (v1.3.1)
 
-- 遠端 `ServerRunningBadge` 仍依本機程序狀態（Phase 5）
-- 遠端封禁列表仍讀不到本機 `banlist.txt`（Phase 5）
+- ~~遠端 `ServerRunningBadge` 仍依本機程序狀態（Phase 5）~~ → **v1.3.2 Phase 5 已實作**
+- ~~遠端封禁列表仍讀不到本機 `banlist.txt`（Phase 5）~~ → **v1.3.2 已顯示限制說明**
 
 ---
 

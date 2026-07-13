@@ -12,6 +12,8 @@ ipcMain.handle(
       const connection = await getAdminConnectionConfig(serverId);
       const response = await sendCommand(getRconOptions(connection), command);
       return response;
-    } catch (e) {}
+    } catch (e) {
+      return null;
+    }
   },
 );

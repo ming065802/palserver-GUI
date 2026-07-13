@@ -15,6 +15,28 @@ import {
 
 export type ChannelsType = (typeof Channels)[keyof typeof Channels];
 
+function isRemoteServerInstance(serverId: string): boolean {
+  try {
+    const serverInstanceSettingPath = path.join(
+      USER_SERVER_INSTANCES_PATH,
+      serverId,
+      '.pal',
+    );
+
+    if (!fs.existsSync(serverInstanceSettingPath)) {
+      return false;
+    }
+
+    const serverInfo = JSON.parse(
+      fs.readFileSync(serverInstanceSettingPath, { encoding: 'utf-8' }),
+    );
+
+    return Boolean(serverInfo.isRemote);
+  } catch {
+    return false;
+  }
+}
+
 const electronHandler = {
   ipcRenderer: {
     sendMessage(channel: any, ...args: any[]) {
@@ -64,6 +86,10 @@ const electronHandler = {
       return version;
     },
     SERVER_PALGUARD_VERSION(serverId: string) {
+      if (isRemoteServerInstance(serverId)) {
+        return 0;
+      }
+
       try {
         const version = fs.readFileSync(
           path.join(
@@ -88,6 +114,10 @@ const electronHandler = {
       return Number(version);
     },
     SERVER_UE4SS_VERSION(serverId: string) {
+      if (isRemoteServerInstance(serverId)) {
+        return 0;
+      }
+
       try {
         const version = fs.readFileSync(
           path.join(

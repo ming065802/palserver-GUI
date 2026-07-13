@@ -229,6 +229,8 @@ const zh_tw = {
   RemoteEndpoint: '遠端位址',
   EditRemoteServer: '編輯遠端連線',
   RemoteFeatureNotSupported: '遠端連線不支援此功能。',
+  RemoteBanListNotAvailable:
+    '遠端連線無法讀取本機封禁名單；請在遠端伺服器上管理 banlist.txt，或透過 REST 封禁線上玩家。',
   TestConnection: '測試連線',
   TestingConnection: '測試中…',
   RemoteConnectionSuccess: '連線成功，可以建立遠端連接。',

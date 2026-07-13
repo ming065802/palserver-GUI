@@ -215,6 +215,8 @@ const zh_cn = {
   RemoteEndpoint: '远程地址',
   EditRemoteServer: '编辑远程连接',
   RemoteFeatureNotSupported: '远程连接不支持此功能。',
+  RemoteBanListNotAvailable:
+    '远程连接无法读取本地封禁名单；请在远程服务器上管理 banlist.txt，或通过 REST 封禁在线玩家。',
   TestConnection: '测试连接',
   TestingConnection: '测试中…',
   RemoteConnectionSuccess: '连接成功，可以建立远程连接。',

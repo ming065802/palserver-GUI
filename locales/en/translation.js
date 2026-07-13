@@ -241,6 +241,8 @@ const en = {
   RemoteEndpoint: 'Remote endpoint',
   EditRemoteServer: 'Edit remote connection',
   RemoteFeatureNotSupported: 'This feature is not available for remote connections.',
+  RemoteBanListNotAvailable:
+    'Remote connections cannot read the local ban list. Manage banlist.txt on the remote server, or ban online players via REST.',
   TestConnection: 'Test Connection',
   TestingConnection: 'Testing…',
   RemoteConnectionSuccess: 'Connection successful. You can create the remote link.',

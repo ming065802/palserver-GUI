@@ -11,7 +11,6 @@ import PlayerMoreAction from '../PlayerMoreAction/PlayerMoreAction';
 import { PiEye, PiEyeClosed } from 'react-icons/pi';
 import useAllServerIcons from '../../../../hooks/server/icons/useAllServerIcons';
 import PlayerAvatar from './PlayerAvatar';
-import useServerBanList from '../../../../hooks/server/ban/useServerBanList';
 import { handleCopyToClickboard } from '../../../RightSection/ServerPreview/ServerPreview';
 import {
   restBanPlayer,
