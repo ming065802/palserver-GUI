@@ -1,12 +1,40 @@
 import { ipcMain } from 'electron';
 import Channels from '../../channels';
+import getServerInfoByServerId from '../../../services/serverInstanceSettings/getServerInfoByServerId';
 import getWorldSettingsByServerId from '../../../services/worldSettings/getWorldSettingsByServerId';
 import sendCommand from '../../../utils/rcon/sendCommand';
 import getAdminConnectionConfig, {
   getRconOptions,
 } from '../../../services/admin/getAdminHost';
+import {
+  isRestApiEnabled,
+  restSave,
+  restShutdown,
+} from '../../../services/admin/restAdmin';
 
 ipcMain.on(Channels.execShutdownServer, async (event, serverId, processId) => {
+  const serverInfo = await getServerInfoByServerId(serverId);
+
+  if (serverInfo.isRemote) {
+    const connection = await getAdminConnectionConfig(serverId);
+    const restConfig = {
+      host: connection.host,
+      port: connection.restPort,
+      password: connection.adminPassword,
+    };
+
+    try {
+      if (isRestApiEnabled(await getWorldSettingsByServerId(serverId))) {
+        await restSave(restConfig);
+        await restShutdown(restConfig, 1);
+      }
+    } catch (e) {
+      //
+    }
+
+    return;
+  }
+
   const worldSettings = await getWorldSettingsByServerId(serverId);
   const connection = await getAdminConnectionConfig(serverId);
   const serverOptions = getRconOptions(connection);

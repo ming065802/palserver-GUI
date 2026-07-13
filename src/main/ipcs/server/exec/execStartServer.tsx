@@ -29,6 +29,11 @@ ipcMain.on(
   Channels.execStartServer,
   async (event, serverId, queryport = 27015) => {
     const serverInfo = await getServerInfoByServerId(serverId);
+
+    if (serverInfo.isRemote) {
+      return;
+    }
+
     const serverPath = path.join(
       USER_SERVER_INSTANCES_PATH,
       serverId,

@@ -8,7 +8,9 @@ All notable changes to **palserver-GUI** are documented in this file.
 
 - P3 remote Tier 1 Phase 1: `getAdminConnectionConfig` / `resolveAdminConnectionConfig` for local vs remote admin host resolution
 - `remote-settings.json` read/write services and `RemoteSettings` type
-- Unit tests for admin connection config and `RestAdminConfig` host support
+- P3 remote Tier 1 Phase 2: `testRemoteConnection` and `createRemoteServerInstance` IPC handlers
+- Remote instance guards for local spawn, duplicate, and shutdown flows
+- Unit tests for admin connection config, REST admin config, and remote connection helpers
 
 ### Changed
 

@@ -21,6 +21,8 @@ const Channels = {
   execShutdownServer: 'exec-shutdown-server',
   // 伺服器實體
   createServerInstance: 'create-server-instance',
+  createRemoteServerInstance: 'create-remote-server-instance',
+  testRemoteConnection: 'test-remote-connection',
   editServerInstance: 'edit-server-instance',
   deleteServerInstance: 'delete-server-instance',
   duplicateServerInstance: 'duplicate-server-instance',
