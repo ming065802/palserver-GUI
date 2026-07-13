@@ -84,7 +84,12 @@
       ".erb/dll"
     ],
     "transform": {
-      "\\.(ts|tsx|js|jsx)$": "ts-jest"
+      "\\.(ts|tsx|js|jsx)$": [
+        "ts-jest",
+        {
+          "diagnostics": false
+        }
+      ]
     }
   },
   "dependencies": {

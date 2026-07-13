@@ -12,6 +12,9 @@ import checkNodeEnv from '../scripts/check-node-env';
 
 checkNodeEnv('development');
 
+// Firebase v10+ only exposes subpath exports; bundling the root entry breaks the DLL build.
+const dllExcludedDependencies = new Set(['firebase']);
+
 const dist = webpackPaths.dllPath;
 
 const configuration: webpack.Configuration = {
@@ -31,7 +34,9 @@ const configuration: webpack.Configuration = {
   module: require('./webpack.config.renderer.dev').default.module,
 
   entry: {
-    renderer: Object.keys(dependencies || {}),
+    renderer: Object.keys(dependencies || {}).filter(
+      (dependency) => !dllExcludedDependencies.has(dependency),
+    ),
   },
 
   output: {
