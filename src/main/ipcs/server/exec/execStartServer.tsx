@@ -9,6 +9,7 @@ import fs from 'fs/promises';
 import fsc from 'fs';
 import getServerInfoByServerId from '../../../services/serverInstanceSettings/getServerInfoByServerId';
 import loadUE4SSTemplate from '../../../services/templates/loadUE4SSTemplate';
+import loadPalguardTemplate from '../../../services/templates/loadPalguardTemplate';
 import sleep from '../../../../utils/sleep';
 import pidusage from 'pidusage';
 import osu from 'node-os-utils';
@@ -87,7 +88,7 @@ ipcMain.on(
     else {
       // eslint-disable-next-line no-lonely-if
       if (palguardEnabled) {
-        loadUE4SSTemplate(path.join(serverPath, 'Pal/Binaries/Win64'));
+        loadPalguardTemplate(path.join(serverPath, 'Pal/Binaries/Win64'));
       }
     }
 

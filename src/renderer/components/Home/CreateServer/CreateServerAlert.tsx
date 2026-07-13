@@ -72,6 +72,9 @@ export default function CreateServerAlert() {
       AdminPassword: `"${serverConfigOptions.adminPassword.value}"`,
       RCONEnabled: true,
       RESTAPIEnabled: true,
+      RCONPort: 25575,
+      RESTAPIPort: 8212,
+      CrossplayPlatforms: '(Steam,Xbox,PS5,Mac)',
     });
   };
 
