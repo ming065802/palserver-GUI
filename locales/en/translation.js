@@ -166,7 +166,9 @@ const en = {
   MigrateFourPlayersSaveDesc6:
     "Install the Python execution environment (from the Microsoft Store or official website, and select 'add python.exe to path').",
   MigrateFourPlayersSaveDesc7:
-    "Download the conversion tool from https://github.com/Dalufishe/palworld-host-save-fix/archive/refs/heads/main.zip, unzip it, open a terminal/command prompt window in that directory, and enter 'pip install palworld-save-tools==0.17.1'.",
+    "Download the conversion tool from https://github.com/Dalufishe/palworld-host-save-fix/archive/refs/heads/main.zip, unzip it, open a terminal/command prompt window in that directory, and enter 'pip install palworld-save-tools==0.24.0'.",
+  Palworld10SaveMigrationNote:
+    'Palworld 1.0 changed many mechanics. Always back up your entire SaveGames folder before migrating; if conversion fails, starting a fresh world is recommended.',
   MigrateFourPlayersSaveDesc8: `In the terminal/command prompt, enter 'python fix-host-save.py "here enter the save path(the path from clicking the yellow button) " "additional player file name(ignore .sav) " "00000000000000000000000000000001" True' and press Enter twice.`,
   MigrateFourPlayersSaveDesc9:
     'After the Python script finishes running, start the server.',

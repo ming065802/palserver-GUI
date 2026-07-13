@@ -176,7 +176,9 @@ const fr = {
   MigrateFourPlayersSaveDesc6:
     "Installez l'environnement d'exécution Python (à partir du Microsoft Store ou du site Web officiel et sélectionnez « ajouter python.exe au chemin »).",
   MigrateFourPlayersSaveDesc7:
-    "Téléchargez l'outil de conversion depuis https://github.com/Dalufishe/palworld-host-save-fix/archive/refs/heads/main.zip, décompressez-le, ouvrez une fenêtre de terminal/invite de commande dans ce répertoire et entrez 'pip install palworld-save-tools==0.17.1'.",
+    "Téléchargez l'outil de conversion depuis https://github.com/Dalufishe/palworld-host-save-fix/archive/refs/heads/main.zip, décompressez-le, ouvrez une fenêtre de terminal/invite de commande dans ce répertoire et entrez 'pip install palworld-save-tools==0.24.0'.",
+  Palworld10SaveMigrationNote:
+    'Palworld 1.0 a profondément modifié les mécaniques. Sauvegardez toujours tout le dossier SaveGames avant migration ; en cas d échec, un nouveau monde est recommandé.',
   MigrateFourPlayersSaveDesc8: `Dans le terminal/invite de commande, entrez 'python fix-host-save.py "ici entrez le chemin de sauvegarde (le chemin en cliquant sur le bouton jaune) " "nom du fichier de lecteur supplémentaire (ignorez .sav) " "000000000000000000000000000000001" True' et appuyez deux fois sur Entrée.`,
   MigrateFourPlayersSaveDesc9:
     'Une fois l’exécution du script Python terminée, démarrez le serveur.',
@@ -212,7 +214,7 @@ const fr = {
   Other: 'Autre',
   // 20240218
   RCONEnabledDesc:
-    ' Vous devez activer la console distante (RCON) pour utiliser le tableau de bord.',
+    'Activer RCON (déprécié). Préférez l API REST ; RCON reste utile pour certaines commandes Palguard.',
   RCONFirst: 'Veuillez d abord activer RCON pour activer cette fonctionnalité.',
   ServerBackupRecord: 'Enregistrements de sauvegarde du serveur',
   Ouvert: 'Ouvrir',
@@ -277,7 +279,7 @@ const fr = {
   PerformanceMonitorAnimationEnabledDesc:
     'Activer l animation pour la surveillance des performances. Cela a un léger impact sur les performances. Cela a un léger impact sur les performances lorsqu il est activé.',
   RESTAPIEnabledDesc:
-    'Activer le serveur API REST. Nous vous recommandons fortement de l activer pour bénéficier de toutes les fonctionnalités.',
+    'Activer l API REST (interface recommandée pour Palworld 1.0). Liste des joueurs, kick, ban et redémarrages planifiés.',
   PublicPortDesc: 'Numéro de port public du serveur.',
   RCONPortDesc: 'Numéro de port RCON de la connexion à distance',
   RESTAPIPortDesc: 'Numéro de port réseau de l API REST.',
@@ -316,10 +318,10 @@ const fr = {
   AdminPasswordDesc: 'Définir un mot de passe administrateur.',
   AutoRestart: 'Auto Restart',
   AutoRestartDesc:
-    'Redémarrez le serveur périodiquement. Rcon doit être activé.',
+    'Redémarrez le serveur périodiquement. Nécessite l API REST (ou RCON). Toutes les 6–12 h recommandé pour Palworld 1.0.',
   CrashRestart: 'Redémarrage en cas de crash',
   CrashRestartDesc:
-    'Redémarrez le serveur en cas de crash. Nécessite l activation de RCON.',
+    'Redémarrez le serveur en cas de crash. Nécessite l API REST (ou RCON).',
   OverRamRestart: 'Redémarrage au-delà du seuil de la RAM',
   OverRamRestartDesc:
     'Redémarrez le serveur lorsque l’utilisation de la mémoire dépasse 90 %.',
@@ -421,6 +423,31 @@ const fr = {
   bIsRandomizerPalLevelRandom: 'Activer le niveau Pal aléatoire',
   bIsUseBackupSaveData: 'Activer la sauvegarde du monde',
   bPalLost: 'Pal perdu définitivement à la mort',
+  bEnableVoiceChat: 'Activer le chat vocal de proximité',
+  VoiceChatMaxVolumeDistance: 'Distance volume max du vocal (cm)',
+  VoiceChatZeroVolumeDistance: 'Distance silence du vocal (cm)',
+  MonsterFarmActionSpeedRate: 'Vitesse de production du ranch',
+  AutoTransferMasterThresholdDays: 'Transfert maître de guilde : jours d inactivité',
+  AutoTransferMasterCheckIntervalSeconds:
+    'Transfert maître de guilde : intervalle de vérification (s)',
+  bAdditionalDropItemWhenPlayerKillingInPvPMode: 'Butin PvP supplémentaire',
+  AdditionalDropItemWhenPlayerKillingInPvPMode: 'Type de butin PvP',
+  AdditionalDropItemWhenPlayerKillingInPvPMode_None: 'Aucun',
+  AdditionalDropItemWhenPlayerKillingInPvPMode_PlayerDropItem: 'Objets du joueur',
+  AdditionalDropItemWhenPlayerKillingInPvPMode_PlayerDropInventory: 'Inventaire',
+  AdditionalDropItemNumWhenPlayerKillingInPvPMode: 'Nombre de butins PvP',
+  bDisplayPvPItemNumOnWorldMap_BaseCamp: 'Afficher objets PvP du camp sur la carte',
+  bDisplayPvPItemNumOnWorldMap_Player: 'Afficher objets PvP joueur sur la carte',
+  ItemWeightRate: 'Multiplicateur de poids des objets',
+  ItemCorruptionMultiplier: 'Multiplicateur de corruption des objets',
+  ChatPostLimitPerMinute: 'Limite de messages chat par minute',
+  bAllowClientMod: 'Autoriser les mods clients',
+  bIsShowJoinLeftMessage: 'Afficher les messages entrée/sortie',
+  bUseAuth: 'Exiger l authentification Steam',
+  Difficulty_None: 'Aucune (personnalisé)',
+  Difficulty_Easy: 'Facile',
+  Difficulty_Normal: 'Normal',
+  Difficulty_Hard: 'Difficile',
   BuildSettings: 'Paramètres de construction',
   DropSettings: 'Paramètres de largage',
   FixCompleted: 'Réparation terminée !',

@@ -158,7 +158,9 @@ const jp = {
   MigrateFourPlayersSaveDesc6:
     'Python環境をインストールしてください(マイクロソフトストアまたは公式サイト、add python.exe to pathを選択)。',
   MigrateFourPlayersSaveDesc7:
-    '変換ツールをダウンロード: https://github.com/Dalufishe/palworld-host-save-fix/archive/refs/heads/main.zip 解凍後、コマンドプロンプトでpip install palworld-save-tools==0.17.1を実行。',
+    '変換ツールをダウンロード: https://github.com/Dalufishe/palworld-host-save-fix/archive/refs/heads/main.zip 解凍後、コマンドプロンプトでpip install palworld-save-tools==0.24.0を実行。',
+  Palworld10SaveMigrationNote:
+    'Palworld 1.0では仕様が大きく変わりました。移行前にSaveGamesフォルダ全体を必ずバックアップしてください。変換に失敗した場合は新規ワールドの開始を推奨します。',
   MigrateFourPlayersSaveDesc8: `コマンドプロンプトで python fix-host-save.py "セーブデータパス" "プレイヤーファイル名(.savなし)" "00000000000000000000000000000001" True を入力しEnterを2回押してください。`,
   MigrateFourPlayersSaveDesc9:
     'Pythonスクリプト実行後、サーバーを起動してください。',
@@ -248,9 +250,9 @@ const jp = {
   PerformanceMonitorAnimationEnabledDesc:
     'パフォーマンス監視のアニメーションを有効にします。若干パフォーマンスに影響します。',
   RCONEnabledDesc:
-    'リモートコントロールRCONを有効にします。全機能を利用するために有効化を推奨します。',
+    'リモートコントロールRCONを有効にします（非推奨）。REST APIを優先してください。Palguardの高度なコマンドにはRCONが必要な場合があります。',
   RESTAPIEnabledDesc:
-    'REST APIサーバーを有効にします。全機能を利用するために有効化を推奨します。',
+    'REST APIを有効にします（Palworld 1.0公式推奨）。プレイヤーリスト、キック、BAN、定期再起動に使用します。',
   PublicPortDesc: 'サーバー公開ポート番号。',
   RCONPortDesc: 'リモートコントロールRCONポート番号。',
   RESTAPIPortDesc: 'REST APIネットワークポート番号。',
@@ -286,10 +288,11 @@ const jp = {
   ServerPasswordDesc: 'サーバーのパスワードを設定します。',
   AdminPasswordDesc: '管理者パスワードを設定します。',
   AutoRestart: '自動再起動',
-  AutoRestartDesc: '定期的にサーバーを再起動します。RCON有効時のみ使用可能。',
+  AutoRestartDesc:
+    '定期的にサーバーを再起動します。REST API（またはRCON）が必要です。1.0サーバーでは6〜12時間ごとを推奨します。',
   CrashRestart: 'クラッシュ時再起動',
   CrashRestartDesc:
-    'サーバーがクラッシュした場合に再起動します。RCON有効時のみ使用可能。',
+    'サーバーがクラッシュした場合に再起動します。REST API（またはRCON）が必要です。',
   OverRamRestart: 'メモリ超過時再起動',
   OverRamRestartDesc: 'サーバーのメモリ使用率が90%を超えた場合に再起動します。',
   All: '全体',
@@ -393,6 +396,30 @@ const jp = {
   bIsRandomizerPalLevelRandom: 'パルレベルのランダム化を有効化',
   bIsUseBackupSaveData: 'ワールドバックアップを有効化',
   bPalLost: '死亡時パルを永久喪失',
+  bEnableVoiceChat: '近距離ボイスチャットを有効化',
+  VoiceChatMaxVolumeDistance: 'ボイス最大音量距離（cm）',
+  VoiceChatZeroVolumeDistance: 'ボイス無音距離（cm）',
+  MonsterFarmActionSpeedRate: '牧場生産速度倍率',
+  AutoTransferMasterThresholdDays: 'ギルドマスター移譲：非アクティブ日数',
+  AutoTransferMasterCheckIntervalSeconds: 'ギルドマスター移譲：チェック間隔（秒）',
+  bAdditionalDropItemWhenPlayerKillingInPvPMode: 'PvP撃破時の追加ドロップ',
+  AdditionalDropItemWhenPlayerKillingInPvPMode: 'PvP撃破ドロップ種類',
+  AdditionalDropItemWhenPlayerKillingInPvPMode_None: 'なし',
+  AdditionalDropItemWhenPlayerKillingInPvPMode_PlayerDropItem: 'プレイヤーアイテム',
+  AdditionalDropItemWhenPlayerKillingInPvPMode_PlayerDropInventory: 'インベントリ',
+  AdditionalDropItemNumWhenPlayerKillingInPvPMode: 'PvP撃破追加ドロップ数',
+  bDisplayPvPItemNumOnWorldMap_BaseCamp: 'マップに拠点PvPアイテム数を表示',
+  bDisplayPvPItemNumOnWorldMap_Player: 'マップにプレイヤーPvPアイテム数を表示',
+  ItemWeightRate: 'アイテム重量倍率',
+  ItemCorruptionMultiplier: 'アイテム腐敗速度倍率',
+  ChatPostLimitPerMinute: '1分あたりのチャット上限',
+  bAllowClientMod: 'クライアントMODを許可',
+  bIsShowJoinLeftMessage: '参加/退出メッセージを表示',
+  bUseAuth: 'Steam認証を有効化',
+  Difficulty_None: 'なし（カスタム）',
+  Difficulty_Easy: 'イージー',
+  Difficulty_Normal: 'ノーマル',
+  Difficulty_Hard: 'ハード',
   BuildSettings: '建築物設定',
   DropSettings: 'ドロップ設定',
   FixCompleted: '修復完了！',

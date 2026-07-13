@@ -160,7 +160,9 @@ const zh_tw = {
   MigrateFourPlayersSaveDesc6:
     '安裝 Python 執行環境 (到微軟商店或官網，需點選 add python.exe to path)。',
   MigrateFourPlayersSaveDesc7:
-    '下載轉檔工具 https://github.com/Dalufishe/palworld-host-save-fix/archive/refs/heads/main.zip，解壓縮後在該路徑上開啟終端命令視窗 (cmd)，並輸入 pip install palworld-save-tools==0.17.1。',
+    '下載轉檔工具 https://github.com/Dalufishe/palworld-host-save-fix/archive/refs/heads/main.zip，解壓縮後在該路徑上開啟終端命令視窗 (cmd)，並輸入 pip install palworld-save-tools==0.24.0。',
+  Palworld10SaveMigrationNote:
+    'Palworld 1.0 機制變動較大。遷移或轉檔前請務必備份整個 SaveGames 資料夾；若轉檔失敗，建議開新檔遊玩。',
   MigrateFourPlayersSaveDesc8: `在終端命令行輸入 python fix-host-save.py "這邊輸入存檔路徑 (點開黃色按鈕的路徑) " "多出來的玩家檔案名稱 (忽略 .sav)" "00000000000000000000000000000001" True 並點兩下 Enter 鍵。`,
   MigrateFourPlayersSaveDesc9: '等 Python 腳本執行完畢後，啟動伺服器。',
   MigrateFourPlayersSaveDesc10:

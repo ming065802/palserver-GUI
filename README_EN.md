@@ -1,6 +1,6 @@
 # palserver GUI
 
-![RELEASE](https://img.shields.io/badge/RELEASE-1.1.0-green)
+![RELEASE](https://img.shields.io/badge/RELEASE-1.2.0-green)
 [![Website](https://img.shields.io/badge/website-click-blue)](https://dalufishes-team.gitbook.io/palserver-gui-en)
 [![Discord](https://img.shields.io/badge/discord-click-blue)](https://discord.gg/sgMMdUZd3V)
 ![Make With Love](https://img.shields.io/badge/make_with_%E2%9D%A4%EF%B8%8F-white)
@@ -14,6 +14,35 @@ Palserver GUI is a dedicated server setup and management tool with a fully graph
 - **Easy to use**：Easy to get started, with a foolproof installation and one-click server start.
 - **Fully Graphical Interface**：Provides a complete and powerful GUI for adjusting world settings, server settings, and more.
 - **Powerful Feature Extensions**：Includes built-in UE4SS and Palguard, player list, online maps, multiple save management, and mod management, significantly enhancing server management efficiency and player experience.
+- **Palworld 1.0 support**: crossplay settings, voice chat, REST API admin, auto-restart, and 1.0 world parameters.
+
+---
+
+### Palworld 1.0 dedicated server support
+
+palserver-GUI helps manage **Palworld 1.0** (full release, July 10, 2026) dedicated servers:
+
+| Feature | Description |
+|---------|-------------|
+| **Crossplay** | Configure `CrossplayPlatforms` (Steam / Xbox / PS5 / Mac) in GUI |
+| **REST API** | Recommended admin: player list, kick, ban, broadcast, scheduled restart |
+| **1.0 world settings** | Voice chat, ranch speed, guild master transfer, PvP drops, and more |
+| **Auto-restart** | Recommended every 6–12 hours on 1.0 servers to reduce memory pressure |
+| **One-click update** | Update dedicated server binaries to 1.0 via SteamCMD |
+
+**Port reference:**
+
+- `8211/UDP` — game port (required)
+- `8212/TCP` — REST API (recommended)
+- `27015/UDP` — community server browser (console players)
+- `25575/TCP` — RCON (deprecated; Palguard advanced commands only)
+
+**1.0 update checklist:**
+
+1. Back up `Pal/Saved/SaveGames`
+2. Use GUI one-click update for the dedicated server engine
+3. Disable mods first; re-enable only after confirming stability
+4. Old saves may work, but a fresh world is recommended for best experience
 
 ---
 
@@ -21,33 +50,31 @@ Palserver GUI is a dedicated server setup and management tool with a fully graph
 
 After installation is complete, create your server and click "Start" in the bottom right corner to successfully set up your first server.
 
-![alt text](/readme/menu.png)
+> See [official GitBook docs](https://dalufishes-team.gitbook.io/palserver-gui-en) for screenshots.
 
 ### Visual World Settings Options
 
 Adjust world settings using sliders and input boxes without the need to modify the original file PalWorldSettings.ini:
 
-![alt text](/readme/worldsettings.png)
+> Includes 1.0 options such as crossplay, voice chat, and ranch speed (latest dev build or upcoming 1.2.0 release).
 
 ### Online Player List
 
 Displays information about online players and provides various functions for the host to manage player actions.
 
-![alt text](/readme/playerlist.png)
-
-![alt text](/readme/playeraction.png)
+<!-- screenshots in GitBook -->
 
 ### Real-Time Player Map
 
 Displays players' levels, coordinates, and positions on the map in real-time.
 
-![alt text](/readme/onlinemap.png)
+<!-- screenshots in GitBook -->
 
 ### Mod Management and Export to the Game
 
 UE4SS and Palguard are installed by default. The mod management panel allows for one-click packaging to the client!
 
-![alt text](/readme/mod.png)
+<!-- screenshots in GitBook -->
 
 ### One-Click Update, One-Click Optimization, and More!
 
@@ -57,8 +84,8 @@ In addition, there are more server settings and features to fine-tune your serve
 
 ### Installation Links and Updates
 
-Installation Package (Recommended):[Click here to download](https://github.com/Dalufishe/palserver-GUI/releases/download/1.1.0/1.1.0-palserver-gui.exe)
-Portable Version (No installation required)：[Click here to download](https://github.com/Dalufishe/palserver-GUI/releases/download/1.1.0/unpack-1.1.0-palserver-gui.zip)
+Installation Package (Recommended):[Click here to download](https://github.com/ming065802/palserver-GUI/releases/download/1.2.0/1.2.0-palserver-gui.exe)
+Portable Version (No installation required)：[Click here to download](https://github.com/ming065802/palserver-GUI/releases/download/1.2.0/unpack-1.2.0-palserver-gui.zip)
 
 ### FAQs
 
@@ -67,6 +94,16 @@ Portable Version (No installation required)：[Click here to download](https://g
 - Server crashes frequently:[Click here](https://dalufishes-team.gitbook.io/palserver-gui/faq/si-fu-qi-bin-fan-beng-kui)
 - Online players not displayed:[Click here](https://dalufishes-team.gitbook.io/palserver-gui/faq/mei-you-xian-shi-zai-xian-wan-jia)
 - How to migrate test version GUI files to the official version: [Click here](https://dalufishes-team.gitbook.io/palserver-gui/faq/ce-shi-ban-ben-gui-dang-an-qian-yi-dao-zheng-shi-ban)
+
+**Palworld 1.0:**
+
+- Updating to 1.0: use one-click update in GUI; back up saves first
+- Crossplay: enable `CrossplayPlatforms`; console players need "Open to community" and port `27015/UDP`
+- Steam players: use Direct Connect at `your-ip:8211`
+- Save migration: use `palworld-save-tools==0.24.0`; back up before migrating to 1.0
+- Mods: test without mods after updating, then re-enable one by one
+
+See [CHANGELOG.md](/CHANGELOG.md) for full release notes.
 
 ### Related links:
 
@@ -103,4 +140,4 @@ You can also support me with a cup of coffee on [buymeacoffee](https://www.buyme
 
 ### Report issues
 
-The project is still in its early stages, so there may be some bugs despite my best efforts to address them.If you encounter any issues, please feel free to post them on the [issues](https://github.com/Dalufishe/palserver-GUI/issues) page. I will strive to resolve them promptly. Additionally, suggestions for new features or improvements are also welcome through the [issues](https://github.com/Dalufishe/palserver-GUI/issues) page.
+The project is actively maintained. For Palworld 1.0 dedicated servers, follow [GitHub Releases](https://github.com/ming065802/palserver-GUI/releases) and [CHANGELOG.md](/CHANGELOG.md). Please report issues on [issues](https://github.com/ming065802/palserver-GUI/issues).
