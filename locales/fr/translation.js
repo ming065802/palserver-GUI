@@ -253,6 +253,8 @@ const fr = {
   RemoteFeatureNotSupported: 'Cette fonctionnalité n est pas disponible pour les connexions distantes.',
   RemoteBanListNotAvailable:
     'Les connexions distantes ne peuvent pas lire la liste de bannissement locale. Gérez banlist.txt sur le serveur distant ou bannissez les joueurs en ligne via REST.',
+  RemoteOnlineMapUnreachable:
+    'Impossible de joindre l API REST distante. La carte en ligne peut ne pas afficher les positions des joueurs. Vérifiez que le serveur distant est en ligne et que le port REST est ouvert.',
   TestConnection: 'Tester la connexion',
   TestingConnection: 'Test en cours…',
   RemoteConnectionSuccess: 'Connexion réussie. Vous pouvez créer la liaison distante.',

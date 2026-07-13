@@ -164,6 +164,53 @@ describe('remote Tier 1 integration', () => {
     expect(updatedPal.editedAt).toBeTruthy();
   });
 
+  it('buildRemoteServerInstanceSetting enables online map by default', () => {
+    const { serverInstanceSetting } = buildRemoteServerInstanceSetting(
+      instancesRoot,
+      'sr-map-default',
+      {
+        ServerName: 'Map Default',
+        PublicIP: '203.0.113.20',
+        RESTAPIPort: 8212,
+        AdminPassword: 'secret',
+      },
+    );
+
+    expect(serverInstanceSetting.OnlineMapEnabled).toBe(true);
+  });
+
+  it('editRemoteServerInstance updates OnlineMapEnabled in .pal metadata', async () => {
+    const serverId = 'sr-edit-map';
+    const { serverInstanceSetting, remoteSettings } =
+      buildRemoteServerInstanceSetting(instancesRoot, serverId, {
+        ServerName: 'Before Map Edit',
+        PublicIP: '203.0.113.30',
+        RESTAPIPort: 8212,
+        AdminPassword: 'old-secret',
+      });
+
+    const instancePath = path.join(instancesRoot, serverId);
+    await fs.mkdir(instancePath, { recursive: true });
+    await fs.writeFile(
+      path.join(instancePath, '.pal'),
+      JSON.stringify(
+        { ...serverInstanceSetting, OnlineMapEnabled: false },
+        null,
+        2,
+      ),
+    );
+    await writeRemoteSettings(serverId, remoteSettings);
+
+    await editRemoteServerInstance(serverId, {
+      OnlineMapEnabled: true,
+    });
+
+    const updatedPal = JSON.parse(
+      await fs.readFile(path.join(instancePath, '.pal'), 'utf-8'),
+    );
+    expect(updatedPal.OnlineMapEnabled).toBe(true);
+  });
+
   it('testRemoteConnection succeeds against a mock REST server', async () => {
     const mock = await startMockRestServer({ password: 'pal-admin' });
 

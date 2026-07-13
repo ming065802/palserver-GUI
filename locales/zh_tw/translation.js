@@ -231,6 +231,8 @@ const zh_tw = {
   RemoteFeatureNotSupported: '遠端連線不支援此功能。',
   RemoteBanListNotAvailable:
     '遠端連線無法讀取本機封禁名單；請在遠端伺服器上管理 banlist.txt，或透過 REST 封禁線上玩家。',
+  RemoteOnlineMapUnreachable:
+    '無法連線至遠端 REST API，線上地圖可能無法顯示玩家位置。請確認遠端伺服器在線且防火牆已開放 REST 埠。',
   TestConnection: '測試連線',
   TestingConnection: '測試中…',
   RemoteConnectionSuccess: '連線成功，可以建立遠端連接。',
