@@ -17,6 +17,7 @@ export type EditRemoteServerInstanceInput = {
   RESTAPIPort?: number;
   RCONPort?: number;
   AdminPassword?: string;
+  OnlineMapEnabled?: boolean;
 };
 
 export default async function editRemoteServerInstance(
@@ -71,6 +72,9 @@ export default async function editRemoteServerInstance(
     remoteHost: host,
     remoteRestPort: restPort,
     remoteRconPort: rconPort,
+    ...(input.OnlineMapEnabled !== undefined
+      ? { OnlineMapEnabled: input.OnlineMapEnabled }
+      : {}),
   };
 
   await fs.writeFile(

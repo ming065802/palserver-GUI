@@ -37,10 +37,19 @@ export default function ServerManagement() {
   const { includeRunningServers } = useIsRunningServers();
 
   useEffect(() => {
-    if (isRemote && managementMode !== 'players') {
+    if (!isRemote) {
+      return;
+    }
+
+    const allowedRemoteModes: Array<typeof managementMode> = ['players'];
+    if (serverInfo?.OnlineMapEnabled) {
+      allowedRemoteModes.push('map');
+    }
+
+    if (!allowedRemoteModes.includes(managementMode)) {
       setManagementMode('players');
     }
-  }, [isRemote, managementMode]);
+  }, [isRemote, managementMode, serverInfo?.OnlineMapEnabled]);
 
   return (
     <div className={cn('page-container', 'overflow-y-hidden')}>
@@ -113,7 +122,7 @@ export default function ServerManagement() {
           >
             {t('ServerPlayers')}
           </Tabs.Trigger>
-          {!isRemote && serverInfo?.OnlineMapEnabled && (
+          {serverInfo?.OnlineMapEnabled && (
             <Tabs.Trigger
               value="map"
               style={{ color: 'white', fontWeight: 500 }}

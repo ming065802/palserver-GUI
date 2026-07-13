@@ -6,6 +6,8 @@ import {
   AlertDialog,
   Button,
   Flex,
+  Switch,
+  Text,
   TextField,
 } from '@radix-ui/themes';
 import _ from 'lodash';
@@ -93,6 +95,7 @@ export default function EditServerAlert() {
   const [remoteConfigOptions, setRemoteConfigOptions] = useState(
     remoteFieldDefaults,
   );
+  const [remoteOnlineMapEnabled, setRemoteOnlineMapEnabled] = useState(false);
 
   useEffect(() => {
     if (!isRemote) {
@@ -128,6 +131,7 @@ export default function EditServerAlert() {
         value: '',
       },
     });
+    setRemoteOnlineMapEnabled(Boolean(serverInfo?.OnlineMapEnabled));
   }, [isRemote, serverInfo, worldSettings]);
 
   const handleEditServer = async () => {
@@ -145,6 +149,7 @@ export default function EditServerAlert() {
             ? Number(remoteConfigOptions.rconPort.value)
             : undefined,
           AdminPassword: remoteConfigOptions.adminPassword.value || undefined,
+          OnlineMapEnabled: remoteOnlineMapEnabled,
         },
       );
       return;
@@ -223,6 +228,22 @@ export default function EditServerAlert() {
             )}
           </div>
         ))}
+        {isRemote && (
+          <div className="w-full my-2 flex gap-2 items-center justify-between">
+            <div>
+              <Text as="div" size="2" weight="medium">
+                {t('OnlineMap')}
+              </Text>
+              <Text as="div" size="1" color="gray">
+                {t('OnlineMapDesc')}
+              </Text>
+            </div>
+            <Switch
+              checked={remoteOnlineMapEnabled}
+              onCheckedChange={setRemoteOnlineMapEnabled}
+            />
+          </div>
+        )}
       </div>
       <Flex gap="3" mt="4" justify="end">
         <AlertDialog.Cancel>

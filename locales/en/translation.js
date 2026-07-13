@@ -243,6 +243,8 @@ const en = {
   RemoteFeatureNotSupported: 'This feature is not available for remote connections.',
   RemoteBanListNotAvailable:
     'Remote connections cannot read the local ban list. Manage banlist.txt on the remote server, or ban online players via REST.',
+  RemoteOnlineMapUnreachable:
+    'Cannot reach the remote REST API. The online map may not show player positions. Ensure the remote server is online and the REST port is reachable.',
   TestConnection: 'Test Connection',
   TestingConnection: 'Testing…',
   RemoteConnectionSuccess: 'Connection successful. You can create the remote link.',

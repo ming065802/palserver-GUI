@@ -52,7 +52,7 @@ export function buildRemoteServerInstanceSetting(
     CrashRestart: false,
     OverRamRestart: false,
     openToCommunity: false,
-    OnlineMapEnabled: false,
+    OnlineMapEnabled: true,
     LogEnabled: false,
     UseIndependentProcess: true,
   };
