@@ -51,6 +51,9 @@ jobs:
       - name: Test
         run: npm test
 
+      - name: Verify Management API tests
+        run: npm test -- managementApi.test.js managementApiIntegration.test.js --verbose
+
       - name: Package Windows installer
         run: npx electron-builder build --win --publish never
 
