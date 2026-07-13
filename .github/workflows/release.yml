@@ -1,0 +1,74 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Existing release tag to build (e.g. v1.4.2)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  release-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.tag || github.ref }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify tag matches package version
+        shell: pwsh
+        run: |
+          $tag = '${{ github.event.inputs.tag || github.ref_name }}'
+          $expected = $tag -replace '^v', ''
+          $actual = (Get-Content release/app/package.json | ConvertFrom-Json).version
+          if ($expected -ne $actual) {
+            Write-Error "Tag version '$expected' does not match release/app/package.json version '$actual'"
+            exit 1
+          }
+          Write-Host "Version OK: $actual"
+
+      - name: Build
+        run: npm run build
+
+      - name: Test
+        run: npm test
+
+      - name: Package Windows installer
+        run: npx electron-builder build --win --publish never
+
+      - name: Create portable zip
+        shell: pwsh
+        run: |
+          $version = (Get-Content release/app/package.json | ConvertFrom-Json).version
+          $zipPath = "release/build/unpack-$version-palserver-gui.zip"
+          if (Test-Path $zipPath) { Remove-Item $zipPath }
+          Compress-Archive -Path "release/build/win-unpacked" -DestinationPath $zipPath
+          Get-ChildItem release/build/*-palserver-gui.exe, $zipPath | Format-Table Name, Length
+
+      - name: Upload release assets
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.inputs.tag || github.ref_name }}
+          files: |
+            release/build/*-palserver-gui.exe
+            release/build/unpack-*-palserver-gui.zip
+          generate_release_notes: true
+          make_latest: true
