@@ -1,15 +1,27 @@
 import { useQuery } from 'react-query';
+import { SERVER_URL, VERSION } from '../../../constant/app';
 import versionToValue from '../../utils/versionToValue';
-import { SERVER_URL } from '../../../constant/app';
+import resolveLatestVersion from '../../utils/resolveLatestVersion';
+
+async function fetchLatestAppVersion() {
+  try {
+    const res = await fetch(`${SERVER_URL}/data/palserver-gui/version`);
+
+    if (!res.ok) {
+      return VERSION;
+    }
+
+    const data = await res.json();
+    return resolveLatestVersion(data.version, VERSION);
+  } catch {
+    return VERSION;
+  }
+}
 
 const useLatestVersion = () => {
   const { data: latestVersion } = useQuery(
     'app-version',
-    async () => {
-      const res = await fetch(`${SERVER_URL}/data/palserver-gui/version`);
-      const data = await res.json();
-      return data.version || '0.0.0';
-    },
+    fetchLatestAppVersion,
     {
       staleTime: 1000 * 60,
     },
@@ -17,7 +29,7 @@ const useLatestVersion = () => {
 
   return {
     version: latestVersion,
-    versionValue: versionToValue(latestVersion || ''),
+    versionValue: versionToValue(latestVersion || VERSION),
   };
 };
 
