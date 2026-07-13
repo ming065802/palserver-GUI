@@ -1,4 +1,4 @@
-export const VERSION = '1.3.0';
+export const VERSION = '1.3.3';
 export const LATEST_GAME_VERSION = '1.0.0.1';
 export const ENV = 'GUI';
 export const PLATFORM = 'window';
