@@ -1,6 +1,6 @@
 # palserver GUI
 
-![RELEASE](https://img.shields.io/badge/RELEASE-1.3.3-green)
+![RELEASE](https://img.shields.io/badge/RELEASE-1.4.0-green)
 [![Website](https://img.shields.io/badge/website-click-blue)](https://dalufishes-team.gitbook.io/palserver-gui-en)
 [![Discord](https://img.shields.io/badge/discord-click-blue)](https://discord.gg/sgMMdUZd3V)
 ![Make With Love](https://img.shields.io/badge/make_with_%E2%9D%A4%EF%B8%8F-white)
@@ -15,7 +15,7 @@ Palserver GUI is a dedicated server setup and management tool with a fully graph
 - **Fully Graphical Interface**：Provides a complete and powerful GUI for adjusting world settings, server settings, and more.
 - **Powerful Feature Extensions**：Includes built-in UE4SS and Palguard, player list, online maps, multiple save management, and mod management, significantly enhancing server management efficiency and player experience.
 - **Palworld 1.0 support**: crossplay settings, voice chat, REST API admin, auto-restart, and 1.0 world parameters.
-- **Remote server management (v1.3.3)**: connect to Palworld 1.0 dedicated servers already running on a VPS or remote host via REST API (kick, broadcast, save, shutdown, and more); Tier 1 complete.
+- **Remote server management (v1.4.0)**: connect to Palworld 1.0 dedicated servers already running on a VPS or remote host via REST API; Tier 1 day-to-day admin plus Tier 2 online map, read-only settings, and manual unban.
 
 ---
 
@@ -30,7 +30,7 @@ palserver-GUI helps manage **Palworld 1.0** (full release, July 10, 2026) dedica
 | **1.0 world settings** | Voice chat, ranch speed, guild master transfer, PvP drops, and more |
 | **Auto-restart** | Recommended every 6–12 hours on 1.0 servers to reduce memory pressure |
 | **One-click update** | Update dedicated server binaries to 1.0 via SteamCMD |
-| **Remote connection (v1.3.3)** | Create a remote link from the home context menu after a successful REST connection test |
+| **Remote connection (v1.4.0)** | Create a remote link from the home context menu; online map, read-only world settings, manual unban |
 
 ---
 
@@ -63,13 +63,12 @@ v1.3.3 completes **remote server management Tier 1** (Phases 1–6). The GUI con
 |---------|--------|
 | Start / stop process | Remote process must be managed on the remote host |
 | Steam one-click update | No local `server/` directory |
-| World INI editing | Tier 1 does not write remote settings |
+| World INI editing | Tier 2 provides REST read-only view only; edit INI on the remote host |
 | Mod management | No remote file access |
 | Server logs | No remote process stdout |
-| Online map | Proxy supports local instances only |
 | Performance monitor | Local process only |
 | Duplicate instance | Remote links are metadata-only |
-| Ban list file | Cannot read remote `banlist.txt`; ban online players via REST |
+| Ban list file | Cannot enumerate remote `banlist.txt`; ban online players via REST or unban by known UserId |
 
 #### Remote management requirements
 
@@ -92,6 +91,34 @@ v1.3.3 completes **remote server management Tier 1** (Phases 1–6). The GUI con
 2. Use GUI one-click update for the dedicated server engine
 3. Disable mods first; re-enable only after confirming stability
 4. Old saves may work, but a fresh world is recommended for best experience
+
+---
+
+### Remote server management (Tier 2)
+
+v1.4.0 completes **remote server management Tier 2** (Phases 1–4). On top of Tier 1 REST admin, the following works **without SSH/SFTP**:
+
+#### Tier 2 capabilities
+
+| Feature | Notes |
+|---------|-------|
+| Online map | Server Management → Online Map; local proxy forwards remote REST `/players` and `/info` |
+| World settings (read-only) | Right panel “World Settings” or route; data from `GET /v1/api/settings` with refresh |
+| Manual unban | On the Players tab, enter a known Steam ID and call `POST /v1/api/unban` |
+
+#### Usage notes
+
+- **New remote connections** enable the online map by default; for existing links, use **Edit remote connection** on the home context menu
+- The remote world settings page shows a read-only banner; **no Save button**—edit `PalWorldSettings.ini` on the remote host and restart
+- The ban list still cannot enumerate remote `banlist.txt`; use the manual unban panel when you know the banned UserId
+
+#### Still not supported in Tier 2 (planned for Tier 3)
+
+| Feature | Reason |
+|---------|--------|
+| Remote INI write | Official REST has no settings write endpoint |
+| Full ban list enumeration | Official REST has no ban list GET |
+| SSH/SFTP file access | Logs, backups, mods require Tier 3 |
 
 ---
 
@@ -193,7 +220,7 @@ You can also support me with a cup of coffee on [buymeacoffee](https://www.buyme
 
 ### Roadmap
 
-v1.3.3 ships **remote server management Tier 1 (Phases 1–6)**. Upcoming work (Tier 2 remote map/SSH, mod compatibility gate, settings import/export) is in [docs/ROADMAP_P3_FEATURES.md](/docs/ROADMAP_P3_FEATURES.md).  
+v1.4.0 ships **remote server management Tier 1 (Phases 1–6) and Tier 2 (Phases 1–4)**. Upcoming work (Tier 3 SSH/SFTP, mod compatibility gate, settings import/export) is in [docs/ROADMAP_P3_FEATURES.md](/docs/ROADMAP_P3_FEATURES.md).  
 Palworld 1.0 **known issues** (SAV sync, mod checks, Pal data) are in [docs/KNOWN_ISSUES.md](/docs/KNOWN_ISSUES.md).
 
 ### Report issues
