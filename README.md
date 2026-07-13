@@ -145,7 +145,8 @@ palserver-GUI 可協助管理 **Palworld 1.0**（2026/7/10 正式版）專用伺
 
 ### 開發路線圖
 
-v1.2.0 之後的規劃功能（遠端伺服器管理、Mod 相容檢查、設定產生器整合）見 [docs/ROADMAP_P3_FEATURES.md](/docs/ROADMAP_P3_FEATURES.md)。
+v1.2.0 之後的規劃功能（遠端伺服器管理、Mod 相容檢查、設定產生器整合）見 [docs/ROADMAP_P3_FEATURES.md](/docs/ROADMAP_P3_FEATURES.md)。  
+目前 **Palworld 1.0 已知問題**（設定不生效、Mod 閃退、帕魯資料過時等情境說明）見 [docs/KNOWN_ISSUES.md](/docs/KNOWN_ISSUES.md)。
 
 ### 回報問題
 
