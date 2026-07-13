@@ -2,6 +2,28 @@
 
 All notable changes to **palserver-GUI** are documented in this file.
 
+## [1.4.1] — 2026-07-13
+
+Palworld 1.0 **remote server management** Tier 2 — integration tests and binary release.
+
+### Added
+
+- `src/__tests__/remoteTier2Integration.test.js`：Tier 2 端對端整合測試（線上地圖 proxy、REST 設定唯讀、手動解封、錯誤處理）
+
+### Changed
+
+- 版本號更新為 `1.4.1`（`src/constant/app.ts`、`release/app/package.json`）
+- README（中／英）安裝連結更新為 `1.4.1`；上一版指向 `v1.3.3`
+- `docs/KNOWN_ISSUES.md` 基準版本更新為 v1.4.1
+- `docs/README.md` 版本對照表新增 v1.4.1
+
+### Notes (v1.4.1)
+
+- 此為 **v1.4.0 Tier 2 功能的首個二進位發布**（v1.4.0 僅原始碼與文件發布，未上傳安裝包）
+- 全測試套件 69 項通過（含 Tier 1／Tier 2 整合測試）
+
+---
+
 ## [1.4.0] — 2026-07-13
 
 Palworld 1.0 **remote server management** Tier 2 Phase 4 — documentation and release.
