@@ -7,30 +7,28 @@ import useLatestGameVersion from '../../../hooks/firebase/useLatestGameVersion';
 import electronAlert from '../../../utils/electronAlert';
 import useServerEngineHasError from '../../../hooks/server/useServerEngineHasError';
 import useAllServerInfo from '../../../hooks/server/info/useAllServerInfo';
+import { isVersionOlder } from '../../../utils/versionToValue';
 
 export default function EngineNeedInstall() {
   const { t } = useTranslation();
 
   // 版本資訊
-  const { versionValue: latestGameVersion } = useLatestGameVersion();
+  const { version: latestVersion, versionValue: latestGameVersion } =
+    useLatestGameVersion();
   const [serverEngineVersion, setServerEngineVersion] =
     useServerEngineVersion();
 
-  // 狀態
-  const engineNeedInstall = serverEngineVersion === 0;
+  const engineNeedInstall = !serverEngineVersion;
   const engineHasError = useServerEngineHasError();
   const engineNeedUpdate =
-    !engineHasError && // @ts-ignore
-    latestGameVersion > serverEngineVersion &&
-    serverEngineVersion !== 0;
+    !engineHasError &&
+    !!serverEngineVersion &&
+    isVersionOlder(serverEngineVersion, latestVersion || '');
 
   const serverInfos = useAllServerInfo();
 
-  console.log();
-
   const [openDialog, setOpenDialog] = useState(false);
   useEffect(() => {
-    // @ts-ignore
     setOpenDialog(engineNeedInstall || engineNeedUpdate || engineHasError);
   }, [engineNeedInstall, engineNeedUpdate, engineHasError]);
 
@@ -48,7 +46,7 @@ export default function EngineNeedInstall() {
       () => {
         setServerEngineHasInstall(true);
         setServerEngineStartInstall(false);
-        setServerEngineVersion(latestGameVersion);
+        setServerEngineVersion(latestVersion || latestGameVersion);
         // electronAlert(t('EngineInstallFinish'));
       },
     );
@@ -93,7 +91,7 @@ export default function EngineNeedInstall() {
         // 確保所有的更新完成後才執行以下的狀態更新
         setServerEngineHasInstall(true);
         setServerEngineStartInstall(false);
-        setServerEngineVersion(latestGameVersion);
+        setServerEngineVersion(latestVersion || latestGameVersion);
       },
     );
     window.electron.ipcRenderer.once(
@@ -129,7 +127,7 @@ export default function EngineNeedInstall() {
       () => {
         setServerEngineHasInstall(true);
         setServerEngineStartInstall(false);
-        setServerEngineVersion(latestGameVersion);
+        setServerEngineVersion(latestVersion || latestGameVersion);
         // electronAlert(t('EngineInstallFinish'));
       },
     );

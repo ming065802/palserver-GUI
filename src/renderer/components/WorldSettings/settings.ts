@@ -33,6 +33,11 @@ export const PlayerSettingsOptionsKey = [
   'CoopPlayerMaxNum',
   'ServerPlayerMaxNum',
   'bShowPlayerList',
+  'bAdditionalDropItemWhenPlayerKillingInPvPMode',
+  'AdditionalDropItemWhenPlayerKillingInPvPMode',
+  'AdditionalDropItemNumWhenPlayerKillingInPvPMode',
+  'bDisplayPvPItemNumOnWorldMap_BaseCamp',
+  'bDisplayPvPItemNumOnWorldMap_Player',
 ];
 
 export const GuildSettingsOptionsKey = [
@@ -45,6 +50,9 @@ export const GuildSettingsOptionsKey = [
   'bEnableDefenseOtherGuildPlayer',
   'bCanPickupOtherGuildDeathPenaltyDrop',
   'bInvisibleOtherGuildBaseCampAreaFX',
+  'MonsterFarmActionSpeedRate',
+  'AutoTransferMasterThresholdDays',
+  'AutoTransferMasterCheckIntervalSeconds',
 ];
 
 export const BuildSettingsOptionsKey = [
@@ -62,7 +70,8 @@ export const DropSettingsOptionsKey = [
 ];
 
 export const OthersSettingsOptionsKey = [
-  //'CrossplayPlatforms',
+  'CrossplayPlatforms',
+  'Difficulty',
   'DayTimeSpeedRate',
   'NightTimeSpeedRate',
 
@@ -80,10 +89,20 @@ export const OthersSettingsOptionsKey = [
 
   'RandomizerType',
   'RandomizerSeed',
-  //
 
   'bHardcore',
   'bIsUseBackupSaveData',
+
+  'bEnableVoiceChat',
+  'VoiceChatMaxVolumeDistance',
+  'VoiceChatZeroVolumeDistance',
+
+  'ItemWeightRate',
+  'ItemCorruptionMultiplier',
+  'ChatPostLimitPerMinute',
+  'bAllowClientMod',
+  'bIsShowJoinLeftMessage',
+  'bUseAuth',
 ];
 
 export const worldSettingsOptions: any = {
@@ -111,12 +130,13 @@ export const worldSettingsOptions: any = {
   CollectionObjectRespawnSpeedRate: { range: [5, 30], type: 'num_10' },
   CollectionDropRate: { range: [5, 30], type: 'num_10' },
   EnemyDropItemRate: { range: [5, 30], type: 'num_10' },
-  PalEggDefaultHatchingTime: { range: [0, 100], type: 'num' },
+  PalEggDefaultHatchingTime: { range: [0, 100], type: 'num', default: 1 },
   GuildPlayerMaxNum: { range: [1, 100], type: 'num' },
 
   DeathPenalty: {
     range: ['All', 'None', 'Item', 'ItemAndEquipment'],
     type: 'options',
+    default: 'Item',
   },
   bEnablePlayerToPlayerDamage: { type: 'switch' },
   bEnableFriendlyFire: { type: 'switch' },
@@ -135,7 +155,7 @@ export const worldSettingsOptions: any = {
   bCanPickupOtherGuildDeathPenaltyDrop: { type: 'switch' },
   bEnableNonLoginPenalty: { type: 'switch' },
   bEnableFastTravel: { type: 'switch' },
-  bIsStartLocationSelectByMap: { type: 'switch' },
+  bIsStartLocationSelectByMap: { type: 'switch', default: false },
   bExistPlayerAfterLogout: { type: 'switch' },
   bEnableDefenseOtherGuildPlayer: { type: 'switch' },
   CoopPlayerMaxNum: { range: [1, 32], type: 'num' },
@@ -147,17 +167,29 @@ export const worldSettingsOptions: any = {
   bInvisibleOtherGuildBaseCampAreaFX: { type: 'switch', default: false },
   AutoSaveSpan: { range: [300, 6000], type: 'num_10', default: 300 },
 
-  // CrossplayPlatforms: {
-  //   noTranslate: true,
-  //   range: [
-  //     "'(Steam,Xbox,PS5,Mac)'",
-  //     "'(Steam)'",
-  //     "'(Xbox)'",
-  //     "'(PS5)'",
-  //     "'(Mac)'",
-  //   ],
-  //   type: 'options',
-  // },
+  CrossplayPlatforms: {
+    noTranslate: true,
+    range: [
+      '(Steam,Xbox,PS5,Mac)',
+      '(Steam)',
+      '(Steam,Xbox)',
+      '(Xbox)',
+      '(PS5)',
+      '(Mac)',
+    ],
+    type: 'options',
+    default: '(Steam,Xbox,PS5,Mac)',
+  },
+  Difficulty: {
+    range: ['None', 'Easy', 'Normal', 'Hard'],
+    type: 'options',
+    default: 'None',
+  },
+  AdditionalDropItemWhenPlayerKillingInPvPMode: {
+    range: ['None', 'PlayerDropItem', 'PlayerDropInventory'],
+    type: 'options',
+    default: 'PlayerDropItem',
+  },
   ServerReplicatePawnCullDistance: {
     range: [5000, 15000],
     type: 'num',
@@ -185,4 +217,36 @@ export const worldSettingsOptions: any = {
   bIsRandomizerPalLevelRandom: { type: 'switch' },
   bIsUseBackupSaveData: { type: 'switch' },
   bPalLost: { type: 'switch' },
+
+  MonsterFarmActionSpeedRate: { range: [1, 50], type: 'num_10', default: 10 },
+  AutoTransferMasterThresholdDays: { range: [1, 90], type: 'num', default: 14 },
+  AutoTransferMasterCheckIntervalSeconds: {
+    range: [300, 86400],
+    type: 'num',
+    default: 3600,
+  },
+  bAdditionalDropItemWhenPlayerKillingInPvPMode: {
+    type: 'switch',
+    default: false,
+  },
+  AdditionalDropItemNumWhenPlayerKillingInPvPMode: {
+    range: [0, 10],
+    type: 'num',
+    default: 1,
+  },
+  bDisplayPvPItemNumOnWorldMap_BaseCamp: { type: 'switch', default: false },
+  bDisplayPvPItemNumOnWorldMap_Player: { type: 'switch', default: false },
+  bEnableVoiceChat: { type: 'switch', default: false },
+  VoiceChatMaxVolumeDistance: { range: [500, 10000], type: 'num', default: 3000 },
+  VoiceChatZeroVolumeDistance: {
+    range: [1000, 30000],
+    type: 'num',
+    default: 15000,
+  },
+  ItemWeightRate: { range: [1, 50], type: 'num_10', default: 10 },
+  ItemCorruptionMultiplier: { range: [1, 50], type: 'num_10', default: 10 },
+  ChatPostLimitPerMinute: { range: [1, 120], type: 'num', default: 30 },
+  bAllowClientMod: { type: 'switch', default: true },
+  bIsShowJoinLeftMessage: { type: 'switch', default: true },
+  bUseAuth: { type: 'switch', default: true },
 };

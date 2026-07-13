@@ -9,6 +9,7 @@ import trimWorldSettingsString from '../../../../utils/trimWorldSettingsString';
 import { Tooltip } from '@radix-ui/themes';
 import _ from 'lodash';
 import Channels from '../../../../main/ipcs/channels';
+import { restGetServerInfo } from '../../../utils/restAdmin';
 
 export default function ServerPreview() {
   const { t } = useTranslation();
@@ -120,21 +121,29 @@ function ServerVersion({ serverId }: { serverId: string }) {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      window.electron.ipcRenderer
-        .invoke(Channels.sendRCONCommand, serverId, 'info')
-        .then((text) => {
-          if (text) {
-            const versionRegex = /\[v(\d+\.\d+\.\d+\.\d+)\]/;
-            const match = text.match(versionRegex);
-
-            if (match) {
-              setVersion(match[1]);
-            }
+      restGetServerInfo(serverId)
+        .then((data: { version?: string }) => {
+          if (data?.version) {
+            setVersion(data.version);
           }
+        })
+        .catch(() => {
+          window.electron.ipcRenderer
+            .invoke(Channels.sendRCONCommand, serverId, 'info')
+            .then((text) => {
+              if (text) {
+                const versionRegex = /\[v(\d+\.\d+\.\d+\.\d+)\]/;
+                const match = text.match(versionRegex);
+
+                if (match) {
+                  setVersion(match[1]);
+                }
+              }
+            })
+            .catch(() => {});
         });
     }, 2000);
 
-    // 清理定時器
     return () => clearInterval(interval);
   }, [serverId]);
   return (

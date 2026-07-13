@@ -8,12 +8,16 @@ import _ from 'lodash';
 import useTranslation from '../../../../hooks/translation/useTranslation';
 import { MdOutlineMoreVert } from 'react-icons/md';
 import PlayerMoreAction from '../PlayerMoreAction/PlayerMoreAction';
-import Channels from '../../../../../main/ipcs/channels';
 import { PiEye, PiEyeClosed } from 'react-icons/pi';
 import useAllServerIcons from '../../../../hooks/server/icons/useAllServerIcons';
 import PlayerAvatar from './PlayerAvatar';
 import useServerBanList from '../../../../hooks/server/ban/useServerBanList';
 import { handleCopyToClickboard } from '../../../RightSection/ServerPreview/ServerPreview';
+import {
+  restBanPlayer,
+  restKickPlayer,
+  restUnbanPlayer,
+} from '../../../../utils/restAdmin';
 
 export default function PlayerPreview({
   playerIndex,
@@ -34,25 +38,13 @@ export default function PlayerPreview({
   const [showPlayerSteamId, setShowPlayerSteamId] = useState(false);
 
   const handleKickPlayer = () => {
-    window.electron.ipcRenderer.invoke(
-      Channels.sendRCONCommand,
-      selectedServerInstance,
-      `KickPlayer ${player.userId}`,
-    );
+    restKickPlayer(selectedServerInstance, player.userId);
   };
   const handleBanPlayer = () => {
-    window.electron.ipcRenderer.invoke(
-      Channels.sendRCONCommand,
-      selectedServerInstance,
-      `BanPlayer ${player.userId}`,
-    );
+    restBanPlayer(selectedServerInstance, player.userId);
   };
   const handleUnBanPlayer = () => {
-    window.electron.ipcRenderer.invoke(
-      Channels.sendRCONCommand,
-      selectedServerInstance,
-      `UnBanPlayer ${player.userId}`,
-    );
+    restUnbanPlayer(selectedServerInstance, player.userId);
   };
 
   return (

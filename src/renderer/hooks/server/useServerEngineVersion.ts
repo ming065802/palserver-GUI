@@ -1,12 +1,12 @@
 import useLocalState from '../useLocalState';
 
 const useServerEngineVersion = () => {
-  const [serverEngineVersion, setServerEngineVersion] = useLocalState<number>(
+  const [serverEngineVersion, setServerEngineVersion] = useLocalState<string>(
     'server-engine-version',
-    0,
+    '',
   );
 
-  return [serverEngineVersion, setServerEngineVersion];
+  return [serverEngineVersion, setServerEngineVersion] as const;
 };
 
 export default useServerEngineVersion;
