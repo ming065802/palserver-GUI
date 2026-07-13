@@ -2,7 +2,7 @@
 
 > **適用讀者**：維護者、發布負責人、AI 助手  
 > **最後更新**：2026-07-13  
-> **基準版本**：v1.4.1
+> **基準版本**：v1.4.2
 
 本文件說明如何將 palserver-GUI 打包為 Windows 安裝包與免安裝版，並上傳至 [GitHub Releases](https://github.com/ming065802/palserver-GUI/releases)。
 

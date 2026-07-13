@@ -4,11 +4,30 @@ All notable changes to **palserver-GUI** are documented in this file.
 
 ## [Unreleased]
 
+---
+
+## [1.4.2] — 2026-07-13
+
+Daily **scheduled stop / start / restart** and **local Management API** for automation.
+
 ### Added
 
+- **每日排程啟停**：伺服器管理 →「排程」分頁可設定每日定時關閉、啟動、重啟；支援提前廣播警告分鐘數；本機實例支援三項，遠端實例支援關閉與重啟（啟動需本機程序）
 - **本機 Management API（方案 A）**：設定頁可啟用 HTTP API（預設關閉、埠 `3435`、`127.0.0.1`），支援本機實例的狀態查詢、啟動、關閉、重啟；遠端實例僅支援狀態與關閉，啟動／重啟回傳 `501`
 - 端點：`GET /api/health`、`GET /api/servers`、`GET /api/servers/:id/status`、`POST .../start|stop|restart`
 - API 金鑰認證（`Authorization: Bearer` 或 `X-API-Key`）；綁定非本機位址時自動產生金鑰
+- Management API 單元與整合測試；CI workflow 驗證步驟
+
+### Changed
+
+- 版本號更新為 `1.4.2`（`src/constant/app.ts`、`release/app/package.json`）
+- README（中／英）安裝連結更新為 `1.4.2`；上一版指向 `v1.4.1`
+- `docs/KNOWN_ISSUES.md`、`docs/README.md`、`docs/WINDOWS_E2E_TEST_CHECKLIST.md` 基準版本更新為 v1.4.2
+
+### Notes (v1.4.2)
+
+- 排程與 Management API 均需 GUI 程序保持運行；排程另需伺服器 REST API 可達
+- 建議發布後依 `docs/WINDOWS_E2E_TEST_CHECKLIST.md` 驗收排程與 API 端點
 
 ---
 
