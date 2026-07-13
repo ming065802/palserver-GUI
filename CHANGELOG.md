@@ -2,6 +2,39 @@
 
 All notable changes to **palserver-GUI** are documented in this file.
 
+## [1.4.0] — 2026-07-13
+
+Palworld 1.0 **remote server management** Tier 2 Phase 4 — documentation and release.
+
+### Added
+
+- README（中／英）新增 **遠端 Tier 2** 章節：線上地圖、世界設定唯讀、手動解封與仍不支援項目
+- `docs/WINDOWS_E2E_TEST_CHECKLIST.md` 新增 §2B 遠端 Tier 2 驗收項目（地圖、唯讀設定、手動 unban）
+
+### Changed
+
+- 版本號更新為 `1.4.0`（`src/constant/app.ts`、`release/app/package.json`）
+- `docs/ROADMAP_P3_FEATURES.md`：功能 1 Tier 2（Phase 1–4）標記為已交付
+- `docs/KNOWN_ISSUES.md` 基準版本更新為 v1.4.0；遠端限制章節對齊 Tier 2 能力
+- `docs/PLAN_P3_REMOTE_TIER2.md` 狀態更新為已交付
+
+### Tier 2 交付摘要（v1.4.0）
+
+| Phase | 內容 |
+|-------|------|
+| 1 | 遠端線上地圖（解除 UI gating、新連線預設啟用、編輯連線開關） |
+| 2 | 遠端世界設定唯讀（`GET /v1/api/settings`、60s 快取、重新整理） |
+| 3 | 遠端手動解除封禁（`RemoteUnbanPanel`、`POST /unban`） |
+| 4 | 文件、E2E 清單、發布 |
+
+### Known limitations (v1.4.0)
+
+- 遠端仍無法從 GUI **列舉**遠端 `banlist.txt`（需 Tier 3 SSH/SFTP 或官方 REST）
+- 遠端世界設定為**唯讀**；修改須於遠端主機編輯 INI 並重啟
+- Mod 管理、日誌、Steam 更新、程序啟停仍僅適用本機實例
+
+---
+
 ## [1.3.3] — 2026-07-13
 
 Palworld 1.0 **remote server management** Tier 1 Phase 6 — documentation and release.

@@ -1,7 +1,7 @@
 # 實作計畫：功能 1 Tier 2 — 遠端地圖與 REST 設定讀取
 
 > **功能代號**：`P3-REMOTE` / `feature/remote-server-tier2`  
-> **狀態**：規劃中（未實作）  
+> **狀態**：已交付（v1.4.0，Phase 1–4）  
 > **目標版本**：v1.4.0（Tier 2 最小交付）  
 > **基準版本**：v1.3.3（Tier 1 已完整交付）  
 > **規格依據**：[ROADMAP_P3_FEATURES.md](./ROADMAP_P3_FEATURES.md) §1.7 Tier 2  
@@ -445,4 +445,5 @@ flowchart TD
 
 | 日期 | 版本 | 說明 |
 |------|------|------|
+| 2026-07-13 | 1.1 | 狀態更新為已交付（v1.4.0，Phase 1–4） |
 | 2026-07-13 | 1.0 | 初版：Tier 2 實作計畫（4 Phase、4 PR） |
