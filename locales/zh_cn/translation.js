@@ -152,7 +152,9 @@ const zh_cn = {
   MigrateFourPlayersSaveDesc6:
     '安装 Python 运行环境（到微软商店或官网下载，需选择 add python.exe to path）。',
   MigrateFourPlayersSaveDesc7:
-    '下载转换工具 https://github.com/Dalufishe/palworld-host-save-fix/archive/refs/heads/main.zip，解压缩后在该路径上打开终端命令窗口（cmd），并输入 pip install palworld-save-tools==0.17.1。',
+    '下载转换工具 https://github.com/Dalufishe/palworld-host-save-fix/archive/refs/heads/main.zip，解压缩后在该路径上打开终端命令窗口（cmd），并输入 pip install palworld-save-tools==0.24.0。',
+  Palworld10SaveMigrationNote:
+    'Palworld 1.0 机制变动较大。迁移或转档前请务必备份整个 SaveGames 文件夹；若转档失败，建议开新档游玩。',
   MigrateFourPlayersSaveDesc8:
     '在终端命令行输入 python fix-host-save.py "此处输入存档路径（点击黄色按钮的路径）" "多出来的玩家文件名称（忽略 .sav）" "00000000000000000000000000000001" True。',
   MigrateFourPlayersSaveDesc9: '等 Python 脚本执行完毕后，启动服务器。',
@@ -240,9 +242,10 @@ const zh_cn = {
   PerformanceMonitorAnimationEnabled: '性能监测动画',
   PerformanceMonitorAnimationEnabledDesc:
     '是否对性能监测启用动画。会稍微占用性能。开启后会稍微占用性能。',
-  RCONEnabledDesc: '启用远程控制 RCON。我们强烈建议您打开以体验完整功能。',
+  RCONEnabledDesc:
+    '启用远程控制 RCON（已弃用）。建议优先使用 REST API；RCON 仍可用于 Palguard 进阶指令。',
   RESTAPIEnabledDesc:
-    '启用 REST API 服务器。我们强烈建议您打开以体验完整功能。',
+    '启用 REST API（Palworld 1.0 官方推荐的管理方式）。玩家列表、踢人、封禁与定时重启皆依赖此功能。',
   PublicPortDesc: '服务器公开端口号。',
   RCONPortDesc: '远程控制 RCON 端口号。',
   RESTAPIPortDesc: 'REST API 网络端口号。',
@@ -276,9 +279,11 @@ const zh_cn = {
   ServerPasswordDesc: '为服务器设置密码。',
   AdminPasswordDesc: '设置管理员密码。',
   AutoRestart: '自动重启',
-  AutoRestartDesc: '每隔一段时间时重新启动服务器。需啟用 RCON 才能使用。',
+  AutoRestartDesc:
+    '每隔一段时间重新启动服务器。需启用 REST API（或 RCON）才能使用。建议 1.0 服务器设为 6–12 小时。',
   CrashRestart: '崩溃重启',
-  CrashRestartDesc: '在服务器崩溃时重新启动服务器。需啟用 RCON 才能使用。',
+  CrashRestartDesc:
+    '在服务器崩溃时重新启动服务器。需启用 REST API（或 RCON）才能使用。',
   OverRamRestart: '超过阈值重启',
   OverRamRestartDesc: '在服务器内存使用率超过 90% 时重新启动服务器。',
   All: '整体',
@@ -371,6 +376,30 @@ const zh_cn = {
   bIsRandomizerPalLevelRandom: '启用随机化 Pal 等级',
   bIsUseBackupSaveData: '启用世界备份',
   bPalLost: '死亡永久丢失帕鲁',
+  bEnableVoiceChat: '启用近距离语音聊天',
+  VoiceChatMaxVolumeDistance: '语音全音量距离（厘米）',
+  VoiceChatZeroVolumeDistance: '语音静音距离（厘米）',
+  MonsterFarmActionSpeedRate: '牧场产出速度倍率',
+  AutoTransferMasterThresholdDays: '公会会长移交：不活跃天数',
+  AutoTransferMasterCheckIntervalSeconds: '公会会长移交：检查间隔（秒）',
+  bAdditionalDropItemWhenPlayerKillingInPvPMode: 'PvP 击杀额外掉落',
+  AdditionalDropItemWhenPlayerKillingInPvPMode: 'PvP 击杀掉落类型',
+  AdditionalDropItemWhenPlayerKillingInPvPMode_None: '无',
+  AdditionalDropItemWhenPlayerKillingInPvPMode_PlayerDropItem: '玩家掉落物',
+  AdditionalDropItemWhenPlayerKillingInPvPMode_PlayerDropInventory: '玩家背包',
+  AdditionalDropItemNumWhenPlayerKillingInPvPMode: 'PvP 击杀额外掉落数量',
+  bDisplayPvPItemNumOnWorldMap_BaseCamp: '地图显示据点 PvP 物品数',
+  bDisplayPvPItemNumOnWorldMap_Player: '地图显示玩家 PvP 物品数',
+  ItemWeightRate: '物品重量倍率',
+  ItemCorruptionMultiplier: '物品腐败速度倍率',
+  ChatPostLimitPerMinute: '每分钟聊天消息上限',
+  bAllowClientMod: '允许客户端 Mod 加入',
+  bIsShowJoinLeftMessage: '显示玩家进出消息',
+  bUseAuth: '启用 Steam 身份验证',
+  Difficulty_None: '无（自定义）',
+  Difficulty_Easy: '简单',
+  Difficulty_Normal: '普通',
+  Difficulty_Hard: '困难',
   BuildSettings: '建筑物设置',
   DropSettings: '掉落物设置',
   FixCompleted: '修復完成！',
