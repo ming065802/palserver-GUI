@@ -9,6 +9,7 @@
 | [KNOWN_ISSUES.md](./KNOWN_ISSUES.md) | Palworld 1.0 **已知問題**：SAV 同步、Mod 檢查、帕魯資料；含情境說明與暫時因應 |
 | [ROADMAP_P3_FEATURES.md](./ROADMAP_P3_FEATURES.md) | P3 功能規劃與實作狀態：**遠端管理**、**Mod 檢查**、**設定產生器** |
 | [PLAN_P3_REMOTE_TIER1.md](./PLAN_P3_REMOTE_TIER1.md) | 功能 1 Tier 1 **實作計畫**：遠端 REST 管理（6 Phase、5 PR、驗收與測試） |
+| [PLAN_P3_REMOTE_TIER2.md](./PLAN_P3_REMOTE_TIER2.md) | 功能 1 Tier 2 **實作計畫**：遠端線上地圖、REST 設定唯讀、Unban UX（4 Phase、4 PR） |
 | [WINDOWS_E2E_TEST_CHECKLIST.md](./WINDOWS_E2E_TEST_CHECKLIST.md) | Windows 手動 E2E 測試清單（含 v1.3.3 遠端 Tier 1 完整驗收） |
 
 ## 版本對照
