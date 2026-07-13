@@ -138,6 +138,10 @@ You can also support me with a cup of coffee on [buymeacoffee](https://www.buyme
 
 <a href="https://www.buymeacoffee.com/Dalufish"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=Dalufish&button_colour=FFDD00&font_colour=000000&font_family=Comic&outline_colour=000000&coffee_colour=ffffff" /></a>
 
+### Roadmap
+
+Planned features after v1.2.0 (remote server management, mod compatibility checks, config import/export) are documented in [docs/ROADMAP_P3_FEATURES.md](/docs/ROADMAP_P3_FEATURES.md).
+
 ### Report issues
 
 The project is actively maintained. For Palworld 1.0 dedicated servers, follow [GitHub Releases](https://github.com/ming065802/palserver-GUI/releases) and [CHANGELOG.md](/CHANGELOG.md). Please report issues on [issues](https://github.com/ming065802/palserver-GUI/issues).

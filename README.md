@@ -143,6 +143,10 @@ palserver-GUI 可協助管理 **Palworld 1.0**（2026/7/10 正式版）專用伺
 
 <a href="https://www.buymeacoffee.com/Dalufish"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=Dalufish&button_colour=FFDD00&font_colour=000000&font_family=Comic&outline_colour=000000&coffee_colour=ffffff" /></a>
 
+### 開發路線圖
+
+v1.2.0 之後的規劃功能（遠端伺服器管理、Mod 相容檢查、設定產生器整合）見 [docs/ROADMAP_P3_FEATURES.md](/docs/ROADMAP_P3_FEATURES.md)。
+
 ### 回報問題
 
 目前專案持續維護中，若您使用 Palworld 1.0 專服，建議追蹤 [GitHub Releases](https://github.com/ming065802/palserver-GUI/releases) 與 [CHANGELOG.md](/CHANGELOG.md) 以取得最新 1.0 相容更新。若發現錯誤歡迎到 [issues](https://github.com/ming065802/palserver-GUI/issues) 發表。
