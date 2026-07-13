@@ -527,6 +527,19 @@ const fr = {
   Fix: 'Réparer',
   Install: 'Installer',
   OneClickUpdate: 'Mise à jour',
+  ManagementApiTitle: 'API de gestion locale',
+  ManagementApiDesc:
+    "Une fois activée, contrôlez les instances locales via HTTP API : démarrage, arrêt, redémarrage et statut. Fonctionne uniquement tant que palserver GUI est ouvert.",
+  ManagementApiPort: 'Port API',
+  ManagementApiBindAddress: 'Adresse d’écoute',
+  ManagementApiKey: 'Clé API',
+  ManagementApiKeyPlaceholder: 'Laisser vide pour localhost sans clé',
+  ManagementApiGenerateKey: 'Générer une clé',
+  ManagementApiSecurityNote:
+    "Si l'adresse n'est pas 127.0.0.1, une clé API est générée à l'enregistrement. Envoyez Authorization: Bearer <clé> ou X-API-Key.",
+  ManagementApiSave: 'Enregistrer',
+  ManagementApiSaving: 'Enregistrement…',
+  ManagementApiSaved: 'Enregistré et API rechargée',
   HowToGetIPAdress: 'Comment obtenir une adresse IP ?',
 };
 export default fr;
