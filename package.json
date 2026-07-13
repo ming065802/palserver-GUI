@@ -250,7 +250,11 @@
       "target": [
         "nsis"
       ],
-      "compression": "none"
+      "compression": "store",
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "artifactName": "${version}-palserver-gui.${ext}"
     },
     "linux": {
       "target": [
