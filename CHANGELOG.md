@@ -2,6 +2,32 @@
 
 All notable changes to **palserver-GUI** are documented in this file.
 
+## [1.2.1] — 2026-07-13
+
+Patch release after v1.2.0 with INI write fixes, version-check hardening, and documentation.
+
+### Added
+
+- `docs/KNOWN_ISSUES.md` — Palworld 1.0 known issues (SAV sync, mod checks, Pal data) with workarounds
+- Unit tests for `worldSettingsIni` round-trip and `resolveLatestVersion`
+- Windows E2E manual test checklist (`docs/WINDOWS_E2E_TEST_CHECKLIST.md`)
+
+### Changed
+
+- `writeWorldSettingsini` writes converter output directly, avoiding regex post-processing that corrupted `CrossplayPlatforms` tuples
+- Remote version API responses below Palworld 1.0 baseline are ignored in favor of bundled `LATEST_GAME_VERSION` / `VERSION`
+- Webpack dev DLL excludes `firebase` subpath-only exports; `release/app` dependencies read safely for lint
+
+### Fixed
+
+- `CrossplayPlatforms` INI corruption when saving world settings from GUI
+- `autoUpdater` semver crash in unpackaged dev builds
+- Stale `palservergui.net` version data causing incorrect engine update checks
+- Dead code in `App.tsx` / `PakMods.tsx`; `Version.tsx` image event handler types
+- `devEngines` schema compatibility with npm 10.9+
+
+---
+
 ## [1.2.0] — 2026-07-13
 
 Palworld **1.0** alignment release.

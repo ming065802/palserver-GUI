@@ -1,6 +1,6 @@
 # palserver GUI
 
-![RELEASE](https://img.shields.io/badge/RELEASE-1.2.0-green)
+![RELEASE](https://img.shields.io/badge/RELEASE-1.2.1-green)
 [![Website](https://img.shields.io/badge/website-click-blue)](https://dalufishes-team.gitbook.io/palserver-gui-en)
 [![Discord](https://img.shields.io/badge/discord-click-blue)](https://discord.gg/sgMMdUZd3V)
 ![Make With Love](https://img.shields.io/badge/make_with_%E2%9D%A4%EF%B8%8F-white)
@@ -56,7 +56,7 @@ After installation is complete, create your server and click "Start" in the bott
 
 Adjust world settings using sliders and input boxes without the need to modify the original file PalWorldSettings.ini:
 
-> Includes 1.0 options such as crossplay, voice chat, and ranch speed (latest dev build or upcoming 1.2.0 release).
+> Includes 1.0 options such as crossplay, voice chat, and ranch speed.
 
 ### Online Player List
 
@@ -84,8 +84,8 @@ In addition, there are more server settings and features to fine-tune your serve
 
 ### Installation Links and Updates
 
-Installation Package (Recommended):[Click here to download](https://github.com/ming065802/palserver-GUI/releases/download/1.2.0/1.2.0-palserver-gui.exe)
-Portable Version (No installation required)：[Click here to download](https://github.com/ming065802/palserver-GUI/releases/download/1.2.0/unpack-1.2.0-palserver-gui.zip)
+Installation Package (Recommended):[Click here to download](https://github.com/ming065802/palserver-GUI/releases/download/1.2.1/1.2.1-palserver-gui.exe)
+Portable Version (No installation required)：[Click here to download](https://github.com/ming065802/palserver-GUI/releases/download/1.2.1/unpack-1.2.1-palserver-gui.zip)
 
 ### FAQs
 
