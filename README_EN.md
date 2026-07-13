@@ -1,6 +1,6 @@
 # palserver GUI
 
-![RELEASE](https://img.shields.io/badge/RELEASE-1.4.0-green)
+![RELEASE](https://img.shields.io/badge/RELEASE-1.4.1-green)
 [![Website](https://img.shields.io/badge/website-click-blue)](https://dalufishes-team.gitbook.io/palserver-gui-en)
 [![Discord](https://img.shields.io/badge/discord-click-blue)](https://discord.gg/sgMMdUZd3V)
 ![Make With Love](https://img.shields.io/badge/make_with_%E2%9D%A4%EF%B8%8F-white)
@@ -160,11 +160,11 @@ In addition, there are more server settings and features to fine-tune your serve
 
 ### Installation Links and Updates
 
-Installation Package (Recommended): [Click here to download](https://github.com/ming065802/palserver-GUI/releases/download/1.3.3/1.3.3-palserver-gui.exe)
+Installation Package (Recommended): [Click here to download](https://github.com/ming065802/palserver-GUI/releases/download/v1.4.1/1.4.1-palserver-gui.exe)
 
-Portable Version (No installation required): [Click here to download](https://github.com/ming065802/palserver-GUI/releases/download/1.3.3/unpack-1.3.3-palserver-gui.zip)
+Portable Version (No installation required): [Click here to download](https://github.com/ming065802/palserver-GUI/releases/download/v1.4.1/unpack-1.4.1-palserver-gui.zip)
 
-Previous v1.3.0: [installer](https://github.com/ming065802/palserver-GUI/releases/download/1.3.0/1.3.0-palserver-gui.exe) / [portable](https://github.com/ming065802/palserver-GUI/releases/download/1.3.0/unpack-1.3.0-palserver-gui.zip)
+Previous v1.3.3: [installer](https://github.com/ming065802/palserver-GUI/releases/download/v1.3.3/1.3.3-palserver-gui.exe) / [portable](https://github.com/ming065802/palserver-GUI/releases/download/v1.3.3/unpack-1.3.3-palserver-gui.zip)
 
 ### FAQs
 
@@ -181,7 +181,7 @@ Previous v1.3.0: [installer](https://github.com/ming065802/palserver-GUI/release
 - Steam players: use Direct Connect at `your-ip:8211`
 - Save migration: use `palworld-save-tools==0.24.0`; back up before migrating to 1.0
 - Mods: test without mods after updating, then re-enable one by one
-- **Remote connection (v1.3.3)**: home right-click → Create Remote Connection → enter host IP, REST port `8212`, admin password → test connection, then create; see the Remote server management section above and [CHANGELOG.md](/CHANGELOG.md)
+- **Remote connection (v1.4.1)**: home right-click → Create Remote Connection → enter host IP, REST port `8212`, admin password → test connection, then create; see the Remote server management section above and [CHANGELOG.md](/CHANGELOG.md)
 
 See [CHANGELOG.md](/CHANGELOG.md) for full release notes.
 
@@ -220,7 +220,7 @@ You can also support me with a cup of coffee on [buymeacoffee](https://www.buyme
 
 ### Roadmap
 
-v1.4.0 ships **remote server management Tier 1 (Phases 1–6) and Tier 2 (Phases 1–4)**. Upcoming work (Tier 3 SSH/SFTP, mod compatibility gate, settings import/export) is in [docs/ROADMAP_P3_FEATURES.md](/docs/ROADMAP_P3_FEATURES.md).  
+v1.4.1 is the **first binary release** with remote server management Tier 2, shipping **Tier 1 (Phases 1–6) and Tier 2 (Phases 1–4)**. Upcoming work (Tier 3 SSH/SFTP, mod compatibility gate, settings import/export) is in [docs/ROADMAP_P3_FEATURES.md](/docs/ROADMAP_P3_FEATURES.md).  
 Palworld 1.0 **known issues** (SAV sync, mod checks, Pal data) are in [docs/KNOWN_ISSUES.md](/docs/KNOWN_ISSUES.md).
 
 ### Report issues
