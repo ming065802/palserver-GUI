@@ -4,6 +4,12 @@ All notable changes to **palserver-GUI** are documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **Discord Bot（Phase 1）**：新增獨立 `discord-bot/` Node.js 專案，透過 Management API 支援 `/status`、`/servers`、`/start`、`/stop`、`/restart` slash 指令
+- GUI 設定頁可啟用 Discord Bot、配置 Token／Guild／角色權限與預設 `serverId`；啟動 GUI 時可選 spawn bot，關閉 GUI 時終止子程序
+- 五語系 i18n、`discord-bot/README.md`、`docs/WINDOWS_E2E_TEST_CHECKLIST.md` §2D、單元測試
+
 ---
 
 ## [1.4.2] — 2026-07-13

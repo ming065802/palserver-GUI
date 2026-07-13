@@ -268,7 +268,8 @@
       "output": "release/build"
     },
     "extraResources": [
-      "./assets/**"
+      "./assets/**",
+      "./discord-bot/**"
     ]
   },
   "collective": {

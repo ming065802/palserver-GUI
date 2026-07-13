@@ -522,6 +522,27 @@ const en = {
   ManagementApiSave: 'Save',
   ManagementApiSaving: 'Saving…',
   ManagementApiSaved: 'Saved and API reloaded',
+  DiscordBotTitle: 'Discord Bot',
+  DiscordBotDesc:
+    'When enabled, query server status and control start/stop/restart via Discord slash commands. The bot starts with the GUI and stops when the GUI closes.',
+  DiscordBotManagementApiWarning:
+    'Enable the local Management API before enabling the Discord Bot.',
+  DiscordBotRunning: 'Bot is running',
+  DiscordBotLastError: 'Bot error',
+  DiscordBotToken: 'Bot Token',
+  DiscordBotTokenPlaceholder: 'Copy from Discord Developer Portal',
+  DiscordBotClientId: 'Application Client ID',
+  DiscordBotGuildId: 'Guild ID',
+  DiscordBotAllowedRoleIds: 'Allowed role IDs',
+  DiscordBotAllowedUserIds: 'Allowed user IDs',
+  DiscordBotIdListPlaceholder: 'Separate multiple IDs with commas',
+  DiscordBotDefaultServerId: 'Default server',
+  DiscordBotDefaultServerPlaceholder: 'Select default serverId',
+  DiscordBotSecurityNote:
+    'Dangerous commands (start/stop/restart) are limited to the roles or users above. Tokens are never logged in plain text.',
+  DiscordBotSave: 'Save',
+  DiscordBotSaving: 'Saving…',
+  DiscordBotSaved: 'Saved and bot reloaded',
   HowToGetIPAdress: 'How to get an IP address?',
 };
 export default en;

@@ -509,6 +509,27 @@ const zh_tw = {
   ManagementApiSave: '儲存',
   ManagementApiSaving: '儲存中…',
   ManagementApiSaved: '已儲存並重新載入 API',
+  DiscordBotTitle: 'Discord Bot',
+  DiscordBotDesc:
+    '啟用後可透過 Discord slash 指令查詢伺服器狀態與受控啟停。Bot 隨 GUI 啟動，關閉 GUI 時一併結束。',
+  DiscordBotManagementApiWarning:
+    '啟用 Discord Bot 前請先啟用本機 Management API。',
+  DiscordBotRunning: 'Bot 運行中',
+  DiscordBotLastError: 'Bot 錯誤',
+  DiscordBotToken: 'Bot Token',
+  DiscordBotTokenPlaceholder: '從 Discord Developer Portal 複製',
+  DiscordBotClientId: 'Application Client ID',
+  DiscordBotGuildId: 'Guild ID',
+  DiscordBotAllowedRoleIds: '允許操作的角色 ID',
+  DiscordBotAllowedUserIds: '允許操作的使用者 ID',
+  DiscordBotIdListPlaceholder: '多個 ID 以逗號分隔',
+  DiscordBotDefaultServerId: '預設伺服器',
+  DiscordBotDefaultServerPlaceholder: '選擇預設 serverId',
+  DiscordBotSecurityNote:
+    '危險指令（啟動／關閉／重啟）僅允許上方設定的角色或使用者。Token 不會寫入日誌。',
+  DiscordBotSave: '儲存',
+  DiscordBotSaving: '儲存中…',
+  DiscordBotSaved: '已儲存並重新載入 Bot',
   //
   HowToGetIPAdress: '如何獲取 IP 位址？',
 };

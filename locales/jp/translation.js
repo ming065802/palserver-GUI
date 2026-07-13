@@ -509,6 +509,27 @@ const jp = {
   ManagementApiSave: '保存',
   ManagementApiSaving: '保存中…',
   ManagementApiSaved: '保存し API を再読み込みしました',
+  DiscordBotTitle: 'Discord Bot',
+  DiscordBotDesc:
+    '有効にすると Discord スラッシュコマンドでサーバー状態の確認と起動・停止・再起動ができます。Bot は GUI と同時に起動し、GUI 終了時に停止します。',
+  DiscordBotManagementApiWarning:
+    'Discord Bot を有効にする前にローカル Management API を有効にしてください。',
+  DiscordBotRunning: 'Bot 実行中',
+  DiscordBotLastError: 'Bot エラー',
+  DiscordBotToken: 'Bot Token',
+  DiscordBotTokenPlaceholder: 'Discord Developer Portal からコピー',
+  DiscordBotClientId: 'Application Client ID',
+  DiscordBotGuildId: 'Guild ID',
+  DiscordBotAllowedRoleIds: '操作を許可するロール ID',
+  DiscordBotAllowedUserIds: '操作を許可するユーザー ID',
+  DiscordBotIdListPlaceholder: '複数 ID はカンマ区切り',
+  DiscordBotDefaultServerId: 'デフォルトサーバー',
+  DiscordBotDefaultServerPlaceholder: 'デフォルト serverId を選択',
+  DiscordBotSecurityNote:
+    '危険なコマンド（起動・停止・再起動）は上記のロールまたはユーザーのみ実行できます。Token はログに平文で出力しません。',
+  DiscordBotSave: '保存',
+  DiscordBotSaving: '保存中…',
+  DiscordBotSaved: '保存し Bot を再読み込みしました',
   HowToGetIPAdress: 'IPアドレスを取得する方法は？',
 };
 

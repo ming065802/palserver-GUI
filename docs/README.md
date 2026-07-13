@@ -10,7 +10,7 @@
 | [ROADMAP_P3_FEATURES.md](./ROADMAP_P3_FEATURES.md) | P3 功能規劃與實作狀態：**遠端管理**、**Mod 檢查**、**設定產生器** |
 | [PLAN_P3_REMOTE_TIER1.md](./PLAN_P3_REMOTE_TIER1.md) | 功能 1 Tier 1 **實作計畫**：遠端 REST 管理（6 Phase、5 PR、驗收與測試） |
 | [PLAN_P3_REMOTE_TIER2.md](./PLAN_P3_REMOTE_TIER2.md) | 功能 1 Tier 2 **實作計畫**：遠端線上地圖、REST 設定唯讀、Unban UX（4 Phase、4 PR） |
-| [PLAN_DISCORD_BOT.md](./PLAN_DISCORD_BOT.md) | **Discord Bot 整合計畫**：獨立 `discord-bot/`（Node.js）、GUI spawn、Management API 觸發（規劃中） |
+| [PLAN_DISCORD_BOT.md](./PLAN_DISCORD_BOT.md) | **Discord Bot 整合計畫**：獨立 `discord-bot/`（Node.js）、GUI spawn、Management API 觸發（**Phase 1 已實作**） |
 | [RELEASE.md](./RELEASE.md) | **發布指南**：版本檢查清單、GitHub Actions Windows 打包、手動／Linux 備援流程 |
 | [WINDOWS_E2E_TEST_CHECKLIST.md](./WINDOWS_E2E_TEST_CHECKLIST.md) | Windows 手動 E2E 測試清單（含 v1.3.3 遠端 Tier 1、v1.4.0+ Tier 2 驗收） |
 
@@ -27,7 +27,7 @@
 | **v1.3.0** | 已發布 | 遠端連線建立、REST 測試、列表 badge |
 | **v1.2.1** | 已發布 | CrossplayPlatforms INI、版本檢查、已知問題文件 |
 | **v1.2.0** | 已發布 | Palworld 1.0 本機專服對齊 |
-| **v1.5.0（規劃）** | 規劃中 | Discord Bot（Node.js）可選整合；Management API 消費端 |
+| **v1.5.0（規劃）** | 開發中 | Discord Bot Phase 1：slash 指令、GUI 可選 spawn、`discord-bot/` 獨立部署 |
 | **v1.4.x 後續** | 規劃中 | Mod 相容檢查、設定產生器；遠端 Tier 3 SSH/SFTP |
 
 ## 給 AI / 新貢獻者的提示
