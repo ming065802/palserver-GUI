@@ -8,6 +8,7 @@
 |------|------|
 | [KNOWN_ISSUES.md](./KNOWN_ISSUES.md) | Palworld 1.0 **已知問題**：SAV 同步、Mod 檢查、帕魯資料；含情境說明與暫時因應 |
 | [ROADMAP_P3_FEATURES.md](./ROADMAP_P3_FEATURES.md) | P3 待實作功能規劃：**遠端伺服器管理**、**Mod 1.0 相容檢查**、**設定產生器整合** |
+| [PLAN_P3_REMOTE_TIER1.md](./PLAN_P3_REMOTE_TIER1.md) | 功能 1 Tier 1 **實作計畫**：遠端 REST 管理（6 Phase、5 PR、驗收與測試） |
 
 ## 版本對照
 
