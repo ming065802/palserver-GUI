@@ -94,3 +94,7 @@ export async function restAnnounce(config: RestAdminConfig, message: string) {
     body: { message },
   });
 }
+
+export async function restGetSettings(config: RestAdminConfig) {
+  return restRequest(config, '/settings');
+}

@@ -219,6 +219,16 @@ const zh_cn = {
     '远程连接无法读取本地封禁名单；请在远程服务器上管理 banlist.txt，或通过 REST 封禁在线玩家。',
   RemoteOnlineMapUnreachable:
     '无法连接至远程 REST API，线上地图可能无法显示玩家位置。请确认远程服务器在线且防火墙已开放 REST 端口。',
+  RemoteWorldSettingsReadOnly:
+    '远程世界设置为只读，数据来自服务器 REST API。若要修改，请在远程主机编辑 PalWorldSettings.ini 并重启服务器。',
+  RemoteWorldSettingsReadOnlyShort: '世界设置（只读）',
+  RemoteWorldSettingsFetchFailed:
+    '无法从远程服务器获取设置。请确认 REST API 可连接后再按刷新。',
+  RemoteWorldSettingsUnknownKeys:
+    '部分 REST 返回字段未对应到 GUI 分页，请切换至 JSON 视图查看完整内容。',
+  WorldSettingsJsonView: 'JSON 视图',
+  WorldSettingsGuiView: 'GUI 视图',
+  Refresh: '刷新',
   TestConnection: '测试连接',
   TestingConnection: '测试中…',
   RemoteConnectionSuccess: '连接成功，可以建立远程连接。',

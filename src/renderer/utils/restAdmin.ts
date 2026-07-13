@@ -72,3 +72,7 @@ export function restAnnounce(serverId: string, message: string) {
     body: { message },
   });
 }
+
+export function restGetSettings(serverId: string) {
+  return sendRestAdmin(serverId, '/settings');
+}

@@ -42,3 +42,10 @@ describe('isRestApiEnabled', () => {
     expect(isRestApiEnabled({})).toBe(false);
   });
 });
+
+describe('restGetSettings', () => {
+  it('is exported from restAdmin', async () => {
+    const { restGetSettings } = await import('../main/services/admin/restAdmin');
+    expect(typeof restGetSettings).toBe('function');
+  });
+});
