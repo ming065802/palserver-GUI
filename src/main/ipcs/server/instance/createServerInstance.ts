@@ -21,6 +21,11 @@ ipcMain.handle(
       PublicPort: string;
       ServerPassword: string;
       AdminPassword: string;
+      RCONEnabled?: boolean;
+      RESTAPIEnabled?: boolean;
+      RCONPort?: number;
+      RESTAPIPort?: number;
+      CrossplayPlatforms?: string;
     },
   ) => {
     const serverId = uniqid('sr-');

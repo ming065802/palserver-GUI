@@ -23,7 +23,7 @@ export const PlayerSettingsOptionsKey = [
   'PlayerStomachDecreaceRate',
   'PlayerStaminaDecreaceRate',
   'PlayerAutoHPRegeneRate',
-  'PlayerAutoHPRegeneRate',
+  'PlayerAutoHpRegeneRateInSleep',
   'bEnablePlayerToPlayerDamage',
   'bEnableFriendlyFire',
   'bIsPvP',
